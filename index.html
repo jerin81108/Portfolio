@@ -13,16 +13,21 @@
     <nav>
         <div class="logo">Portfolio.</div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="certificates.html">Certificates</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
     <main>
         <section id="home" class="hero fade-in">
             <div class="hero-content">
-                <h1>Hi, I'm <span class="gradient-text">JERIN J</span></h1>
-                <p class="subtitle">Creative Developer & Problem Solver</p>
+                <div class="profile-container fade-in">
+                    <img src="images/image.jpeg" alt="JERIN J" class="profile-pic">
+                </div>
+                <h1>Hi, I'm <span id="dynamic-name" class="gradient-text">JERIN J</span></h1>
+                <p class="subtitle">B.Tech AI&DS Student</p>
+                <p class="subtitle">Creative Developer & Aspiring ML Engineer</p>
                 <a href="#projects" class="cta-button">View My Work</a>
             </div>
         </section>
@@ -30,6 +35,22 @@
         <section id="projects" class="projects">
             <h2 class="fade-in">Featured <span>Projects</span></h2>
             <div class="project-grid">
+                <div class="project-card fade-in">
+                    <div class="project-img bg-5"></div>
+                    <div class="project-info">
+                        <h3>Civix</h3>
+                        <p>A specialized survey application for civil engineering projects, streamlining data collection and analysis.</p>
+                        <a href="https://github.com/jerin81108/civix" target="_blank" class="repo-link">View Repository</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img bg-4"></div>
+                    <div class="project-info">
+                        <h3>GreenPulse </h3>
+                        <p>A sustainable technology project developed for Hackathon 2026, focusing on eco-friendly digital solutions.</p>
+                        <a href="https://github.com/jerin81108/hackathon_2026" target="_blank" class="repo-link">View Repository</a>
+                    </div>
+                </div>
                 <div class="project-card fade-in">
                     <div class="project-img bg-1"></div>
                     <div class="project-info">
@@ -57,11 +78,34 @@
         <section id="contact" class="contact fade-in">
             <h2>Let's <span>Connect</span></h2>
             <p>Ready to bring your ideas to life or collaborate on a project? Reach out to me!</p>
-            <a href="mailto:aravi@example.com" class="cta-button">Say Hello</a>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="label">Email:</span>
+                        <a href="mailto:jerin81108loco@gmail.com">jerin81108loco@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label">Phone:</span>
+                        <a href="tel:8870654384">8870654384</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/jerin81108" target="_blank" class="social-icon">GitHub</a>
+                        <a href="https://www.linkedin.com/in/jerin-j-91328a366?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">LinkedIn</a>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="message-input" placeholder="Type your message here..." required>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 Aravi Portfolio. Built with passion.</p>
+        <p>&copy; 2026 JERIN J Portfolio. Built with passion.</p>
     </footer>
     <script src="script.js"></script>
 </body>
