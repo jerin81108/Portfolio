@@ -411,7 +411,6 @@ h2 span,
     border: 3px solid transparent;
     background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
                 linear-gradient(135deg, var(--accent-1), var(--accent-2)) border-box;
-<<<<<<< HEAD
     box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     animation: floating 6s ease-in-out infinite;
@@ -424,23 +423,12 @@ h2 span,
 
 .profile-pic:hover {
     transform: scale(1.08) rotate(2deg);
-=======
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
-    transition: transform 0.5s ease;
-}
-
-.profile-pic:hover {
-    transform: scale(1.05);
->>>>>>> cb1e9b7db0bef865be05daf9a0511baa402a36a1
 }
 
 #dynamic-name {
     transition: opacity 0.5s ease, transform 0.5s ease;
     display: inline-block;
-<<<<<<< HEAD
     text-shadow: 0 0 20px var(--glow-color);
-=======
->>>>>>> cb1e9b7db0bef865be05daf9a0511baa402a36a1
 }
 
 #dynamic-name.fade-out {
@@ -723,17 +711,11 @@ footer {
 }
 
 .cert-card:hover {
-<<<<<<< HEAD
     transform: translateY(-15px) scale(1.02);
     border-color: var(--accent-1);
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 
                 0 0 20px var(--glow-color);
-=======
-    transform: translateY(-10px);
-    border-color: var(--accent-1);
-    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
->>>>>>> cb1e9b7db0bef865be05daf9a0511baa402a36a1
 }
 
 .cert-img-container {
