@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <meta name="description" content="Welcome to my creative coding portfolio.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="rumbling-bg"></div>
+    <div class="titans-container" id="titans-bg"></div>
+    <div id="asteroids-container"></div>
+    <div class="impact-flash" id="flash-overlay"></div>
+    <div class="watermark-container"></div>
+    <div class="blob-bg"></div>
+    <nav>
+        <div class="logo">SURVEY CORPS.</div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Garrison</a></li>
+            <li><a href="index.html#arsenal">Arsenal</a></li>
+            <li><a href="index.html#projects">Missions</a></li>
+            <li><a href="certificates.html">Credentials</a></li>
+            <li><a href="index.html#contact">Transmission</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="home" class="hero fade-in">
+            <div class="hero-content">
+                <div class="profile-container fade-in">
+                    <img src="images/pic.jpeg" alt="Captain JERIN J" class="profile-pic">
+                </div>
+                <h1><span id="dynamic-name" class="gradient-text">SURVEY CORPS</span></h1>
+                <p class="subtitle" id="impact-target">B.Tech AI & DS (2nd Year)</p>
+                <p class="subtitle" style="color: var(--accent-1); font-weight: 700;">Shree Venkateshwara Hi-Tech Engineering College</p>
+                <p class="subtitle">Elite Combatant in the Artificial Intelligence Front</p>
+                <div class="hero-btns" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <a href="#projects" class="cta-button">Initiate Missions</a>
+                    <a href="../resume.html" class="cta-button-outline" target="_blank" style="margin-left: 0;">Enlistment Record</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="arsenal" class="arsenal">
+            <h2 class="fade-in">Tactical <span>Arsenal</span></h2>
+            <div class="tech-grid fade-in">
+                <div class="tech-box">
+                    <h3>Operational Languages</h3>
+                    <div class="tags-group">
+                        <span>Python</span><span>JavaScript</span><span>SQL</span><span>C++</span><span>Java</span>
+                    </div>
+                </div>
+                <div class="tech-box">
+                    <h3>Specialized Libraries</h3>
+                    <div class="tags-group">
+                        <span>TensorFlow</span><span>Scikit-Learn</span><span>Pandas</span><span>NumPy</span><span>React</span><span>Node.js</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="projects">
+            <h2 class="fade-in">Field <span>Missions</span></h2>
+            <div class="project-grid">
+                <div class="project-card fade-in">
+                    <div class="project-img bg-5"></div>
+                    <div class="project-info">
+                        <h3>Civix</h3>
+                        <p>A specialized survey application for civil engineering projects, streamlining data collection and analysis.</p>
+                        <a href="https://github.com/jerin81108/civix" target="_blank" class="repo-link">View Repository</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img bg-4"></div>
+                    <div class="project-info">
+                        <h3>GreenPulse </h3>
+                        <p>A sustainable technology project developed for Hackathon 2026, focusing on eco-friendly digital solutions.</p>
+                        <a href="https://github.com/jerin81108/hackathon_2026" target="_blank" class="repo-link">View Repository</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img bg-1"></div>
+                    <div class="project-info">
+                        <h3>AI Chatbot</h3>
+                        <p>An intelligent chatbot application built with modern web technologies, providing interactive conversational experiences.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img bg-2"></div>
+                    <div class="project-info">
+                        <h3>8-Puzzle Solver</h3>
+                        <p>A smart visualizer for the classic 8-puzzle game using the A* search algorithm to find the optimal solution path.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img bg-3"></div>
+                    <div class="project-info">
+                        <h3>Next-Gen UI</h3>
+                        <p>A sleek, dynamic user interface crafted with a focus on modern aesthetics, glassmorphism, and seamless interactions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact fade-in">
+            <h2>Let's <span>Connect</span></h2>
+            <p>Ready to bring your ideas to life or collaborate on a project? Reach out to me!</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="label">Email:</span>
+                        <a href="mailto:jerin81108loco@gmail.com">jerin81108loco@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label">Phone:</span>
+                        <a href="tel:8870654384">8870654384</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/jerin81108" target="_blank" class="social-icon">GitHub</a>
+                        <a href="https://www.linkedin.com/in/jerin-j-91328a366?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">LinkedIn</a>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="message-input" placeholder="Type your message here..." required>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Captain JERIN J. Shinzou wo Sasageyo!</p>
+    </footer>
+    <button id="revert-theme" class="theme-changer-btn" title="Return to Normalcy">🕊️</button>
+    <script src="script.js"></script>
+</body>
+</html>

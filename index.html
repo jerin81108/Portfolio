@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+    <div class="scroll-progress"></div>
     <div class="blob-bg"></div>
     <nav>
         <div class="logo">Portfolio.</div>
         <ul class="nav-links">
             <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#projects">Projects</a></li>
             <li><a href="certificates.html">Certificates</a></li>
             <li><a href="index.html#contact">Contact</a></li>
@@ -23,12 +27,64 @@
         <section id="home" class="hero fade-in">
             <div class="hero-content">
                 <div class="profile-container fade-in">
-                    <img src="images/image.jpeg" alt="JERIN J" class="profile-pic">
+                    <img src="images/pic.jpeg" alt="JERIN J" class="profile-pic">
                 </div>
                 <h1>Hi, I'm <span id="dynamic-name" class="gradient-text">JERIN J</span></h1>
-                <p class="subtitle">B.Tech AI&DS Student</p>
-                <p class="subtitle">Creative Developer & Aspiring ML Engineer</p>
-                <a href="#projects" class="cta-button">View My Work</a>
+                <p class="subtitle">B.Tech AI & Data Science (2nd Year)</p>
+                <p class="subtitle" style="font-weight: 600; color: var(--accent-1);">Shree Venkateshwara Hi-Tech Engineering College</p>
+                <p class="subtitle">Architecting the future through Artificial Intelligence & Creative Development</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="cta-button">View My Work</a>
+                    <a href="resume.html" class="cta-button-outline" target="_blank">Download Resume</a>
+                    <a href="#about" class="cta-button-outline">About Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2 class="fade-in">About <span>Me</span></h2>
+            <div class="about-container">
+                <div class="about-text fade-in">
+                    <p>I am a passionate <strong>AI & Data Science student</strong> dedicated to building intelligent, user-centric digital experiences. With a strong foundation in modern web technologies and machine learning, I bridge the gap between complex algorithms and elegant interfaces.</p>
+                    <p>Currently pursuing my B.Tech at <strong>SVHEC</strong>, I actively participate in hackathons and open-source projects to push the boundaries of what's possible with code.</p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>🚀</span> Core AI & Machine Learning</div>
+                        <div class="skill-item"><span>⚛️</span> Full-Stack Web Development</div>
+                        <div class="skill-item"><span>🎨</span> Premium UI/UX Design</div>
+                        <div class="skill-item"><span>📊</span> Data Analysis & Visualization</div>
+                    </div>
+
+                    <div class="tech-stack fade-in">
+                        <h3>Technical Arsenal</h3>
+                        <div class="tech-tags">
+                            <span class="tech-category">Languages</span>
+                            <div class="tags-group">
+                                <span>Python</span><span>JavaScript</span><span>SQL</span><span>C++</span><span>Java</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-category">Libraries</span>
+                            <div class="tags-group">
+                                <span>TensorFlow</span><span>Scikit-Learn</span><span>Pandas</span><span>NumPy</span><span>React</span><span>Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="metrics-grid fade-in">
+                    <div class="metric-card">
+                        <h3>2+</h3>
+                        <p>Years Learning</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>10+</h3>
+                        <p>Projects Done</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>3+</h3>
+                        <p>Certifications</p>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -107,6 +163,8 @@
     <footer>
         <p>&copy; 2026 JERIN J Portfolio. Built with passion.</p>
     </footer>
+    <button id="theme-changer" class="theme-changer-btn" title="Change Theme">🚀</button>
+    <div class="impact-flash" id="flash-overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>

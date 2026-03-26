@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | JERIN J</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #1e40af;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --border: #e5e7eb;
+            --bg-light: #f9fafb;
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { background: white; padding: 0; }
+            .content { border: none !important; box-shadow: none !important; margin: 0 !important; width: 100% !important; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.5;
+        }
+
+        .content {
+            background: white;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 50px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill-group strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .skill-list {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .item-sub {
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .footer-action {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <h1>JERIN J</h1>
+            <div class="contact-info">
+                <span>Email: <a href="mailto:jerin81108@gmail.com">jerin81108@gmail.com</a></span>
+                <span>|</span>
+                <span>Location: Tamil Nadu</span>
+                <span>|</span>
+                <span>LinkedIn: <a href="https://linkedin.com/in/jerin81108" target="_blank">linkedin.com/in/jerin81108</a></span>
+                <span>|</span>
+                <span>GitHub: <a href="https://github.com/jerin81108" target="_blank">github.com/jerin81108</a></span>
+            </div>
+        </header>
+
+        <section class="summary">
+            <h2>Professional Summary</h2>
+            <p>Passionate <strong>B.Tech Artificial Intelligence & Data Science</strong> student with a strong drive for building intelligent, user-centric solutions. Experienced in developing scalable web applications and specialized AI tools. Proven track record in hackathons and real-time project implementation. Seeking opportunities to leverage machine learning and full-stack development skills in a professional environment.</p>
+        </section>
+
+        <section class="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <strong>Programming Languages:</strong>
+                    <span class="skill-list">Python, JavaScript (ES6+), SQL, C++, Java</span>
+                </div>
+                <div class="skill-group">
+                    <strong>AI & Data Science:</strong>
+                    <span class="skill-list">TensorFlow, Scikit-Learn, Pandas, NumPy, Data Preprocessing</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Web Technologies:</strong>
+                    <span class="skill-list">React, Next.js, Node.js, HTML5, CSS3 (Glassmorphism, Tailwind)</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Tools & Platforms:</strong>
+                    <span class="skill-list">Git, VS Code, Jupyter Notebook, Firebase, Oracle OCI Foundations</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Key Projects</h2>
+            <div class="project-item">
+                <div class="item-header">
+                    <span>Civix - Survey Solutions App</span>
+                    <span>2026</span>
+                </div>
+                <p class="item-sub">Full-Stack Development | Firebase | Geolocation</p>
+                <ul>
+                    <li>Developed a specialized survey application for civil engineering data collection.</li>
+                    <li>Integrated real-time data syncing and mapping for surveying efficiency.</li>
+                    <li>Implemented secure authentication and administrative panels for data management.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="item-header">
+                    <span>GreenPulse - Sustainability Visualizer</span>
+                    <span>2026</span>
+                </div>
+                <p class="item-sub">React | Data Visualization | Hackathon 2026</p>
+                <ul>
+                    <li>Built an interactive dashboard for monitoring eco-friendly digital footprints.</li>
+                    <li>Won recognition at Hackathon 2026 for innovative use of sustainable tech.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="item-header">
+                    <span>AI 8-Puzzle Solver</span>
+                    <span>2025</span>
+                </div>
+                <p class="item-sub">Python | A* Search Algorithm | Visualizer</p>
+                <ul>
+                    <li>Implemented the A* search algorithm to solve complex tile puzzles optimally.</li>
+                    <li>Created a visual dashboard to demonstrate pathfinding and heuristic efficiency.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="experience">
+            <h2>Work & Leadership</h2>
+            <div class="experience-item">
+                <div class="item-header">
+                    <span>Technical Lead & Developer</span>
+                    <span>Present</span>
+                </div>
+                <p class="item-sub">Personal Projects & Freelance Initiatives</p>
+                <ul>
+                    <li>Leading development of cross-platform applications focused on AI integration.</li>
+                    <li>Designing premium UI/UX experiences for specialized engineering workflows.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="item-header">
+                    <span>Shree Venkateshwara Hi-Tech Engineering College</span>
+                    <span>2024 - 2028</span>
+                </div>
+                <p class="item-sub">B.Tech - Artificial Intelligence & Data Science (Second Year)</p>
+            </div>
+        </section>
+
+        <section class="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Internship Completion Certificate - Professional Training</li>
+                <li>UI/UX Design Workshop - EPIX Workshop Certification</li>
+                <li>Oracle Cloud Infrastructure (OCI) Foundations Foundations Associate</li>
+                <li>Soft Skills & Personality Development Certificate</li>
+            </ul>
+        </section>
+
+        <section class="declaration">
+            <h2>Declaration</h2>
+            <p>I hereby declare that all the information provided above is true to the best of my knowledge and belief.</p>
+            <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+                <span>Place: Erode, Tamil Nadu</span>
+                <span>Signature: (JERIN J)</span>
+            </div>
+        </section>
+
+        <div class="footer-action no-print">
+            <button class="btn" onclick="window.print()">Download as PDF</button>
+            <a href="index.html" class="btn" style="background: var(--text-muted); margin-left: 10px;">Back to Portfolio</a>
+        </div>
+    </div>
+</body>
+</html>
