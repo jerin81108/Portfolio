@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 600);
         }, 4000); // Toggle every 4 seconds
     }
+<<<<<<< HEAD
 
     // Theme Changer / Asteroid Impact Logic
     const themeBtn = document.getElementById('theme-changer');
@@ -187,4 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         });
     }
+=======
+>>>>>>> cb1e9b7db0bef865be05daf9a0511baa402a36a1
 });
