@@ -5,6 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const blobBg = document.querySelector('.blob-bg');
     const links = document.querySelectorAll('a, button, .project-card, .cert-card, .logo');
 
+    let cursorTimeout;
+
+    const resetCursorTimer = () => {
+        cursor.style.opacity = '1';
+        follower.style.opacity = '1';
+        clearTimeout(cursorTimeout);
+        cursorTimeout = setTimeout(() => {
+            cursor.style.opacity = '0';
+            follower.style.opacity = '0';
+        }, 2000);
+    };
+
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
@@ -20,7 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
             follower.style.left = e.clientX + 'px';
             follower.style.top = e.clientY + 'px';
         }, 50);
+
+        resetCursorTimer();
     });
+
+    document.addEventListener('touchstart', resetCursorTimer, {passive: true});
+    document.addEventListener('touchmove', resetCursorTimer, {passive: true});
 
     links.forEach(link => {
         link.addEventListener('mouseenter', () => {
@@ -102,8 +119,34 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const message = document.getElementById('message-input').value;
             if (message.trim()) {
-                alert('Thank you for your message! Jerin will get back to you soon.');
-                contactForm.reset();
+                const btn = contactForm.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+
+                fetch("https://formsubmit.co/ajax/jerin81108loco@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Thank you for your message! Jerin will get back to you soon.');
+                    contactForm.reset();
+                })
+                .catch(error => {
+                    alert('There was an error sending your message. Please try again.');
+                    console.error(error);
+                })
+                .finally(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
             }
         });
     }
