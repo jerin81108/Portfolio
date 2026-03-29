@@ -117,8 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const name = document.getElementById('sender-name').value;
+            const id = document.getElementById('sender-id').value;
             const message = document.getElementById('message-input').value;
-            if (message.trim()) {
+
+            if (message.trim() && name.trim() && id.trim()) {
                 const btn = contactForm.querySelector('button[type="submit"]');
                 const originalText = btn.textContent;
                 btn.textContent = 'Sending...';
@@ -131,6 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
+                        name: name,
+                        email_or_id: id,
                         message: message
                     })
                 })

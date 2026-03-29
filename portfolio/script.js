@@ -50,10 +50,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const name = document.getElementById('sender-name').value;
+            const id = document.getElementById('sender-id').value;
             const message = document.getElementById('message-input').value;
-            if (message.trim()) {
-                alert('Thank you for your message! Jerin will get back to you soon.');
-                contactForm.reset();
+
+            if (message.trim() && name.trim() && id.trim()) {
+                const btn = contactForm.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+
+                fetch("https://formsubmit.co/ajax/jerin81108loco@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email_or_id: id,
+                        message: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Thank you for your message! Jerin will get back to you soon.');
+                    contactForm.reset();
+                })
+                .catch(error => {
+                    alert('There was an error sending your message. Please try again.');
+                    console.error(error);
+                })
+                .finally(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
             }
         });
     }
