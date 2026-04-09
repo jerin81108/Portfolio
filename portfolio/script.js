@@ -4,18 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('a, button, .project-card, .cert-card, .logo');
 
     const observerOptions = {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
+            const segment = entry.target.querySelector('.section-segment');
+            
             if (entry.isIntersecting) {
-                // Add the appear class
                 entry.target.classList.add('appear');
-
-                // Stop observing once animated to avoid re-triggering
-                observer.unobserve(entry.target);
+                if (segment) segment.classList.add('active-segment');
+            } else {
+                if (segment) segment.classList.remove('active-segment');
             }
         });
     }, observerOptions);
@@ -97,6 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let currentIndex = 0;
             
             setInterval(() => {
+                if (window.scrollY > 300) return; // Prevent text swapping from bouncing page when scrolled down
+                
                 dynamicName.classList.add('fade-out');
                 setTimeout(() => {
                     currentIndex = (currentIndex + 1) % aotTitles.length;
@@ -226,56 +229,47 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(spawnSoldier, 2500);
     }
 
-    // 3. Asteroid / Debris Particle System (Regular small ones)
-    const asteroidsContainer = document.getElementById('asteroids-container');
-    if (asteroidsContainer) {
-        function createAsteroid() {
-            if (document.hidden) return;
-            
-            const asteroid = document.createElement('div');
-            asteroid.className = 'asteroid';
-            
-            const size = Math.random() * 5 + 2;
-            const startX = Math.random() * 100;
-            const duration = Math.random() * 4 + 2;
-            const opacity = Math.random() * 0.6 + 0.3;
-            
-            asteroid.style.width = `${size}px`;
-            asteroid.style.height = `${size}px`;
-            asteroid.style.left = `${startX}vw`;
-            asteroid.style.top = `-20px`;
-            asteroid.style.opacity = opacity;
-            asteroid.style.background = `linear-gradient(135deg, #ff4d00, #ff0000)`;
-            asteroid.style.position = 'absolute';
-            asteroid.style.borderRadius = '50%';
-            asteroid.style.boxShadow = `0 0 ${size * 3}px #ff4d00`;
-            asteroid.style.filter = `blur(1px)`;
-            
-            asteroidsContainer.appendChild(asteroid);
-            
-            const animation = asteroid.animate([
-                { transform: `translate(0, 0) scale(1)`, opacity: opacity },
-                { transform: `translate(${Math.random() * 400 - 200}px, 120vh) scale(0)`, opacity: 0 }
-            ], {
-                duration: duration * 1000,
-                easing: 'linear'
-            });
-            
-            animation.onfinish = () => asteroid.remove();
+
+
+    // 5. Advanced 3D Mouse Parallax & Floating Hero (Optimized with rAF)
+    const mousePos = { x: 0, y: 0 };
+    const targetMousePos = { x: 0, y: 0 };
+
+    document.addEventListener('mousemove', (e) => {
+        targetMousePos.x = (window.innerWidth / 2 - e.clientX) / 25;
+        targetMousePos.y = (window.innerHeight / 2 - e.clientY) / 25;
+    });
+
+    function animateParallax() {
+        // Smooth interpolation for parallax movement
+        mousePos.x = lerp(mousePos.x, targetMousePos.x, 0.1);
+        mousePos.y = lerp(mousePos.y, targetMousePos.y, 0.1);
+
+        const x = mousePos.x;
+        const y = mousePos.y;
+        
+        // Background Layers
+        if (titansBg) titansBg.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+        if (asteroidsContainer) asteroidsContainer.style.transform = `translate(${x}px, ${y}px)`;
+        
+        // Foreground Layers (Reverse & Faster)
+        if (embersContainer) embersContainer.style.transform = `translate(${-x * 3}px, ${-y * 3}px)`;
+        
+        // Hero Content Parallax (3D Float)
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.transform = `rotateY(${-x * 0.5}deg) rotateX(${y * 0.5}deg)`;
         }
 
-        setInterval(createAsteroid, 250);
+        requestAnimationFrame(animateParallax);
+    }
+    
+    // Add missing lerp for Alter Ego script
+    function lerp(start, end, amt) {
+        return (1 - amt) * start + amt * end;
     }
 
-    // Mouse Parallax for Alter Ego
-    document.addEventListener('mousemove', (e) => {
-        const moveX = (e.clientX - window.innerWidth / 2) / 30;
-        const moveY = (e.clientY - window.innerHeight / 2) / 30;
-        
-        if (titansBg) titansBg.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        const asteroidsContainer = document.getElementById('asteroids-container');
-        if (asteroidsContainer) asteroidsContainer.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
-    });
+    requestAnimationFrame(animateParallax);
 
     const revertBtn = document.getElementById('revert-theme');
     if (revertBtn) {
@@ -286,10 +280,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (flashOverlay) {
                 flashOverlay.classList.add('animate-flash');
                 setTimeout(() => {
-                    window.location.href = '../index.html';
+                    const pathParts = window.location.pathname.split('/');
+                    const currentPage = pathParts.pop() || 'index.html';
+                    window.location.href = '../' + currentPage;
                 }, 800);
             } else {
-                window.location.href = '../index.html';
+                const pathParts = window.location.pathname.split('/');
+                const currentPage = pathParts.pop() || 'index.html';
+                window.location.href = '../' + currentPage;
             }
         });
     }

@@ -1,176 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <meta name="description" content="Welcome to my creative coding portfolio.">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-follower"></div>
     <div class="scroll-progress"></div>
-    <div class="blob-bg"></div>
     <nav>
-        <div class="logo">Portfolio.</div>
+        <div class="logo">JERIN<span>.J</span></div>
         <ul class="nav-links">
-            <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#library">Library</a></li>
             <li><a href="certificates.html">Certificates</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
     <main>
         <section id="home" class="hero fade-in">
-            <div class="hero-content">
-                <div class="profile-container fade-in">
+            <div class="section-segment active-segment" data-theme="about">
+                <div class="profile-container fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                    data-tilt-glare data-tilt-max-glare="0.5">
                     <img src="images/pic.jpeg" alt="JERIN J" class="profile-pic">
                 </div>
                 <h1>Hi, I'm <span id="dynamic-name" class="gradient-text">JERIN J</span></h1>
-                <p class="subtitle">B.Tech AI & Data Science (2nd Year)</p>
-                <p class="subtitle" style="font-weight: 600; color: var(--accent-1);">Shree Venkateshwara Hi-Tech Engineering College</p>
-                <p class="subtitle">Architecting the future through Artificial Intelligence & Creative Development</p>
+                <p class="subtitle">AI Architect & Data Strategy Expert</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="cta-button">View My Work</a>
+                    <a href="#projects" class="cta-button">Explore Innovation</a>
                     <a href="resume.html" class="cta-button-outline" target="_blank">Download Resume</a>
-                    <a href="#about" class="cta-button-outline">About Me</a>
+                    <a href="#about" class="cta-button-outline">My Philosophy</a>
                 </div>
+            </div>
+            <div class="scroll-indicator fade-in"
+                onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
             </div>
         </section>
 
-        <section id="about" class="about">
-            <h2 class="fade-in">About <span>Me</span></h2>
-            <div class="about-container">
-                <div class="about-text fade-in">
-                    <p>I am a passionate <strong>AI & Data Science student</strong> dedicated to building intelligent, user-centric digital experiences. With a strong foundation in modern web technologies and machine learning, I bridge the gap between complex algorithms and elegant interfaces.</p>
-                    <p>Currently pursuing my B.Tech at <strong>SVHEC</strong>, I actively participate in hackathons and open-source projects to push the boundaries of what's possible with code.</p>
-                    
-                    <div class="skills-grid">
-                        <div class="skill-item"><span>🚀</span> Core AI & Machine Learning</div>
-                        <div class="skill-item"><span>⚛️</span> Full-Stack Web Development</div>
-                        <div class="skill-item"><span>🎨</span> Premium UI/UX Design</div>
-                        <div class="skill-item"><span>📊</span> Data Analysis & Visualization</div>
-                    </div>
 
-                    <div class="tech-stack fade-in">
-                        <h3>Technical Arsenal</h3>
-                        <div class="tech-tags">
-                            <span class="tech-category">Languages</span>
-                            <div class="tags-group">
-                                <span>Python</span><span>JavaScript</span><span>SQL</span><span>C++</span><span>Java</span>
+        <section id="about" class="about fade-in">
+            <div class="section-segment" data-theme="about">
+                <h2 class="fade-in">About <span>Me</span></h2>
+                <div class="about-container">
+                    <div class="about-text fade-in">
+                        <p>I am a passionate <strong>AI & Data Science Architect</strong> on a mission to bridge the gap
+                            between human intuition and machine intelligence. My work is driven by the belief that
+                            technology should not only be powerful but also deeply human-centric and sustainable.</p>
+                        <p>Currently pursuing my B.Tech at <strong>Shree Venkateshwara Hi-Tech Engineering
+                                College</strong>, I immerse myself in the complexities of neural networks, data
+                            strategy, and premium digital experiences.</p>
+
+                        <div class="education-timeline fade-in">
+                            <div class="timeline-item">
+                                <span class="timeline-date">2023 - Present</span>
+                                <div class="timeline-content">
+                                    <h4>B.Tech AI & Data Science</h4>
+                                    <span class="institution">SVHEC, Erode</span>
+                                    <p>Specializing in Machine Learning and Full-Stack Engineering with a current CGPA
+                                        of 8.63.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Engineering Philosophy</span>
+                                <div class="timeline-content">
+                                    <h4>Innovation with Purpose</h4>
+                                    <p>I don't just write code; I design systems that solve real-world problems with
+                                        elegance and efficiency.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-category">Libraries</span>
-                            <div class="tags-group">
-                                <span>TensorFlow</span><span>Scikit-Learn</span><span>Pandas</span><span>NumPy</span><span>React</span><span>Node.js</span>
+
+                        <div class="skills-grid">
+                            <div class="skill-item"><span>🚀</span> AI System Architecture</div>
+                            <div class="skill-item"><span>⚛️</span> High-Performance Web Apps</div>
+                            <div class="skill-item"><span>🎨</span> Strategic UI/UX Design</div>
+                            <div class="skill-item"><span>📊</span> Predictive Data Analytics</div>
+                        </div>
+
+                        <div class="tech-stack fade-in">
+                            <h3>Technical Arsenal</h3>
+                            <div class="tech-tags">
+                                <span class="tech-category">Languages</span>
+                                <div class="tags-group">
+                                    <span title="Python"><img src="https://cdn.simpleicons.org/python" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">Python</span>
+                                    <span title="JavaScript"><img src="https://cdn.simpleicons.org/javascript"
+                                            width="16" height="16"
+                                            style="margin-right: 8px; vertical-align: middle;">JavaScript</span>
+                                    <span title="SQL"><img src="https://cdn.simpleicons.org/sqlite" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">SQL</span>
+                                    <span title="C++"><img src="https://cdn.simpleicons.org/cplusplus" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">C++</span>
+                                    <span title="Java"><img src="https://cdn.simpleicons.org/java" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">Java</span>
+                                </div>
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-category">Libraries</span>
+                                <div class="tags-group">
+                                    <span title="TensorFlow"><img src="https://cdn.simpleicons.org/tensorflow"
+                                            width="16" height="16"
+                                            style="margin-right: 8px; vertical-align: middle;">TensorFlow</span>
+                                    <span title="Scikit-Learn"><img src="https://cdn.simpleicons.org/scikitlearn"
+                                            width="16" height="16"
+                                            style="margin-right: 8px; vertical-align: middle;">Scikit-Learn</span>
+                                    <span title="Pandas"><img src="https://cdn.simpleicons.org/pandas" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">Pandas</span>
+                                    <span title="NumPy"><img src="https://cdn.simpleicons.org/numpy" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">NumPy</span>
+                                    <span title="React"><img src="https://cdn.simpleicons.org/react" width="16"
+                                            height="16" style="margin-right: 8px; vertical-align: middle;">React</span>
+                                    <span title="Node.js"><img src="https://cdn.simpleicons.org/nodedotjs" width="16"
+                                            height="16"
+                                            style="margin-right: 8px; vertical-align: middle;">Node.js</span>
+                                </div>
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-category">Languages Spoken</span>
+                                <div class="tags-group">
+                                    <span title="English"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            style="margin-right: 5px; vertical-align: middle;">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path
+                                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                            </path>
+                                        </svg>English</span>
+                                    <span title="Tamil"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            style="margin-right: 5px; vertical-align: middle;">
+                                            <path d="m5 8 6 6"></path>
+                                            <path d="m4 14 6-6 2-3"></path>
+                                            <path d="M2 5h12"></path>
+                                        </svg>Tamil</span>
+                                    <span title="Malayalam"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            style="margin-right: 5px; vertical-align: middle;">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>Malayalam</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="metrics-grid fade-in">
-                    <div class="metric-card">
-                        <h3>2+</h3>
-                        <p>Years Learning</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>10+</h3>
-                        <p>Projects Done</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>3+</h3>
-                        <p>Certifications</p>
+                    <div class="metrics-grid fade-in">
+                        <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
+                            data-tilt-scale="1.05">
+                            <h3>8.63</h3>
+                            <p>Current CGPA</p>
+                        </div>
+                        <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
+                            data-tilt-scale="1.05">
+                            <h3>10+</h3>
+                            <p>Projects Done</p>
+                        </div>
+                        <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
+                            data-tilt-scale="1.05">
+                            <h3>20+</h3>
+                            <p>Certifications</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="projects" class="projects">
-            <h2 class="fade-in">Featured <span>Projects</span></h2>
-            <div class="project-grid">
-                <div class="project-card fade-in">
-                    <div class="project-img bg-5"></div>
-                    <div class="project-info">
-                        <h3>Civix</h3>
-                        <p>A specialized survey application for civil engineering projects, streamlining data collection and analysis.</p>
-                        <a href="https://github.com/jerin81108/civix" target="_blank" class="repo-link">View Repository</a>
-                    </div>
+        <section id="excellence" class="excellence fade-in">
+            <h2 class="fade-in">Engineering <span>Excellence</span></h2>
+            <div class="services-grid">
+                <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <span class="service-icon">🧠</span>
+                    <h3>AI System Architecture</h3>
+                    <p>Designing sophisticated neural architectures and predictive models that transform raw data
+                        into actionable intelligence.</p>
                 </div>
-                <div class="project-card fade-in">
-                    <div class="project-img bg-4"></div>
-                    <div class="project-info">
-                        <h3>GreenPulse </h3>
-                        <p>A sustainable technology project developed for Hackathon 2026, focusing on eco-friendly digital solutions.</p>
-                        <a href="https://github.com/jerin81108/hackathon_2026" target="_blank" class="repo-link">View Repository</a>
-                    </div>
+                <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <span class="service-icon">🌐</span>
+                    <h3>Full-Stack Mastery</h3>
+                    <p>Building scalable, high-performance web ecosystems using modern frameworks like React and
+                        Node.js for seamless user journeys.</p>
                 </div>
-                <div class="project-card fade-in">
-                    <div class="project-img bg-1"></div>
-                    <div class="project-info">
-                        <h3>AI Chatbot</h3>
-                        <p>An intelligent chatbot application built with modern web technologies, providing interactive conversational experiences.</p>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-img bg-2"></div>
-                    <div class="project-info">
-                        <h3>8-Puzzle Solver</h3>
-                        <p>A smart visualizer for the classic 8-puzzle game using the A* search algorithm to find the optimal solution path.</p>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-img bg-3"></div>
-                    <div class="project-info">
-                        <h3>Next-Gen UI</h3>
-                        <p>A sleek, dynamic user interface crafted with a focus on modern aesthetics, glassmorphism, and seamless interactions.</p>
-                    </div>
+                <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <span class="service-icon">📊</span>
+                    <h3>Data Strategy & Ops</h3>
+                    <p>Orchestrating end-to-end data pipelines and visualization strategies to drive data-informed
+                        decision-making processes.</p>
                 </div>
             </div>
         </section>
 
+        <section id="projects" class="projects fade-in">
+            <div class="section-segment" data-theme="projects">
+                <h2 class="fade-in">Selected <span>Innovations</span></h2>
+                <div class="project-grid">
+                    <div class="project-card fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.2">
+                        <div class="project-img bg-5"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span><img src="https://cdn.simpleicons.org/flutter" width="10" height="10"
+                                        style="margin-right: 4px;">Flutter</span>
+                                <span><img src="https://cdn.simpleicons.org/firebase" width="10" height="10"
+                                        style="margin-right: 4px;">Firebase</span>
+                            </div>
+                            <h3>Civix</h3>
+                            <p>Architected a high-precision survey ecosystem for civil engineering, automating complex
+                                data collection and providing real-time spatial analysis.</p>
+                            <a href="https://github.com/jerin81108/civix" target="_blank" class="repo-link">View
+                                Engineering Specs</a>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.2">
+                        <div class="project-img bg-4"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span><img src="https://cdn.simpleicons.org/react" width="10" height="10"
+                                        style="margin-right: 4px;">React</span>
+                                <span><img src="https://cdn.simpleicons.org/tailwindcss" width="10" height="10"
+                                        style="margin-right: 4px;">Tailwind</span>
+                            </div>
+                            <h3>GreenPulse</h3>
+                            <p>Developed an award-winning sustainability platform for Hackathon 2026, delivering
+                                actionable eco-insights through advanced carbon footprint mapping.</p>
+                            <a href="https://github.com/jerin81108/hackathon_2026" target="_blank"
+                                class="repo-link">View Research</a>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.2">
+                        <div class="project-img bg-1"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span><img src="https://cdn.simpleicons.org/python" width="10" height="10"
+                                        style="margin-right: 4px;">Python</span>
+                                <span><img src="https://cdn.simpleicons.org/openai" width="10" height="10"
+                                        style="margin-right: 4px;">OpenAI</span>
+                            </div>
+                            <h3>Neural Chatbot</h3>
+                            <p>Engineered a contextual AI conversational agent utilizing large language models to
+                                provide human-like interaction and problem-solving capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.2">
+                        <div class="project-img bg-2"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span><img src="https://cdn.simpleicons.org/cplusplus" width="10" height="10"
+                                        style="margin-right: 4px;">C++</span>
+                                <span><img src="https://cdn.simpleicons.org/algorithm" width="10" height="10"
+                                        style="margin-right: 4px;">A* Search</span>
+                            </div>
+                            <h3>8-Puzzle Strategic Solver</h3>
+                            <p>Implemented a highly optimized A* pathfinding algorithm to solve state-space search
+                                problems, featuring a dynamic visual interface.</p>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.2">
+                        <div class="project-img bg-3"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span><img src="https://cdn.simpleicons.org/figma" width="10" height="10"
+                                        style="margin-right: 4px;">Figma</span>
+                                <span><img src="https://cdn.simpleicons.org/framer" width="10" height="10"
+                                        style="margin-right: 4px;">Framer</span>
+                            </div>
+                            <h3>Prism UI Framework</h3>
+                            <p>Designed a sophisticated design system focusing on glassmorphism and neuro-ergonomic
+                                interfaces for next-generation web apps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+        <section id="library" class="coding-library fade-in">
+            <div class="section-segment" data-theme="library">
+                <h2>Coding <span>Libraries</span></h2>
+                <p class="subtitle" style="text-align: center;">Advanced tools and frameworks I use to engineer
+                    intelligence.</p>
+                <div class="library-grid">
+                    <div class="lib-item" data-tilt data-tilt-scale="1.1" title="TensorFlow">
+                        <img src="https://cdn.simpleicons.org/tensorflow" alt="TensorFlow Logo">
+                        <span>TensorFlow</span>
+                    </div>
+                    <div class="lib-item" data-tilt data-tilt-scale="1.1" title="React">
+                        <img src="https://cdn.simpleicons.org/react" alt="React Logo">
+                        <span>React</span>
+                    </div>
+                    <div class="lib-item" data-tilt data-tilt-scale="1.1" title="Node.js">
+                        <img src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js Logo">
+                        <span>Node.js</span>
+                    </div>
+                    <div class="lib-item" data-tilt data-tilt-scale="1.1" title="Scikit-Learn">
+                        <img src="https://cdn.simpleicons.org/scikitlearn" alt="Scikit-Learn Logo">
+                        <span>Scikit-Learn</span>
+                    </div>
+                    <div class="lib-item" data-tilt data-tilt-scale="1.1" title="NumPy">
+                        <img src="https://cdn.simpleicons.org/numpy" alt="NumPy Logo">
+                        <span>NumPy</span>
+                    </div>
+                    <div class="lib-item" data-tilt data-tilt-scale="1.1" title="Pandas">
+                        <img src="https://cdn.simpleicons.org/pandas" alt="Pandas Logo">
+                        <span>Pandas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
         <section id="contact" class="contact fade-in">
-            <h2>Let's <span>Connect</span></h2>
-            <p>Ready to bring your ideas to life or collaborate on a project? Reach out to me!</p>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="label">Email:</span>
-                        <a href="mailto:jerin81108loco@gmail.com">jerin81108loco@gmail.com</a>
+            <div class="section-segment" data-theme="services">
+                <h2>Professional <span>Inquiry</span></h2>
+                <p>I am currently open to high-impact opportunities in AI Research, Data Strategy, and Full-Stack
+                    Engineering. Let's discuss how we can build the future together.</p>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                            <span class="label">Direct Email</span>
+                            <a href="mailto:jerin81108loco@gmail.com">jerin81108loco@gmail.com</a>
+                        </div>
+                        <div class="contact-item" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                            <span class="label">Secure Phone</span>
+                            <a href="tel:8870654384">+91 8870654384</a>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <span class="label">Phone:</span>
-                        <a href="tel:8870654384">8870654384</a>
-                    </div>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="sender-name" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="sender-id" placeholder="Email Address / Corporate ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="message-input" placeholder="How can I assist you?" required>
+                        </div>
+                        <button type="submit" class="cta-button">Initialize Conversation</button>
+                    </form>
+
                     <div class="social-links">
-                        <a href="https://github.com/jerin81108" target="_blank" class="social-icon">GitHub</a>
-                        <a href="https://www.linkedin.com/in/jerin-j-91328a366?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">LinkedIn</a>
+                        <a href="https://github.com/jerin81108" target="_blank" class="social-icon" title="GitHub Source">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jerin-j-91328a366" target="_blank" class="social-icon"
+                            title="LinkedIn Professional">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="sender-name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="sender-id" placeholder="Your Email / ID" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="message-input" placeholder="Type your message here..." required>
-                    </div>
-                    <button type="submit" class="cta-button">Send Message</button>
-                </form>
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 JERIN J Portfolio. Built with passion.</p>
+        <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
+
     <button id="theme-changer" class="theme-changer-btn" title="Change Theme">🚀</button>
     <div class="impact-flash" id="flash-overlay"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

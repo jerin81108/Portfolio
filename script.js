@@ -1,53 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Custom Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const follower = document.querySelector('.custom-cursor-follower');
-    const blobBg = document.querySelector('.blob-bg');
     const links = document.querySelectorAll('a, button, .project-card, .cert-card, .logo');
 
-    let cursorTimeout;
+    // Window Metrics Cache (Prevents Layout Thrashing)
+    let winWidth = window.innerWidth;
+    let winHeight = window.innerHeight;
+    let currentScrollY = window.scrollY;
 
-    const resetCursorTimer = () => {
-        cursor.style.opacity = '1';
-        follower.style.opacity = '1';
-        clearTimeout(cursorTimeout);
-        cursorTimeout = setTimeout(() => {
-            cursor.style.opacity = '0';
-            follower.style.opacity = '0';
-        }, 2000);
-    };
+    window.addEventListener('resize', () => {
+        winWidth = window.innerWidth;
+        winHeight = window.innerHeight;
+    }, { passive: true });
 
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        // Parallax effect for background
-        const moveX = (e.clientX - window.innerWidth / 2) / 50;
-        const moveY = (e.clientY - window.innerHeight / 2) / 50;
-        if (blobBg) {
-            blobBg.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${window.scrollY / 10}deg)`;
-        }
-        
-        setTimeout(() => {
-            follower.style.left = e.clientX + 'px';
-            follower.style.top = e.clientY + 'px';
-        }, 50);
-
-        resetCursorTimer();
-    });
-
-    document.addEventListener('touchstart', resetCursorTimer, {passive: true});
-    document.addEventListener('touchmove', resetCursorTimer, {passive: true});
+    window.addEventListener('scroll', () => {
+        currentScrollY = window.scrollY;
+    }, { passive: true });
 
     links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursor.classList.add('cursor-hover');
-            follower.classList.add('follower-hover');
-        });
-        link.addEventListener('mouseleave', () => {
-            cursor.classList.remove('cursor-hover');
-            follower.classList.remove('follower-hover');
-        });
+        // Torch Effect for cards (Throttled/Optimized)
+        if (link.classList.contains('project-card') || link.classList.contains('lib-item') || link.classList.contains('cert-card')) {
+            link.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                link.style.setProperty('--mouse-x', `${x}px`);
+                link.style.setProperty('--mouse-y', `${y}px`);
+            });
+        }
     });
 
     // Scroll Progress
@@ -71,18 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
 
     const observerOptions = {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
+            const segment = entry.target.querySelector('.section-segment');
+            
             if (entry.isIntersecting) {
-                // Add the appear class
                 entry.target.classList.add('appear');
-
-                // Stop observing once animated to avoid re-triggering
-                observer.unobserve(entry.target);
+                if (segment) segment.classList.add('active-segment');
+            } else {
+                if (segment) segment.classList.remove('active-segment');
             }
         });
     }, observerOptions);
@@ -156,19 +135,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
   
-    // Continuous Dynamic Name/Degree transition
+
+    // Typing Effect for Professional Roles
     const dynamicName = document.getElementById('dynamic-name');
     if (dynamicName) {
-        let isName = true;
-        setInterval(() => {
-            dynamicName.classList.add('fade-out');
-            setTimeout(() => {
-                isName = !isName;
-                dynamicName.textContent = isName ? 'JERIN J' : 'B.Tech AI&DS Student';
-                dynamicName.classList.remove('fade-out');
-            }, 600);
-        }, 4000); // Toggle every 4 seconds
+        const roles = ['JERIN J', 'AI & Data Science Specialist', 'Full-Stack Developer', 'Creative Thinker'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            // Prevent the typing effect from changing screen height and bouncing the page
+            // while the user is actively trying to read the About Me or other lower sections!
+            if (window.scrollY > 300) {
+                setTimeout(type, 1000); // Check again in 1 second
+                return;
+            }
+
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                dynamicName.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                dynamicName.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        type();
     }
+
+    // Typing Effect for CGPA (Identical effect)
+    const dynamicCgpa = document.getElementById('dynamic-cgpa');
+    if (dynamicCgpa) {
+        const cgpaPhrases = ['8.63 CGPA', 'High Distinction', 'Top Academic Standing'];
+        let cgpaRoleIndex = 0;
+        let cgpaCharIndex = 0;
+        let cgpaIsDeleting = false;
+        let cgpaTypeSpeed = 120;
+
+        function typeCgpa() {
+            const currentPhrase = cgpaPhrases[cgpaRoleIndex];
+            if (cgpaIsDeleting) {
+                dynamicCgpa.textContent = currentPhrase.substring(0, cgpaCharIndex - 1);
+                cgpaCharIndex--;
+                cgpaTypeSpeed = 50;
+            } else {
+                dynamicCgpa.textContent = currentPhrase.substring(0, cgpaCharIndex + 1);
+                cgpaCharIndex++;
+                cgpaTypeSpeed = 120;
+            }
+
+            if (!cgpaIsDeleting && cgpaCharIndex === currentPhrase.length) {
+                cgpaIsDeleting = true;
+                cgpaTypeSpeed = 2500; // Admire the number
+            } else if (cgpaIsDeleting && cgpaCharIndex === 0) {
+                cgpaIsDeleting = false;
+                cgpaRoleIndex = (cgpaRoleIndex + 1) % cgpaPhrases.length;
+                cgpaTypeSpeed = 500;
+            }
+
+            setTimeout(typeCgpa, cgpaTypeSpeed);
+        }
+        
+        typeCgpa();
+    }
+
     // Theme Changer / Asteroid Impact Logic
     const themeBtn = document.getElementById('theme-changer');
     const flashOverlay = document.getElementById('flash-overlay');
@@ -228,8 +274,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 flashOverlay.classList.add('animate-flash');
                 
                 setTimeout(() => {
-                    // Redirect to the AOT portfolio
-                    window.location.href = 'portfolio/index.html';
+                    // Smart Redirect: Get the current page name (e.g., certificates.html)
+                    const pathParts = window.location.pathname.split('/');
+                    const currentPage = pathParts.pop() || 'index.html';
+                    window.location.href = 'portfolio/' + currentPage;
                 }, 800);
             };
         });

@@ -18,6 +18,8 @@
 html {
     scroll-behavior: smooth;
     cursor: crosshair; /* Military crosshair feel */
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -25,7 +27,10 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
     line-height: 1.6;
+    perspective: 2000px; /* Base perspective for 3D effects */
 }
 
 body::after {
@@ -238,6 +243,22 @@ body::before {
     filter: drop-shadow(0 0 5px #ff4d00);
 }
 
+/* Foreground Embers Container */
+#embers-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100; /* In front of content */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ember {
+    pointer-events: none;
+}
+
 /* Watermark - Wings of Freedom */
 .watermark-container {
     position: fixed;
@@ -336,6 +357,36 @@ nav {
     transition: width 0.3s ease;
 }
 
+.static-dashboard-btn {
+    text-decoration: none;
+    color: var(--accent-1);
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--accent-1);
+    border-radius: 4px;
+    margin-left: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #000;
+}
+
+.static-dashboard-btn::before {
+    content: '🏰';
+    font-size: 1rem;
+}
+
+.static-dashboard-btn:hover {
+    background: var(--accent-1);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-1);
+    transform: translateY(-1px);
+}
+
 .nav-links a:hover {
     color: var(--accent-1);
 }
@@ -347,13 +398,51 @@ nav {
 /* Sections Structure */
 section {
     min-height: 100vh;
-    padding: 8rem 8% 4rem;
+    padding: 6rem 8% 4rem; /* Reduced top padding slightly */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    position: relative;
+    overflow: hidden; /* Prevent 3D transform leakage */
 }
 
-/* Typography elements */
+/* 3D Section Entering Animation (Themed Glow) */
+.section-segment {
+    background: rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 40px;
+    padding: 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.5;
+    transform: translateY(100px) rotateX(15deg) scale(0.9);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.section-segment.active-segment {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1) translateZ(0px);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6), 
+                0 0 100px rgba(255, 77, 0, 0.7); /* Vibrant Orange Glow for AOT */
+    background: rgba(15, 23, 42, 0.5);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 3D Entry Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(100px) rotateX(-20deg) translateZ(-200px);
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) translateZ(0deg);
+}
 h1 {
     font-family: 'Cinzel', serif;
     font-size: clamp(3rem, 8vw, 5rem);
@@ -532,12 +621,32 @@ h2 span,
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 77, 0, 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
+    transform-style: preserve-3d; /* For internal 3D elements */
 }
 
-.project-card::before {
+/* Internal 3D Depth on Hover */
+.project-card .project-info {
+    transform: translateZ(20px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-card:hover .project-info {
+    transform: translateZ(50px);
+}
+
+.project-card .project-img {
+    transform: translateZ(0);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-card:hover .project-img {
+    transform: translateZ(20px) scale(1.05);
+}
+
+.project-card::after {
     content: 'STATUS: ACTIVE';
     position: absolute;
     top: 15px;
@@ -554,10 +663,38 @@ h2 span,
     pointer-events: none;
 }
 
-.project-card:hover {
-    transform: translateY(-10px) rotate(-1deg);
+/* Engineering Excellence Unified Effect */
+.project-card::before,
+.cert-card::before,
+.contact-item::before,
+.tech-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-card:hover::before,
+.cert-card:hover::before,
+.contact-item:hover::before,
+.tech-box:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover,
+.cert-card:hover,
+.contact-item:hover,
+.tech-box:hover {
+    transform: translateY(-15px) rotate(-1deg);
     border-color: var(--accent-1);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 77, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2), 0 0 30px var(--glow-color);
 }
 
 /* Project Images */
@@ -790,11 +927,12 @@ footer {
 }
 
 .certificate-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     width: 100%;
-    margin-bottom: 4rem;
+    max-width: 700px; /* Reduced from 850px */
+    margin: 0 auto 4rem auto;
 }
 
 .cert-card {
@@ -817,7 +955,7 @@ footer {
 }
 
 .cert-img-container {
-    height: 200px;
+    height: 180px; /* Reduced from 200px */
     width: 100%;
     background: rgba(255, 255, 255, 0.03);
     display: flex;
@@ -839,7 +977,7 @@ footer {
 }
 
 .cert-info {
-    padding: 1.5rem;
+    padding: 1.2rem; /* Reduced from 1.5rem */
 }
 
 .cert-info h3 {
@@ -898,7 +1036,7 @@ footer {
 
 .cert-embed-container {
     width: 100%;
-    height: 400px;
+    height: 320px; /* Reduced from 400px */
     background: rgba(255, 255, 255, 0.05);
     overflow: hidden;
 }
@@ -1031,7 +1169,7 @@ footer {
     border-color: var(--accent-1);
 }
 
-/* Custom Theme Changer Button */
+/* Custom Persistent Buttons (Alterego) */
 .theme-changer-btn {
     position: fixed;
     bottom: 30px;

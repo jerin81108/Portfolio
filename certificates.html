@@ -9,26 +9,119 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+    <div class="scroll-progress"></div>
     <div class="blob-bg"></div>
     <nav>
-        <div class="logo">Portfolio.</div>
+        <div class="logo">Jerin<span>.ai</span></div>
+        <a href="index.html#home" class="static-dashboard-btn">Dashboard</a>
         <ul class="nav-links">
-            <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#projects">Projects</a></li>
             <li><a href="certificates.html" class="active">Certificates</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
     <main>
-        <section id="certificates" class="certificates-page fade-in">
+        <section id="certificates" class="certificates-page">
             <div class="section-header">
                 <h1>My <span>Certificates</span></h1>
                 <p class="subtitle">Professional achievements and specialized training in AI & Data Science.</p>
             </div>
             
-            <div class="certificate-grid">
+            <div class="certificate-grid" style="max-width: 700px; margin: 0 auto;">
+                <!-- C# Basic Certificate -->
+                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="cert-embed-container">
+                        <iframe src="certificates/c_sharp_basic certificate.pdf" class="cert-iframe"></iframe>
+                    </div>
+                    <div class="cert-info">
+                        <h3>C# (Basic)</h3>
+                        <p>HackerRank certification for C# programming fundamentals and logic.</p>
+                        <div class="cert-footer">
+                            <span class="cert-issuer">HackerRank</span>
+                            <a href="certificates/c_sharp_basic certificate.pdf" target="_blank" class="view-link">Full PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SQL Basic Certificate -->
+                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="cert-embed-container">
+                        <iframe src="certificates/sql_basic certificate.pdf" class="cert-iframe"></iframe>
+                    </div>
+                    <div class="cert-info">
+                        <h3>SQL (Basic)</h3>
+                        <p>HackerRank certification for SQL proficiency and database management basics.</p>
+                        <div class="cert-footer">
+                            <span class="cert-issuer">HackerRank</span>
+                            <a href="certificates/sql_basic certificate.pdf" target="_blank" class="view-link">Full PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dec 29 PDF -->
+                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="cert-embed-container">
+                        <iframe src="certificates/Jerin. J - 2025-12-29.pdf" class="cert-iframe"></iframe>
+                    </div>
+                    <div class="cert-info">
+                        <h3>Technical Certification</h3>
+                        <p>End-of-year technical certification for AI DS modules.</p>
+                        <div class="cert-footer">
+                            <span class="cert-issuer">2025</span>
+                            <a href="certificates/Jerin. J - 2025-12-29.pdf" target="_blank" class="view-link">Full PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dec 26 PDF -->
+                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="cert-embed-container">
+                        <iframe src="certificates/Jerin . - 2025-12-26.pdf" class="cert-iframe"></iframe>
+                    </div>
+                    <div class="cert-info">
+                        <h3>Technical Assessment</h3>
+                        <p>Certification of completion for technical module assessments.</p>
+                        <div class="cert-footer">
+                            <span class="cert-issuer">2025</span>
+                            <a href="certificates/Jerin . - 2025-12-26.pdf" target="_blank" class="view-link">Full PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dec 25 PDF -->
+                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="cert-embed-container">
+                        <iframe src="certificates/Jerin . - 2025-12-25 (1).pdf" class="cert-iframe"></iframe>
+                    </div>
+                    <div class="cert-info">
+                        <h3>Achievement - Dec 25</h3>
+                        <p>Special recognition for technical contribution.</p>
+                        <div class="cert-footer">
+                            <span class="cert-issuer">2025</span>
+                            <a href="certificates/Jerin . - 2025-12-25 (1).pdf" target="_blank" class="view-link">Full PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internship Image -->
+                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="cert-img-container">
+                        <img src="certificates/intern.jpeg.jpeg" alt="Internship" class="cert-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Internship Completion</h3>
+                        <p>Successful completion of professional internship training.</p>
+                        <div class="cert-footer">
+                            <span class="cert-issuer">Internship</span>
+                            <a href="certificates/intern.jpeg.jpeg" target="_blank" class="view-link">View Image</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- UI/UX Workshop -->
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
                     <div class="cert-img-container">
                         <img src="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" alt="UI/UX Workshop" class="cert-img">
                     </div>
@@ -43,7 +136,7 @@
                 </div>
 
                 <!-- Soft Skills PDF -->
-                <div class="cert-card highlight fade-in">
+                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
                     <div class="cert-embed-container">
                         <iframe src="certificates/Enhancing Soft Skills and Personality.pdf" class="cert-iframe"></iframe>
                     </div>
@@ -58,7 +151,7 @@
                 </div>
 
                 <!-- Main Certificate PDF -->
-                <div class="cert-card highlight fade-in">
+                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
                     <div class="cert-embed-container">
                         <iframe src="certificates/JERIN_J_Certificate.pdf" class="cert-iframe"></iframe>
                     </div>
@@ -71,66 +164,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Dec 25 PDF -->
-                <div class="cert-card fade-in">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Jerin . - 2025-12-25 (1).pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Achievement - Dec 25</h3>
-                        <p>Special recognition for technical contribution.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">2025</span>
-                            <a href="certificates/Jerin . - 2025-12-25 (1).pdf" target="_blank" class="view-link">Full PDF</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dec 26 PDF -->
-                <div class="cert-card fade-in">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Jerin . - 2025-12-26.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Technical Assessment</h3>
-                        <p>Certification of completion for technical module assessments.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">2025</span>
-                            <a href="certificates/Jerin . - 2025-12-26.pdf" target="_blank" class="view-link">Full PDF</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dec 29 PDF -->
-                <div class="cert-card fade-in">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Jerin. J - 2025-12-29.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Technical Certification</h3>
-                        <p>End-of-year technical certification for AI DS modules.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">2025</span>
-                            <a href="certificates/Jerin. J - 2025-12-29.pdf" target="_blank" class="view-link">Full PDF</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Internship Image -->
-                <div class="cert-card fade-in">
-                    <div class="cert-img-container">
-                        <img src="certificates/intern.jpeg.jpeg" alt="Internship" class="cert-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>Internship Completion</h3>
-                        <p>Successful completion of professional internship training.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">Internship</span>
-                            <a href="certificates/intern.jpeg.jpeg" target="_blank" class="view-link">View Image</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="back-home">
@@ -139,8 +172,12 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 JERIN J Portfolio. Built with passion.</p>
+        <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
+
+    <button id="theme-changer" class="theme-changer-btn" title="Change Theme">🚀</button>
+    <div class="impact-flash" id="flash-overlay"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
