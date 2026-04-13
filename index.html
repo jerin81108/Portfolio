@@ -4,8 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <meta name="description" content="Welcome to my creative coding portfolio.">
+    <title>JERIN J | AI Architect & Data Strategy Expert</title>
+    <meta name="description" content="Portfolio of Jerin J, an AI Architect & Data Strategy Expert specializing in neural architectures, predictive models, and premium full-stack ecosystems.">
+    <meta name="keywords" content="AI Architect, Data Science, Full-Stack Developer, Machine Learning, Jerin J, Portfolio">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jerin81108.github.io/">
+    <meta property="og:title" content="JERIN J | AI Architect & Data Strategy Expert">
+    <meta property="og:description" content="Engineering the future through human-centric AI and high-performance digital ecosystems.">
+    <meta property="og:image" content="images/pic.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="JERIN J | AI Architect & Data Strategy Expert">
+    <meta property="twitter:description" content="Engineering the future through human-centric AI and high-performance digital ecosystems.">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
@@ -13,6 +28,12 @@
 </head>
 
 <body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">JERIN<span>.J</span></div>
+            <div class="preloader-bar"></div>
+        </div>
+    </div>
     <div class="scroll-progress"></div>
     <nav>
         <div class="logo">JERIN<span>.J</span></div>
@@ -29,7 +50,7 @@
             <div class="section-segment active-segment" data-theme="about">
                 <div class="profile-container fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400"
                     data-tilt-glare data-tilt-max-glare="0.5">
-                    <img src="images/pic.jpeg" alt="JERIN J" class="profile-pic">
+                    <img src="images/pic.jpeg" alt="JERIN J - AI & Data Science Architect" class="profile-pic" loading="eager">
                 </div>
                 <h1>Hi, I'm <span id="dynamic-name" class="gradient-text">JERIN J</span></h1>
                 <p class="subtitle">AI Architect & Data Strategy Expert</p>
@@ -165,13 +186,13 @@
                                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                                             <circle cx="12" cy="10" r="3"></circle>
                                         </svg>Malayalam</span>
-                                    <span title="japanese"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                    <span title="Japanese"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
                                             style="margin-right: 5px; vertical-align: middle;">
                                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                                             <circle cx="12" cy="10" r="3"></circle>
-                                        </svg>japanese</span>
+                                        </svg>Japanese</span>
                                 </div>
                             </div>
                         </div>
@@ -422,8 +443,31 @@
         <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
 
-    <button id="theme-changer" class="theme-changer-btn" title="Change Theme">🚀</button>
+    <button id="theme-changer" class="theme-changer-btn" title="Change Theme" aria-label="Toggle Theme">🚀</button>
     <div class="impact-flash" id="flash-overlay"></div>
+
+    <button id="scroll-to-top" class="scroll-to-top" title="Back to Top" aria-label="Scroll to top">↑</button>
+
+    <div class="floating-dashboard" id="floating-dashboard">
+        <div class="dashboard-content">
+            <div class="dash-item">
+                <span class="dash-label">Current CGPA</span>
+                <span class="dash-value">8.63</span>
+            </div>
+            <div class="dash-item">
+                <span class="dash-label">Projects Done</span>
+                <span class="dash-value">10+</span>
+            </div>
+            <div class="dash-item">
+                <span class="dash-label">Certifications</span>
+                <span class="dash-value">10+</span>
+            </div>
+        </div>
+        <div class="dashboard-toggle" id="dashboard-toggle" title="Toggle Dashboard">
+            📊
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>

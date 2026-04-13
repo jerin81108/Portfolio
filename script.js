@@ -282,4 +282,71 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         });
     }
+
+    // Dashboard Interactivity
+    const dashToggle = document.getElementById('dashboard-toggle');
+    const floatingDash = document.getElementById('floating-dashboard');
+    if (dashToggle && floatingDash) {
+        dashToggle.addEventListener('click', () => {
+            floatingDash.classList.toggle('active');
+        });
+
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && floatingDash.classList.contains('active')) {
+                floatingDash.classList.remove('active');
+            }
+        });
+    }
+
+    // Scroll to Top Logic
+    const scrollTopBtn = document.getElementById('scroll-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Custom Cursor Refinement (If cursor elements exist)
+    const cursor = document.querySelector('.custom-cursor');
+    const follower = document.querySelector('.custom-cursor-follower');
+    
+    if (cursor && follower) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        });
+
+        document.querySelectorAll('a, button, .project-card, .cert-card, .lib-item').forEach(el => {
+            el.addEventListener('mouseenter', () => follower.style.transform += ' scale(2)');
+            el.addEventListener('mouseleave', () => follower.style.transform = follower.style.transform.replace(' scale(2)', ''));
+        });
+    }
+
+    // Preloader Removal
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                setTimeout(() => preloader.remove(), 1000);
+            }, 500);
+        });
+    }
+
+    // Dynamic Copyright Year
+    const footerP = document.querySelector('footer p');
+    if (footerP) {
+        const currentYear = new Date().getFullYear();
+        footerP.innerHTML = footerP.innerHTML.replace('2026', currentYear);
+    }
 });

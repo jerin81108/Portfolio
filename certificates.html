@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates | JERIN J</title>
-    <meta name="description" content="My professional certifications and achievements.">
+    <title>Certificates | JERIN J - AI & Data Science Achievements</title>
+    <meta name="description" content="Explore professional certifications and specialized training achievements of Jerin J in the fields of AI, Data Science, and Full-Stack Engineering.">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">JERIN<span>.J</span></div>
+            <div class="preloader-bar"></div>
+        </div>
+    </div>
     <div class="custom-cursor"></div>
     <div class="custom-cursor-follower"></div>
     <div class="scroll-progress"></div>
@@ -175,8 +182,31 @@
         <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
 
-    <button id="theme-changer" class="theme-changer-btn" title="Change Theme">🚀</button>
+    <button id="theme-changer" class="theme-changer-btn" title="Change Theme" aria-label="Toggle Theme">🚀</button>
     <div class="impact-flash" id="flash-overlay"></div>
+    
+    <button id="scroll-to-top" class="scroll-to-top" title="Back to Top" aria-label="Scroll to top">↑</button>
+
+    <div class="floating-dashboard" id="floating-dashboard">
+        <div class="dashboard-content">
+            <div class="dash-item">
+                <span class="dash-label">Current CGPA</span>
+                <span class="dash-value">8.63</span>
+            </div>
+            <div class="dash-item">
+                <span class="dash-label">Projects Done</span>
+                <span class="dash-value">10+</span>
+            </div>
+            <div class="dash-item">
+                <span class="dash-label">Certifications</span>
+                <span class="dash-value">10+</span>
+            </div>
+        </div>
+        <div class="dashboard-toggle" id="dashboard-toggle" title="Toggle Dashboard">
+            📊
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
