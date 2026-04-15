@@ -3,11 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates | JERIN J - AI & Data Science Achievements</title>
-    <meta name="description" content="Explore professional certifications and specialized training achievements of Jerin J in the fields of AI, Data Science, and Full-Stack Engineering.">
+    <title>Certificates | JERIN J — AI &amp; Data Science</title>
+    <meta name="description" content="All professional certifications and achievements of Jerin J — 2nd Year B.Tech (AI &amp; Data Science) student at SVHEC, ordered newest to oldest.">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Unified Certificates Page ── */
+        .cert-page-hero {
+            text-align: center;
+            padding: 10rem 5% 4rem;
+            min-height: auto;
+        }
+
+        .cert-page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cert-student-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 1.2rem auto 0;
+            padding: 0.6rem 1.6rem;
+            background: rgba(74, 144, 226, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.35);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: var(--accent-1);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .cert-count-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2.5rem auto 0;
+            flex-wrap: wrap;
+        }
+
+        .cert-count-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .cert-count-num {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cert-count-lbl {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        /* ── Timeline wrapper ── */
+        .cert-unified-section {
+            padding: 0 5% 6rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .cert-era-block {
+            margin-bottom: 4rem;
+        }
+
+        .cert-era-heading {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cert-era-heading h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-1);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .cert-era-heading::before,
+        .cert-era-heading::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-1), transparent);
+            opacity: 0.3;
+        }
+
+        .cert-era-heading::after {
+            background: linear-gradient(90deg, transparent, transparent);
+        }
+
+        /* ── 2-Column Grid ── */
+        .cert-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .cert-grid-2 { grid-template-columns: 1fr; }
+        }
+
+        /* ── Certificate Cards ── */
+        .cert-card-v2 {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .cert-card-v2::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(99,102,241,0.08), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cert-card-v2:hover::before { opacity: 1; }
+
+        .cert-card-v2:hover {
+            transform: translateY(-12px) scale(1.01);
+            border-color: var(--accent-1);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.3), 0 0 25px var(--glow-color);
+        }
+
+        .cert-card-v2.starred {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.08);
+        }
+
+        .cert-num-badge {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            z-index: 5;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Image cards */
+        .cv2-img-wrap {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cv2-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cert-card-v2:hover .cv2-img { transform: scale(1.06); }
+
+        /* PDF embed */
+        .cv2-pdf-wrap {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .cv2-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Card body */
+        .cv2-body {
+            padding: 1.2rem 1.4rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv2-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.35rem;
+        }
+
+        .cv2-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .cv2-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cv2-issuer {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-1);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cv2-link {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .cv2-link::after { content: '↗'; }
+        .cv2-link:hover { color: var(--accent-1); text-decoration: underline; }
+
+        /* Divider between eras */
+        .era-divider {
+            width: 60%;
+            height: 1px;
+            margin: 4rem auto;
+            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        /* Back home */
+        .cert-back {
+            text-align: center;
+            padding-bottom: 4rem;
+        }
+    </style>
 </head>
 <body>
     <div id="preloader" class="preloader">
@@ -20,191 +288,355 @@
     <div class="custom-cursor-follower"></div>
     <div class="scroll-progress"></div>
     <div class="blob-bg"></div>
+
     <nav>
-        <div class="logo">Jerin<span>.ai</span></div>
-        <a href="index.html#home" class="static-dashboard-btn">Dashboard</a>
+        <div class="logo">JERIN<span>.J</span></div>
         <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#library">Library</a></li>
             <li><a href="certificates.html" class="active">Certificates</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
+
     <main>
-        <section id="certificates" class="certificates-page">
-            <div class="section-header">
-                <h1>My <span>Certificates</span></h1>
-                <p class="subtitle">Professional achievements and specialized training in AI & Data Science.</p>
+        <!-- ══ HERO ══ -->
+        <div class="cert-page-hero">
+            <h1>My <span class="gradient-text">Certificates</span></h1>
+            <p class="subtitle">All certifications &amp; achievements — newest to oldest.</p>
+            <p class="cert-student-badge">🎓 B.Tech (Artificial Intelligence &amp; Data Science) · 2nd Year · SVHEC, Erode</p>
+            <div class="cert-count-bar">
+                <div class="cert-count-item">
+                    <span class="cert-count-num">14</span>
+                    <span class="cert-count-lbl">Certificates</span>
+                </div>
+                <div class="cert-count-item">
+                    <span class="cert-count-num">8.63</span>
+                    <span class="cert-count-lbl">Current CGPA</span>
+                </div>
+                <div class="cert-count-item">
+                    <span class="cert-count-num">2nd</span>
+                    <span class="cert-count-lbl">Year</span>
+                </div>
             </div>
-            
-            <div class="certificate-grid" style="max-width: 700px; margin: 0 auto;">
-                <!-- C# Basic Certificate -->
-                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/c_sharp_basic certificate.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>C# (Basic)</h3>
-                        <p>HackerRank certification for C# programming fundamentals and logic.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">HackerRank</span>
-                            <a href="certificates/c_sharp_basic certificate.pdf" target="_blank" class="view-link">Full PDF</a>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
-                <!-- SQL Basic Certificate -->
-                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/sql_basic certificate.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>SQL (Basic)</h3>
-                        <p>HackerRank certification for SQL proficiency and database management basics.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">HackerRank</span>
-                            <a href="certificates/sql_basic certificate.pdf" target="_blank" class="view-link">Full PDF</a>
-                        </div>
-                    </div>
-                </div>
+        <!-- ══ CERTIFICATES — NEWEST → OLDEST ══ -->
+        <div class="cert-unified-section">
 
-                <!-- Dec 29 PDF -->
-                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Jerin. J - 2025-12-29.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Technical Certification</h3>
-                        <p>End-of-year technical certification for AI DS modules.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">2025</span>
-                            <a href="certificates/Jerin. J - 2025-12-29.pdf" target="_blank" class="view-link">Full PDF</a>
-                        </div>
-                    </div>
-                </div>
+            <!-- ERA 1: Recent 2025 -->
+            <div class="cert-era-block">
+                <div class="cert-era-heading"><h3>🔥 Most Recent</h3></div>
+                <div class="cert-grid-2">
 
-                <!-- Dec 26 PDF -->
-                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Jerin . - 2025-12-26.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Technical Assessment</h3>
-                        <p>Certification of completion for technical module assessments.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">2025</span>
-                            <a href="certificates/Jerin . - 2025-12-26.pdf" target="_blank" class="view-link">Full PDF</a>
+                    <!-- #1 Navitech -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#1 Latest</span>
+                        <div class="cv2-img-wrap">
+                            <img src="certificates/navitech.jpeg" alt="Navitech Workshop Certificate" class="cv2-img">
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Navitech Workshop</p>
+                                <p class="cv2-desc">Advanced technical workshop certification from Navitech — cutting-edge training in emerging technologies.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Navitech</span>
+                                <a href="certificates/navitech.jpeg" target="_blank" class="cv2-link">View</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Dec 25 PDF -->
-                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Jerin . - 2025-12-25 (1).pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Achievement - Dec 25</h3>
-                        <p>Special recognition for technical contribution.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">2025</span>
-                            <a href="certificates/Jerin . - 2025-12-25 (1).pdf" target="_blank" class="view-link">Full PDF</a>
+                    <!-- #2 SNS College -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#2</span>
+                        <div class="cv2-img-wrap">
+                            <img src="certificates/sns.jpeg" alt="SNS College Certificate" class="cv2-img">
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">SNS College Certificate</p>
+                                <p class="cv2-desc">Academic recognition from SNS College for technical and academic excellence.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">SNS College</span>
+                                <a href="certificates/sns.jpeg" target="_blank" class="cv2-link">View</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Internship Image -->
-                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-img-container">
-                        <img src="certificates/intern.jpeg.jpeg" alt="Internship" class="cert-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>Internship Completion</h3>
-                        <p>Successful completion of professional internship training.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">Internship</span>
-                            <a href="certificates/intern.jpeg.jpeg" target="_blank" class="view-link">View Image</a>
+                    <!-- #3 Sasurie -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#3</span>
+                        <div class="cv2-img-wrap">
+                            <img src="certificates/sasurie.jpeg" alt="Sasurie College Certificate" class="cv2-img">
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Sasurie College Certificate</p>
+                                <p class="cv2-desc">Sasurie College recognition for academic and technical achievement.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Sasurie</span>
+                                <a href="certificates/sasurie.jpeg" target="_blank" class="cv2-link">View</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- UI/UX Workshop -->
-                <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-img-container">
-                        <img src="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" alt="UI/UX Workshop" class="cert-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>UI/UX Design Workshop</h3>
-                        <p>EPIX Workshop certification for excellence in UI/UX principles.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">EPIX</span>
-                            <a href="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" target="_blank" class="view-link">View Image</a>
+                    <!-- #4 Dec 29 2025 -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#4</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/Jerin. J - 2025-12-29.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Technical Certification — Dec 29</p>
+                                <p class="cv2-desc">End-of-year technical certification for AI &amp; Data Science modules. December 2025.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Dec 2025</span>
+                                <a href="certificates/Jerin. J - 2025-12-29.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Soft Skills PDF -->
-                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/Enhancing Soft Skills and Personality.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>Soft Skills & Personality</h3>
-                        <p>Professional development in communication and personality enhancement.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">Verified</span>
-                            <a href="certificates/Enhancing Soft Skills and Personality.pdf" target="_blank" class="view-link">Full PDF</a>
+                    <!-- #5 Dec 26 2025 -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#5</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/Jerin . - 2025-12-26.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Technical Assessment — Dec 26</p>
+                                <p class="cv2-desc">Certification of completion for technical module assessments. December 2025.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Dec 2025</span>
+                                <a href="certificates/Jerin . - 2025-12-26.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Main Certificate PDF -->
-                <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
-                    <div class="cert-embed-container">
-                        <iframe src="certificates/JERIN_J_Certificate.pdf" class="cert-iframe"></iframe>
-                    </div>
-                    <div class="cert-info">
-                        <h3>JERIN J Core Certificate</h3>
-                        <p>Professional standard certification for academic excellence.</p>
-                        <div class="cert-footer">
-                            <span class="cert-issuer">Main</span>
-                            <a href="certificates/JERIN_J_Certificate.pdf" target="_blank" class="view-link">Full PDF</a>
+                    <!-- #6 Dec 25 2025 -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#6</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/Jerin . - 2025-12-25 (1).pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Achievement — Dec 25</p>
+                                <p class="cv2-desc">Special recognition for technical contribution and excellence. December 2025.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Dec 2025</span>
+                                <a href="certificates/Jerin . - 2025-12-25 (1).pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
-            <div class="back-home">
-                <a href="index.html" class="cta-button">Back to Home</a>
+            <div class="era-divider"></div>
+
+            <!-- ERA 2: Workshops & Training -->
+            <div class="cert-era-block">
+                <div class="cert-era-heading"><h3>🏆 Workshops &amp; Training</h3></div>
+                <div class="cert-grid-2">
+
+                    <!-- #7 UI/UX Workshop -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#7</span>
+                        <div class="cv2-img-wrap">
+                            <img src="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" alt="EPIX UI/UX Workshop" class="cv2-img">
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">UI/UX Design Workshop</p>
+                                <p class="cv2-desc">EPIX Workshop certification for design excellence in user interface and experience principles.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">EPIX</span>
+                                <a href="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" target="_blank" class="cv2-link">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #8 Internship -->
+                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#8</span>
+                        <div class="cv2-img-wrap">
+                            <img src="certificates/intern.jpeg.jpeg" alt="Internship Completion Certificate" class="cv2-img">
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Internship Completion</p>
+                                <p class="cv2-desc">Successful completion of professional internship training program with practical industry experience.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Internship</span>
+                                <a href="certificates/intern.jpeg.jpeg" target="_blank" class="cv2-link">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #9 Soft Skills -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#9</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/Enhancing Soft Skills and Personality.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">Soft Skills &amp; Personality</p>
+                                <p class="cv2-desc">Professional development certification in communication, personality enhancement and interpersonal skills.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Verified</span>
+                                <a href="certificates/Enhancing Soft Skills and Personality.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #10 JERIN J Core -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#10</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/JERIN_J_Certificate.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">JERIN J Core Certificate</p>
+                                <p class="cv2-desc">Professional standard certification recognising academic and technical competence.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">Core</span>
+                                <a href="certificates/JERIN_J_Certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </section>
+
+            <div class="era-divider"></div>
+
+            <!-- ERA 3: Foundational / HackerRank -->
+            <div class="cert-era-block">
+                <div class="cert-era-heading"><h3>📜 Foundational Credentials</h3></div>
+                <div class="cert-grid-2">
+
+                    <!-- #11 SQL Advanced -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#11</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/sql_advanced certificate.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">SQL (Advanced)</p>
+                                <p class="cv2-desc">HackerRank advanced-level SQL certification — complex queries, optimisation, and database management.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">HackerRank</span>
+                                <a href="certificates/sql_advanced certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #12 SQL Intermediate -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#12</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/sql_intermediate certificate.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">SQL (Intermediate)</p>
+                                <p class="cv2-desc">HackerRank intermediate SQL certification — joins, subqueries, and database proficiency.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">HackerRank</span>
+                                <a href="certificates/sql_intermediate certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #13 C# Basic -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#13</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/c_sharp_basic certificate.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">C# (Basic)</p>
+                                <p class="cv2-desc">HackerRank certification for C# programming fundamentals, logic, and object-oriented concepts.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">HackerRank</span>
+                                <a href="certificates/c_sharp_basic certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #14 SQL Basic (Oldest) -->
+                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                        <span class="cert-num-badge">#14 Earliest</span>
+                        <div class="cv2-pdf-wrap">
+                            <iframe src="certificates/sql_basic certificate.pdf" class="cv2-iframe"></iframe>
+                        </div>
+                        <div class="cv2-body">
+                            <div>
+                                <p class="cv2-title">SQL (Basic)</p>
+                                <p class="cv2-desc">HackerRank foundational SQL certification — database querying, filtering and basic operations.</p>
+                            </div>
+                            <div class="cv2-footer">
+                                <span class="cv2-issuer">HackerRank</span>
+                                <a href="certificates/sql_basic certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Back -->
+            <div class="cert-back">
+                <a href="index.html" class="cta-button">← Back to Portfolio</a>
+            </div>
+
+        </div><!-- /cert-unified-section -->
     </main>
+
     <footer>
         <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
 
-    <button id="theme-changer" class="theme-changer-btn" title="Change Theme" aria-label="Toggle Theme">🚀</button>
+    <button id="theme-changer" class="theme-changer-btn" title="Switch Theme" aria-label="Toggle Theme">🚀</button>
     <div class="impact-flash" id="flash-overlay"></div>
-    
     <button id="scroll-to-top" class="scroll-to-top" title="Back to Top" aria-label="Scroll to top">↑</button>
 
     <div class="floating-dashboard" id="floating-dashboard">
         <div class="dashboard-content">
             <div class="dash-item">
-                <span class="dash-label">Current CGPA</span>
+                <span class="dash-label">CGPA</span>
                 <span class="dash-value">8.63</span>
             </div>
             <div class="dash-item">
-                <span class="dash-label">Projects Done</span>
-                <span class="dash-value">10+</span>
+                <span class="dash-label">Year</span>
+                <span class="dash-value">2nd</span>
             </div>
             <div class="dash-item">
-                <span class="dash-label">Certifications</span>
-                <span class="dash-value">10+</span>
+                <span class="dash-label">Certs</span>
+                <span class="dash-value">14</span>
             </div>
         </div>
-        <div class="dashboard-toggle" id="dashboard-toggle" title="Toggle Dashboard">
-            📊
-        </div>
+        <div class="dashboard-toggle" id="dashboard-toggle" title="Toggle Dashboard">📊</div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>

@@ -135,7 +135,7 @@ nav {
 }
 
 .static-dashboard-btn::before {
-    content: '🏠';
+    content: 'ðŸ ';
     font-size: 1rem;
 }
 
@@ -784,6 +784,14 @@ h2 span,
     background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/civix.png');
 }
 
+.bg-6 {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/gait.png');
+}
+
+.bg-7 {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/disease.png');
+}
+
 .project-info {
     padding: 2rem;
     display: flex;
@@ -839,7 +847,7 @@ h2 span,
 }
 
 .repo-link::after {
-    content: '→';
+    content: 'â†’';
 }
 
 .project-info p {
@@ -1092,6 +1100,141 @@ footer p {
     width: 100%;
     max-width: 700px; /* Reduced from 850px */
     margin: 0 auto 4rem auto;
+}
+
+/* â”€â”€ Certificates Student Note â”€â”€ */
+.cert-student-note {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.4rem;
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    border-radius: 30px;
+    font-size: 0.95rem;
+    color: var(--accent-1);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* â”€â”€ Horizontal Certificate Timeline Layout â”€â”€ */
+.cert-timeline-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 4rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+}
+
+.cert-timeline-line {
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), var(--accent-1), transparent);
+    border-radius: 10px;
+    margin: 0 auto;
+    opacity: 0.5;
+    position: relative;
+}
+
+.cert-timeline-line::before,
+.cert-timeline-line::after {
+    content: 'â—†';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-1);
+    font-size: 0.8rem;
+}
+
+.cert-timeline-line::before { left: -1.2rem; }
+.cert-timeline-line::after  { right: -1.2rem; }
+
+.cert-timeline-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 2rem;
+}
+
+.cert-timeline-label.end-label {
+    justify-content: flex-end;
+    padding-right: 2rem;
+    padding-left: 0;
+}
+
+.cert-timeline-label::before,
+.cert-timeline-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-2), transparent);
+    opacity: 0.3;
+}
+
+.cert-timeline-label.end-label::after {
+    background: linear-gradient(90deg, transparent, var(--accent-2));
+}
+
+/* â”€â”€ Horizontal certificate rows: scroll right-to-left â”€â”€ */
+.cert-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0.5rem 1.5rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-1) transparent;
+}
+
+.cert-row::-webkit-scrollbar { height: 5px; }
+.cert-row::-webkit-scrollbar-track { background: transparent; }
+.cert-row::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--accent-1), var(--accent-2));
+    border-radius: 10px;
+}
+
+/* RTL = latest first â†’ displayed right-to-left by reversing flex order */
+.cert-row.rtl {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.cert-row .cert-card {
+    flex: 0 0 340px;  /* fixed-width card in row */
+    max-width: 340px;
+}
+
+/* â”€â”€ Row section divider â”€â”€ */
+.cert-row-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.cert-row-divider span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.cert-row-divider::before,
+.cert-row-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
 .cert-card {
@@ -1585,4 +1728,5 @@ footer p {
     background: rgba(59, 130, 246, 0.1);
     transform: scale(1.05);
 }
+
 

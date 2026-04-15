@@ -731,6 +731,14 @@ h2 span,
     background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/civix.png');
 }
 
+.bg-6 {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/gait.png');
+}
+
+.bg-7 {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/disease.png');
+}
+
 .project-info {
     padding: 2rem;
     display: flex;
