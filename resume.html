@@ -94,6 +94,46 @@
             color: var(--text-muted);
         }
 
+        /* ── Recent Updates Section ── */
+        .recent-updates {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+        }
+        .recent-updates h2 {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .update-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .update-item:last-child { margin-bottom: 0; }
+        .update-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .update-badge.new { background: #10b981; }
+        .update-badge.award { background: #f59e0b; }
+        .update-badge.cert { background: #8b5cf6; }
+
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -181,7 +221,7 @@
 
         <section class="summary">
             <h2>Professional Summary</h2>
-            <p>Passionate <strong>B.Tech Artificial Intelligence & Data Science</strong> student with a strong drive for building intelligent, user-centric solutions. Experienced in developing scalable web applications and specialized AI tools. Proven track record in hackathons and real-time project implementation. Seeking opportunities to leverage machine learning and full-stack development skills in a professional environment.</p>
+            <p>Results-driven <strong>B.Tech Artificial Intelligence &amp; Data Science</strong> student (CGPA: <strong>8.63</strong>) at Shree Venkateshwara Hi-Tech Engineering College with a strong record of engineering high-impact, real-world AI solutions. Demonstrated ability to lead full-stack projects end-to-end — from architecture to deployment — including a <strong>Hackathon 2026 sustainability platform</strong>, a V2X real-time traffic collision avoidance system, and a production-grade civil engineering survey app. Skilled across the full AI/ML stack (PyTorch, TensorFlow, Scikit-Learn) and modern web ecosystems (React, Node.js, FastAPI). Committed to building technology that is not only intelligent but deeply purposeful and human-centric.</p>
         </section>
 
         <section class="skills">
@@ -189,7 +229,7 @@
             <div class="skills-grid">
                 <div class="skill-group">
                     <strong>Programming Languages:</strong>
-                    <span class="skill-list">Python, JavaScript (ES6+), SQL, C++, Java</span>
+                    <span class="skill-list">Python, JavaScript (ES6+), C, C++, SQL, Java</span>
                 </div>
                 <div class="skill-group">
                     <strong>AI & Data Science:</strong>
@@ -201,7 +241,7 @@
                 </div>
                 <div class="skill-group">
                     <strong>Tools & Platforms:</strong>
-                    <span class="skill-list">Git, VS Code, Jupyter Notebook, Firebase, Oracle OCI Foundations</span>
+                    <span class="skill-list">Git, VS Code, Jupyter Notebook, Firebase, Oracle OCI Foundations, Antigravity AI, Claude (Anthropic), OpenClaw</span>
                 </div>
             </div>
         </section>
@@ -210,51 +250,88 @@
             <h2>Key Projects</h2>
             <div class="project-item">
                 <div class="item-header">
-                    <span>Civix - Survey Solutions App</span>
+                    <span>Civix — Civil Survey Intelligence Platform</span>
                     <span>2026</span>
                 </div>
-                <p class="item-sub">Full-Stack Development | Firebase | Geolocation</p>
+                <p class="item-sub">Flutter | Firebase | Geolocation | Real-Time Sync | GitHub: github.com/jerin81108/civix</p>
                 <ul>
-                    <li>Developed a specialized survey application for civil engineering data collection.</li>
-                    <li>Integrated real-time data syncing and mapping for surveying efficiency.</li>
-                    <li>Implemented secure authentication and administrative panels for data management.</li>
+                    <li>Architected a cross-platform survey application for civil engineering teams, automating complex spatial data collection workflows previously done manually.</li>
+                    <li>Integrated Firebase Firestore for real-time bidirectional data synchronization across field devices, reducing data-entry lag by ~90%.</li>
+                    <li>Built secure role-based authentication and admin dashboards for structured project-level data governance.</li>
+                    <li>Implemented native device GPS integration for high-precision geolocation tagging of survey points.</li>
                 </ul>
             </div>
             <div class="project-item">
                 <div class="item-header">
-                    <span>GreenPulse - Sustainability Visualizer</span>
+                    <span>GreenPulse — Sustainability Analytics Platform</span>
                     <span>2026</span>
                 </div>
-                <p class="item-sub">React | Data Visualization | Hackathon 2026</p>
+                <p class="item-sub">React | Tailwind CSS | Data Visualization | Hackathon 2026 Submission</p>
                 <ul>
-                    <li>Built an interactive dashboard for monitoring eco-friendly digital footprints.</li>
-                    <li>Won recognition at Hackathon 2026 for innovative use of sustainable tech.</li>
+                    <li>Designed and delivered a full sustainability intelligence dashboard as a Hackathon 2026 project, focused on making carbon footprint data actionable for end users.</li>
+                    <li>Built interactive carbon footprint mapping with real-time data-driven eco-insights using modern data visualization techniques.</li>
+                    <li>Engineered a responsive React frontend with dynamic chart components, delivering fast render times on both desktop and mobile devices.</li>
                 </ul>
             </div>
             <div class="project-item">
                 <div class="item-header">
-                    <span>AI 8-Puzzle Solver</span>
+                    <span>AuraDrive — V2X Real-Time Traffic Collision Avoidance System</span>
+                    <span>2026</span>
+                </div>
+                <p class="item-sub">Python | FastAPI | WebSocket | GPS | Real-Time AI</p>
+                <ul>
+                    <li>Built a backend-driven V2X (Vehicle-to-Everything) traffic safety system using FastAPI with WebSocket for real-time multi-vehicle state synchronization.</li>
+                    <li>Implemented predictive collision detection logic using live GPS coordinates and velocity vectors, broadcasting hazard alerts to all connected devices in &lt;100ms.</li>
+                    <li>Designed a mobile-first web frontend with live vehicle tracking, proximity radius detection, and speed visualization on a dynamic map.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="item-header">
+                    <span>Gait Recognition Model — AI Biometric Identification</span>
                     <span>2025</span>
                 </div>
-                <p class="item-sub">Python | A* Search Algorithm | Visualizer</p>
+                <p class="item-sub">Python | PyTorch | OpenCV | Computer Vision</p>
                 <ul>
-                    <li>Implemented the A* search algorithm to solve complex tile puzzles optimally.</li>
-                    <li>Created a visual dashboard to demonstrate pathfinding and heuristic efficiency.</li>
+                    <li>Developed a deep learning computer vision model capable of identifying individuals through dynamic walking pattern (gait) analysis.</li>
+                    <li>Applied OpenCV for frame-level skeleton extraction and PyTorch for classification model training, achieving reliable identification accuracy.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="item-header">
+                    <span>Disease Prediction System — Predictive Healthcare AI</span>
+                    <span>2025</span>
+                </div>
+                <p class="item-sub">Python | Scikit-Learn | Pandas | NumPy</p>
+                <ul>
+                    <li>Engineered a multi-label disease prediction model using ensemble ML algorithms trained on patient symptom datasets.</li>
+                    <li>Applied feature engineering and cross-validation techniques to improve model reliability and reduce false-negative rates in clinical predictions.</li>
                 </ul>
             </div>
         </section>
 
         <section class="experience">
-            <h2>Work & Leadership</h2>
+            <h2>Work &amp; Leadership</h2>
             <div class="experience-item">
                 <div class="item-header">
-                    <span>Technical Lead & Developer</span>
-                    <span>Present</span>
+                    <span>Independent AI &amp; Full-Stack Developer</span>
+                    <span>2024 – Present</span>
                 </div>
-                <p class="item-sub">Personal Projects & Freelance Initiatives</p>
+                <p class="item-sub">Self-Directed Projects | Freelance Initiatives | Open Source</p>
                 <ul>
-                    <li>Leading development of cross-platform applications focused on AI integration.</li>
-                    <li>Designing premium UI/UX experiences for specialized engineering workflows.</li>
+                    <li>Independently architected, built, and deployed 10+ projects spanning AI/ML, full-stack web development, and mobile app engineering — all without institutional support.</li>
+                    <li>Designed premium, production-quality UI/UX systems (glassmorphism, micro-animations, responsive layouts) adopted across multiple project deployments.</li>
+                    <li>Maintained an active GitHub portfolio (github.com/jerin81108) with documented repositories, demonstrating disciplined engineering and version control practices.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="item-header">
+                    <span>Hackathon Participant</span>
+                    <span>2026</span>
+                </div>
+                <p class="item-sub">Hackathon 2026 — GreenPulse Sustainability Platform</p>
+                <ul>
+                    <li>Competed under time-constrained conditions, designing and delivering a fully functional sustainability analytics platform within the hackathon window.</li>
+                    <li>Demonstrated rapid prototyping and technical execution skills by building a React-based data visualization dashboard from scratch in a competitive environment.</li>
                 </ul>
             </div>
         </section>
@@ -272,13 +349,42 @@
         </section>
 
         <section class="certifications">
-            <h2>Certifications</h2>
+            <h2>Certifications &amp; Recognitions</h2>
             <ul>
-                <li>Internship Completion Certificate - Professional Training</li>
-                <li>UI/UX Design Workshop - EPIX Workshop Certification</li>
-                <li>Oracle Cloud Infrastructure (OCI) Foundations Foundations Associate</li>
-                <li>Soft Skills & Personality Development Certificate</li>
+                <li><strong>Oracle Cloud Infrastructure (OCI) Foundations Associate</strong> — Oracle, 2025</li>
+                <li><strong>HackerRank SQL (Gold Badge)</strong> — HackerRank</li>
+                <li><strong>HackerRank C# Certification</strong> — HackerRank</li>
+                <li><strong>UI/UX Design Workshop</strong> — EPIX Workshop Certification</li>
+                <li><strong>Navitech Workshop Certificate</strong> — Advanced Technical Training</li>
+                <li><strong>Internship Completion Certificate</strong> — Professional Industry Training</li>
+                <li><strong>Soft Skills &amp; Personality Development</strong> — Professional Certification</li>
+                <li><strong>14+ Total Professional Certifications</strong> — View full gallery at portfolio site</li>
             </ul>
+        </section>
+
+        <!-- ── RECENT UPDATES & ACHIEVEMENTS ── -->
+        <section class="recent-updates">
+            <h2>🚀 Recent Updates &amp; Achievements</h2>
+            <div class="update-item">
+                <span class="update-badge new">NEW</span>
+                <span><strong>AuraDrive V2X System</strong> — Developed a production-grade real-time vehicle collision avoidance backend using FastAPI + WebSocket, processing live GPS streams from multiple connected devices simultaneously. <em>(May 2026)</em></span>
+            </div>
+            <div class="update-item">
+                <span class="update-badge new">NEW</span>
+                <span><strong>Civix App Launch</strong> — Shipped a cross-platform Flutter civil survey app to GitHub with Firebase integration, geolocation tagging, and role-based admin controls. <em>(2026)</em></span>
+            </div>
+            <div class="update-item">
+                <span class="update-badge new">NEW</span>
+                <span><strong>Hackathon 2026 Participant</strong> — Competed in Hackathon 2026, building and submitting GreenPulse, a full sustainability analytics platform, under strict time constraints. <em>(2026)</em></span>
+            </div>
+            <div class="update-item">
+                <span class="update-badge cert">CERT</span>
+                <span><strong>14+ Professional Certifications</strong> earned — spanning Oracle OCI, HackerRank (SQL &amp; C#), UI/UX, Navitech, and internship credentials. <em>(2024–2026)</em></span>
+            </div>
+            <div class="update-item">
+                <span class="update-badge">CGPA</span>
+                <span><strong>Academic Excellence</strong> — Maintained a CGPA of <strong>8.63</strong> in B.Tech AI &amp; Data Science (2nd Year) at SVHEC, Erode while simultaneously building 10+ real-world projects. <em>(Ongoing)</em></span>
+            </div>
         </section>
 
         <section class="languages">
