@@ -25,6 +25,233 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── GitHub Explorer Terminal Mock ── */
+        .explorer-selector-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+        }
+
+        #gh-repo-select {
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--text-main);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        #gh-repo-select:hover, #gh-repo-select:focus {
+            border-color: var(--accent-1);
+            box-shadow: 0 0 12px rgba(74, 144, 226, 0.2);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .terminal-mock-window {
+            background: rgba(11, 15, 26, 0.7);
+            border: 1px solid rgba(74, 144, 226, 0.25);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 226, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            margin: 0 auto;
+            max-width: 1100px;
+            position: relative;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 0.8rem 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-circles {
+            display: flex;
+            gap: 6px;
+        }
+
+        .circle-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .circle-btn.close { background: #ef4444; }
+        .circle-btn.minimize { background: #eab308; }
+        .circle-btn.maximize { background: #22c55e; }
+
+        .terminal-tab-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .terminal-workspace {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .terminal-sidebar {
+            width: 250px;
+            background: rgba(8, 12, 21, 0.85);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent-1);
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .sidebar-tree {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.8rem 0.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .gh-tree-node {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .gh-tree-node:hover {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+        }
+
+        .gh-tree-node.active {
+            background: rgba(74, 144, 226, 0.12);
+            color: var(--accent-1);
+            font-weight: 600;
+            border-left: 3px solid var(--accent-1);
+            padding-left: calc(0.8rem - 3px);
+        }
+
+        .terminal-editor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(3, 7, 18, 0.45);
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background: rgba(8, 12, 21, 0.5);
+            padding: 0.6rem 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .editor-active-tab {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .editor-viewport {
+            flex: 1;
+            overflow: auto;
+            padding: 1.2rem;
+            background: #030712;
+            text-align: left;
+        }
+
+        .editor-viewport pre {
+            margin: 0;
+        }
+
+        .editor-viewport code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Loading overlay */
+        .terminal-loading {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(74, 144, 226, 0.1);
+            border-top-color: var(--accent-1);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .terminal-workspace {
+                flex-direction: column;
+            }
+            .terminal-sidebar {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            .terminal-mock-window {
+                height: 700px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -378,6 +605,65 @@
                 </div>
             </div>
         </section>
+
+        <!-- ── OPEN SOURCE CORE (LIVE CODE EXPLORER) ── -->
+        <section id="code-explorer" class="projects fade-in" style="padding-top: 2rem;">
+            <div class="section-segment" data-theme="projects">
+                <h2>Source <span>Dossiers</span></h2>
+                <p class="subtitle" style="text-align: center;">Live interactive inspector for my official GitHub repositories.</p>
+                
+                <div id="gh-rate-limit" style="display: none; text-align: center; margin-bottom: 1.5rem; color: #f59e0b; font-size: 0.9rem; font-weight: 600; padding: 0.5rem 1rem; border: 1px solid rgba(245,158,11,0.3); border-radius: 8px; background: rgba(245,158,11,0.05);">
+                    ⚠️ GitHub API rate limit reached. Displaying premium fallback datasets.
+                </div>
+
+                <div class="explorer-selector-bar">
+                    <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Selected Intelligence:</span>
+                    <select id="gh-repo-select">
+                        <option value="Portfolio">jerin81108 / Portfolio (This Site)</option>
+                        <option value="civix">jerin81108 / civix (Civil Survey App)</option>
+                        <option value="hackathon_2026">jerin81108 / hackathon_2026 (GreenPulse)</option>
+                    </select>
+                </div>
+
+                <div class="terminal-mock-window">
+                    <div class="terminal-header">
+                        <div class="terminal-circles">
+                            <span class="circle-btn close"></span>
+                            <span class="circle-btn minimize"></span>
+                            <span class="circle-btn maximize"></span>
+                        </div>
+                        <span class="terminal-tab-title"><span id="gh-current-repo">Portfolio</span> — GitHub Repository Explorer</span>
+                        <div style="width: 50px;"></div>
+                    </div>
+
+                    <div class="terminal-workspace">
+                        <!-- Sidebar (File Tree) -->
+                        <div class="terminal-sidebar">
+                            <div class="sidebar-header">FILE EXPLORER</div>
+                            <div id="gh-file-tree" class="sidebar-tree">
+                                <!-- Loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Editor (Code View) -->
+                        <div class="terminal-editor">
+                            <div class="editor-header">
+                                <span class="editor-active-tab">📄 <span id="gh-code-filename">Select a file</span></span>
+                            </div>
+                            <div class="editor-viewport">
+                                <pre><code id="gh-code-content"><!-- Code loaded dynamically --></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- Dynamic Loading Overlay -->
+                        <div id="gh-loading" class="terminal-loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="section-divider"></div>
         <section id="library" class="coding-library fade-in">
             <div class="section-segment" data-theme="library">
@@ -547,6 +833,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
+    <script src="github-explorer.js"></script>
 </body>
 
 </html>
