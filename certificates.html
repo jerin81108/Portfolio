@@ -108,157 +108,146 @@
             background: linear-gradient(90deg, transparent, transparent);
         }
 
-        /* ── 2-Column Grid ── */
-        .cert-grid-2 {
+        /* ── Modern Card Grid ── */
+        .cert-card-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            width: 100%;
         }
 
-        @media (max-width: 900px) {
-            .cert-grid-2 { grid-template-columns: 1fr; }
-        }
-
-        /* ── Certificate Cards ── */
-        .cert-card-v2 {
-            background: var(--card-bg);
-            border-radius: 20px;
+        .cert-info-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.6rem 1.6rem 1.4rem;
+            cursor: pointer;
+            position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.07);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
-            position: relative;
-            transform-style: preserve-3d;
+            gap: 0.7rem;
         }
 
-        .cert-card-v2::before {
+        /* top glowing bar */
+        .cert-info-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at top right, rgba(99,102,241,0.08), transparent 70%);
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .cert-info-card:hover::before {
+            opacity: 1;
+        }
+
+        /* hover background radial glow */
+        .cert-info-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 75% 20%, rgba(99, 102, 241, 0.1), transparent 70%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
-            z-index: 0;
+        }
+        .cert-info-card:hover::after {
+            opacity: 1;
         }
 
-        .cert-card-v2:hover::before { opacity: 1; }
-
-        .cert-card-v2:hover {
-            transform: translateY(-12px) scale(1.01);
-            border-color: var(--accent-1);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.3), 0 0 25px var(--glow-color);
+        .cert-info-card:hover {
+            transform: translateY(-8px) scale(1.015);
+            border-color: rgba(74, 144, 226, 0.4);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 25px rgba(74, 144, 226, 0.15);
         }
 
-        .cert-card-v2.starred {
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.08);
+        .cert-info-card.starred {
+            border-color: rgba(99, 102, 241, 0.25);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.05);
         }
 
-        .cert-num-badge {
-            position: absolute;
-            top: 12px;
-            left: 14px;
-            z-index: 5;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Image cards */
-        .cv2-img-wrap {
-            height: 200px;
-            width: 100%;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .cv2-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .cert-card-v2:hover .cv2-img { transform: scale(1.06); }
-
-        /* PDF embed */
-        .cv2-pdf-wrap {
-            width: 100%;
-            height: 260px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .cv2-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Card body */
-        .cv2-body {
-            padding: 1.2rem 1.4rem;
-            flex: 1;
+        .card-top {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            position: relative;
-            z-index: 1;
         }
 
-        .cv2-title {
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: rgba(74, 144, 226, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+
+        .card-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent-1);
+            text-transform: uppercase;
+            background: rgba(74, 144, 226, 0.08);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 144, 226, 0.15);
+        }
+
+        .card-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 0.35rem;
+            letter-spacing: -0.3px;
+            line-height: 1.35;
         }
 
-        .cv2-desc {
+        .card-desc {
             font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 1rem;
+            line-height: 1.6;
+            flex: 1;
         }
 
-        .cv2-footer {
+        .card-footer {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            margin-top: 0.6rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cv2-issuer {
-            font-size: 0.78rem;
+        .card-issuer {
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--accent-1);
-            background: rgba(59, 130, 246, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
-        .cv2-link {
-            color: var(--accent-2);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: color 0.3s;
+        .card-cta {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(74, 144, 226, 0.6);
+            letter-spacing: 1px;
+            transition: color 0.25s;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.2rem;
         }
-
-        .cv2-link::after { content: '↗'; }
-        .cv2-link:hover { color: var(--accent-1); text-decoration: underline; }
+        .cert-info-card:hover .card-cta {
+            color: var(--accent-1);
+        }
 
         /* Divider between eras */
         .era-divider {
@@ -270,10 +259,207 @@
             border-radius: 50%;
         }
 
-        /* Back home */
+        /* ── MODAL OVERLAY ── */
+        #cert-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #cert-modal.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .modal-frame {
+            position: relative;
+            z-index: 2;
+            width: min(92vw, 1050px);
+            max-height: 90vh;
+            background: rgba(11, 15, 26, 0.98);
+            border: 1px solid rgba(74, 144, 226, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow:
+                0 0 0 1px rgba(74, 144, 226, 0.1),
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(74, 144, 226, 0.1);
+            transform: translateY(30px) scale(0.96);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #cert-modal.open .modal-frame {
+            transform: translateY(0) scale(1);
+        }
+
+        /* top glow border line */
+        .modal-frame::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), var(--accent-1), transparent);
+            z-index: 5;
+        }
+
+        /* subtle grid scanlines on viewport */
+        .modal-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 4;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.05) 2px,
+                rgba(0, 0, 0, 0.05) 4px
+            );
+            opacity: 0.4;
+        }
+
+        /* Corner visual brackets */
+        .mc {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-color: rgba(74, 144, 226, 0.4);
+            border-style: solid;
+            opacity: 0.6;
+            z-index: 6;
+        }
+        .mc.tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+        .mc.tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+        .mc.bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+        .mc.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(74, 144, 226, 0.02);
+            flex-shrink: 0;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .modal-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-1);
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .modal-cert-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .modal-open-btn {
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-main);
+            padding: 0.45rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .modal-open-btn:hover {
+            border-color: var(--accent-1);
+            background: rgba(74, 144, 226, 0.08);
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.2);
+            color: var(--accent-1);
+        }
+
+        .modal-close-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-close-btn:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+            background: rgba(74, 144, 226, 0.08);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: auto;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #060913;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            max-height: calc(90vh - 100px);
+            object-fit: contain;
+            display: block;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: calc(90vh - 100px);
+            border: none;
+        }
+
+        /* Back button styling override */
         .cert-back {
             text-align: center;
-            padding-bottom: 4rem;
+            padding: 4rem 0;
         }
     </style>
 </head>
@@ -328,113 +514,101 @@
             <!-- ERA 1: Recent 2025 -->
             <div class="cert-era-block">
                 <div class="cert-era-heading"><h3>🔥 Most Recent</h3></div>
-                <div class="cert-grid-2">
+                <div class="cert-card-grid">
 
                     <!-- #1 Navitech -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#1 Latest</span>
-                        <div class="cv2-img-wrap">
-                            <img src="certificates/navitech.jpeg" alt="Navitech Workshop Certificate" class="cv2-img">
+                    <div class="cert-info-card starred fade-in"
+                         data-type="img" data-src="certificates/navitech.jpeg"
+                         data-title="Navitech Workshop" data-issuer="Navitech" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🏭</div>
+                            <span class="card-tag">Workshop</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Navitech Workshop</p>
-                                <p class="cv2-desc">Advanced technical workshop certification from Navitech — cutting-edge training in emerging technologies.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Navitech</span>
-                                <a href="certificates/navitech.jpeg" target="_blank" class="cv2-link">View</a>
-                            </div>
+                        <div class="card-title">Navitech Workshop</div>
+                        <div class="card-desc">Advanced technical workshop certification covering industry-grade emerging technologies. Focused on real-world engineering practices and practical applied developer skill sets.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Navitech</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #2 SNS College -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#2</span>
-                        <div class="cv2-img-wrap">
-                            <img src="certificates/sns.jpeg" alt="SNS College Certificate" class="cv2-img">
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificates/sns.jpeg"
+                         data-title="SNS College Certificate" data-issuer="SNS College" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🏛️</div>
+                            <span class="card-tag">Academic</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">SNS College Certificate</p>
-                                <p class="cv2-desc">Academic recognition from SNS College for technical and academic excellence.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">SNS College</span>
-                                <a href="certificates/sns.jpeg" target="_blank" class="cv2-link">View</a>
-                            </div>
+                        <div class="card-title">SNS College Certificate</div>
+                        <div class="card-desc">Academic recognition from SNS College for demonstrated technical and academic excellence. Honors competitive event participation and problem-solving.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">SNS College</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #3 Sasurie -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#3</span>
-                        <div class="cv2-img-wrap">
-                            <img src="certificates/sasurie.jpeg" alt="Sasurie College Certificate" class="cv2-img">
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificates/sasurie.jpeg"
+                         data-title="Sasurie College Certificate" data-issuer="Sasurie" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🎖️</div>
+                            <span class="card-tag">Recognition</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Sasurie College Certificate</p>
-                                <p class="cv2-desc">Sasurie College recognition for academic and technical achievement.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Sasurie</span>
-                                <a href="certificates/sasurie.jpeg" target="_blank" class="cv2-link">View</a>
-                            </div>
+                        <div class="card-title">Sasurie College Certificate</div>
+                        <div class="card-desc">Sasurie College recognition for academic distinction and technical milestone accomplishments in campus-wide engineering challenges and activities.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Sasurie</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #4 Dec 29 2025 -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#4</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/Jerin. J - 2025-12-29.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card fade-in"
+                         data-type="pdf" data-src="certificates/Jerin. J - 2025-12-29.pdf"
+                         data-title="Technical Certification — Dec 29" data-issuer="Dec 2025" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">📄</div>
+                            <span class="card-tag">Certification</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Technical Certification — Dec 29</p>
-                                <p class="cv2-desc">End-of-year technical certification for AI &amp; Data Science modules. December 2025.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Dec 2025</span>
-                                <a href="certificates/Jerin. J - 2025-12-29.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">Technical Certification</div>
+                        <div class="card-desc">End-of-year technical certification for professional AI &amp; Data Science modules. Validates successful milestone completion in late Q4 2025.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Dec 2025</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #5 Dec 26 2025 -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#5</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/Jerin . - 2025-12-26.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card fade-in"
+                         data-type="pdf" data-src="certificates/Jerin . - 2025-12-26.pdf"
+                         data-title="Technical Assessment — Dec 26" data-issuer="Dec 2025" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">📋</div>
+                            <span class="card-tag">Assessment</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Technical Assessment — Dec 26</p>
-                                <p class="cv2-desc">Certification of completion for technical module assessments. December 2025.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Dec 2025</span>
-                                <a href="certificates/Jerin . - 2025-12-26.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">Technical Assessment</div>
+                        <div class="card-desc">Official certification of completion for rigorous technical module assessments. Proves conceptual expertise across the core AI programming syllabus.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Dec 2025</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #6 Dec 25 2025 -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#6</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/Jerin . - 2025-12-25 (1).pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card fade-in"
+                         data-type="pdf" data-src="certificates/Jerin . - 2025-12-25 (1).pdf"
+                         data-title="Achievement — Dec 25" data-issuer="Dec 2025" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">⭐</div>
+                            <span class="card-tag">Achievement</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Achievement — Dec 25</p>
-                                <p class="cv2-desc">Special recognition for technical contribution and excellence. December 2025.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Dec 2025</span>
-                                <a href="certificates/Jerin . - 2025-12-25 (1).pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">Achievement — Dec 25</div>
+                        <div class="card-desc">Special honors recognition for outstanding technical contribution and applied engineering excellence. Dispatched in late December 2025.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Dec 2025</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
@@ -446,77 +620,69 @@
             <!-- ERA 2: Workshops & Training -->
             <div class="cert-era-block">
                 <div class="cert-era-heading"><h3>🏆 Workshops &amp; Training</h3></div>
-                <div class="cert-grid-2">
+                <div class="cert-card-grid">
 
                     <!-- #7 UI/UX Workshop -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#7</span>
-                        <div class="cv2-img-wrap">
-                            <img src="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" alt="EPIX UI/UX Workshop" class="cv2-img">
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg"
+                         data-title="UI/UX Design Workshop" data-issuer="EPIX" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🎨</div>
+                            <span class="card-tag">Design</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">UI/UX Design Workshop</p>
-                                <p class="cv2-desc">EPIX Workshop certification for design excellence in user interface and experience principles.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">EPIX</span>
-                                <a href="certificates/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" target="_blank" class="cv2-link">View</a>
-                            </div>
+                        <div class="card-title">UI/UX Design Workshop</div>
+                        <div class="card-desc">EPIX Workshop certification for excellent performance in UI/UX principles. Covers layouts, web design, accessibility, and user-centered workflow design.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">EPIX</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #8 Internship -->
-                    <div class="cert-card-v2 fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#8</span>
-                        <div class="cv2-img-wrap">
-                            <img src="certificates/intern.jpeg.jpeg" alt="Internship Completion Certificate" class="cv2-img">
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificates/intern.jpeg.jpeg"
+                         data-title="Internship Completion" data-issuer="Field Operations" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🔧</div>
+                            <span class="card-tag">Internship</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Internship Completion</p>
-                                <p class="cv2-desc">Successful completion of professional internship training program with practical industry experience.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Internship</span>
-                                <a href="certificates/intern.jpeg.jpeg" target="_blank" class="cv2-link">View</a>
-                            </div>
+                        <div class="card-title">Internship Completion</div>
+                        <div class="card-desc">Documented completion of professional internship training. Provided immersive, practical developer experience inside real commercial engineering environments.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Internship</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #9 Soft Skills -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#9</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/Enhancing Soft Skills and Personality.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card starred fade-in"
+                         data-type="pdf" data-src="certificates/Enhancing Soft Skills and Personality.pdf"
+                         data-title="Soft Skills &amp; Personality" data-issuer="Verified" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🗣️</div>
+                            <span class="card-tag">Development</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">Soft Skills &amp; Personality</p>
-                                <p class="cv2-desc">Professional development certification in communication, personality enhancement and interpersonal skills.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Verified</span>
-                                <a href="certificates/Enhancing Soft Skills and Personality.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">Soft Skills &amp; Personality</div>
+                        <div class="card-desc">Professional personality development and soft skills certification. Validates training in leadership, communication dynamics, and collaborative teamwork.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Verified</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #10 JERIN J Core -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#10</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/JERIN_J_Certificate.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card starred fade-in"
+                         data-type="pdf" data-src="certificates/JERIN_J_Certificate.pdf"
+                         data-title="JERIN J Core Certificate" data-issuer="Core" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🏅</div>
+                            <span class="card-tag">Core</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">JERIN J Core Certificate</p>
-                                <p class="cv2-desc">Professional standard certification recognising academic and technical competence.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">Core</span>
-                                <a href="certificates/JERIN_J_Certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">JERIN J Core Certificate</div>
+                        <div class="card-desc">Standard professional certificate verifying core engineering competencies and institutional excellence at B.Tech academic standards.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Core</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
@@ -528,77 +694,69 @@
             <!-- ERA 3: Foundational / HackerRank -->
             <div class="cert-era-block">
                 <div class="cert-era-heading"><h3>📜 Foundational Credentials</h3></div>
-                <div class="cert-grid-2">
+                <div class="cert-card-grid">
 
                     <!-- #11 SQL Advanced -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#11</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/sql_advanced certificate.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card starred fade-in"
+                         data-type="pdf" data-src="certificates/sql_advanced certificate.pdf"
+                         data-title="SQL (Advanced)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🛢️</div>
+                            <span class="card-tag">HackerRank</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">SQL (Advanced)</p>
-                                <p class="cv2-desc">HackerRank advanced-level SQL certification — complex queries, optimisation, and database management.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">HackerRank</span>
-                                <a href="certificates/sql_advanced certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">SQL (Advanced)</div>
+                        <div class="card-desc">HackerRank elite-tier certificate validating advanced database query construction, subqueries, CTEs, indices, and performance scaling solutions.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #12 SQL Intermediate -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#12</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/sql_intermediate certificate.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card starred fade-in"
+                         data-type="pdf" data-src="certificates/sql_intermediate certificate.pdf"
+                         data-title="SQL (Intermediate)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🛢️</div>
+                            <span class="card-tag">HackerRank</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">SQL (Intermediate)</p>
-                                <p class="cv2-desc">HackerRank intermediate SQL certification — joins, subqueries, and database proficiency.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">HackerRank</span>
-                                <a href="certificates/sql_intermediate certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">SQL (Intermediate)</div>
+                        <div class="card-desc">HackerRank intermediate certificate proving mastery in medium-complexity queries, multi-table joins, subqueries, and structured database grouping.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #13 C# Basic -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#13</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/c_sharp_basic certificate.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card starred fade-in"
+                         data-type="pdf" data-src="certificates/c_sharp_basic certificate.pdf"
+                         data-title="C# (Basic)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">💻</div>
+                            <span class="card-tag">HackerRank</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">C# (Basic)</p>
-                                <p class="cv2-desc">HackerRank certification for C# programming fundamentals, logic, and object-oriented concepts.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">HackerRank</span>
-                                <a href="certificates/c_sharp_basic certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">C# (Basic)</div>
+                        <div class="card-desc">HackerRank certification testing fundamental C# programming logic, OOP (Object-Oriented Programming) concepts, variables, and script execution.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
                     <!-- #14 SQL Basic (Oldest) -->
-                    <div class="cert-card-v2 starred fade-in" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                        <span class="cert-num-badge">#14 Earliest</span>
-                        <div class="cv2-pdf-wrap">
-                            <iframe src="certificates/sql_basic certificate.pdf" class="cv2-iframe"></iframe>
+                    <div class="cert-info-card starred fade-in"
+                         data-type="pdf" data-src="certificates/sql_basic certificate.pdf"
+                         data-title="SQL (Basic)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🛢️</div>
+                            <span class="card-tag">HackerRank</span>
                         </div>
-                        <div class="cv2-body">
-                            <div>
-                                <p class="cv2-title">SQL (Basic)</p>
-                                <p class="cv2-desc">HackerRank foundational SQL certification — database querying, filtering and basic operations.</p>
-                            </div>
-                            <div class="cv2-footer">
-                                <span class="cv2-issuer">HackerRank</span>
-                                <a href="certificates/sql_basic certificate.pdf" target="_blank" class="cv2-link">Full PDF</a>
-                            </div>
+                        <div class="card-title">SQL (Basic)</div>
+                        <div class="card-desc">HackerRank entry certification in core SQL syntax. Validates capabilities in querying tables, simple filtering, joins, and basic database commands.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ↗</span>
                         </div>
                     </div>
 
@@ -606,7 +764,7 @@
             </div>
 
             <!-- Back -->
-            <div class="cert-back">
+            <div class="cert-back fade-in">
                 <a href="index.html" class="cta-button">← Back to Portfolio</a>
             </div>
 
@@ -616,6 +774,28 @@
     <footer>
         <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
+
+    <!-- MODAL FRAME -->
+    <div id="cert-modal" role="dialog" aria-modal="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-frame">
+            <div class="mc tl"></div><div class="mc tr"></div>
+            <div class="mc bl"></div><div class="mc br"></div>
+            <div class="modal-header">
+                <div class="modal-meta">
+                    <span class="modal-badge" id="modal-badge">Survey Corps — Credential</span>
+                    <span class="modal-cert-title" id="modal-cert-title">Certificate</span>
+                </div>
+                <div class="modal-actions">
+                    <a href="#" id="modal-open-link" target="_blank" class="modal-open-btn">Open File ↗</a>
+                    <button class="modal-close-btn" id="modal-close">✕</button>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content injected via JavaScript dynamically -->
+            </div>
+        </div>
+    </div>
 
     <button id="theme-changer" class="theme-changer-btn" title="Switch Theme" aria-label="Toggle Theme">🚀</button>
     <div class="impact-flash" id="flash-overlay"></div>
@@ -641,5 +821,62 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('cert-modal');
+        const modalBody = document.getElementById('modal-body');
+        const modalTitle = document.getElementById('modal-cert-title');
+        const modalBadge = document.getElementById('modal-badge');
+        const modalLink = document.getElementById('modal-open-link');
+
+        function openCert(src, type, title, issuer) {
+            modalTitle.textContent = title;
+            modalBadge.textContent = issuer + ' — Credential';
+            modalLink.href = src;
+            modalBody.innerHTML = '';
+            
+            const element = document.createElement(type === 'img' ? 'img' : 'iframe');
+            element.src = src;
+            if (type !== 'img') {
+                element.title = title;
+            } else {
+                element.alt = title;
+            }
+            modalBody.appendChild(element);
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCert() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => { modalBody.innerHTML = ''; }, 400);
+        }
+
+        document.querySelectorAll('.cert-info-card').forEach(card => {
+            card.addEventListener('click', () => {
+                openCert(
+                    card.dataset.src,
+                    card.dataset.type,
+                    card.dataset.title,
+                    card.dataset.issuer
+                );
+            });
+            card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
+        document.getElementById('modal-close').addEventListener('click', closeCert);
+        document.getElementById('modal-backdrop').addEventListener('click', closeCert);
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                closeCert();
+            }
+        });
+    </script>
 </body>
 </html>

@@ -3,233 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credentials | Captain JERIN J — Survey Corps</title>
-    <meta name="description" content="Official credentials and battle honours of Captain Jerin J — 2nd Year B.Tech AI &amp; Data Science, SVHEC.">
+    <title>Credentials | Captain JERIN J</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* ── Alterego Certificates Overrides ── */
+        .cert-page-wrap { max-width:1400px; margin:0 auto; width:100%; }
+
         .cert-student-note {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1.4rem;
-            background: rgba(255, 77, 0, 0.1);
-            border: 1px solid rgba(255, 77, 0, 0.4);
-            border-radius: 4px;
-            font-size: 0.95rem;
-            color: var(--accent-1);
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            display:inline-block; margin-top:1rem; padding:.5rem 1.4rem;
+            background:rgba(255,77,0,.1); border:1px solid rgba(255,77,0,.4);
+            border-radius:4px; font-size:.95rem; color:var(--accent-1);
+            font-weight:700; letter-spacing:1px; text-transform:uppercase;
         }
 
-        .cert-timeline-wrapper {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto 4rem auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .cert-section-label {
+            font-family:'Cinzel',serif; font-size:.7rem; font-weight:900;
+            color:var(--accent-1); text-transform:uppercase; letter-spacing:4px;
+            margin:2.5rem 0 1.2rem; display:flex; align-items:center; gap:1rem; width:100%;
+        }
+        .cert-section-label::before,.cert-section-label::after {
+            content:''; flex:1; height:1px; background:rgba(255,77,0,.2);
         }
 
-        .cert-timeline-line {
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), var(--accent-1), transparent);
-            margin: 0 auto;
-            opacity: 0.6;
+        /* ── CARD GRID ── */
+        .cert-card-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+            gap:1.5rem; width:100%;
         }
 
-        .cert-timeline-label {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            font-weight: 900;
-            color: var(--accent-1);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            padding-left: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .cert-info-card {
+            background:rgba(15,15,15,.95);
+            border:1px solid rgba(255,77,0,.2);
+            border-radius:8px;
+            padding:1.4rem 1.5rem 1.3rem;
+            cursor:pointer;
+            position:relative;
+            overflow:hidden;
+            transition:all .35s cubic-bezier(.23,1,.32,1);
+            display:flex; flex-direction:column; gap:.55rem;
         }
 
-        .cert-timeline-label.end-label {
-            justify-content: flex-end;
-            padding-right: 2rem;
-            padding-left: 0;
+        /* top accent bar */
+        .cert-info-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background:linear-gradient(90deg,transparent,var(--accent-1),transparent);
+            opacity:0; transition:opacity .3s;
+        }
+        .cert-info-card:hover::before { opacity:1; }
+
+        /* glow hover bg */
+        .cert-info-card::after {
+            content:''; position:absolute; inset:0;
+            background:radial-gradient(circle at 70% 20%,rgba(255,77,0,.07),transparent 65%);
+            opacity:0; transition:opacity .4s; pointer-events:none;
+        }
+        .cert-info-card:hover::after { opacity:1; }
+
+        .cert-info-card:hover {
+            transform:translateY(-7px) scale(1.02);
+            border-color:var(--accent-1);
+            box-shadow:0 14px 38px rgba(0,0,0,.6),0 0 22px rgba(255,77,0,.22);
         }
 
-        .cert-timeline-label::before,
-        .cert-timeline-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 77, 0, 0.2);
+        .cert-info-card.highlight { border-color:rgba(255,77,0,.38); box-shadow:0 4px 20px rgba(255,77,0,.1); }
+
+        .card-top { display:flex; align-items:center; justify-content:space-between; }
+
+        .card-icon {
+            width:42px; height:42px; border-radius:6px;
+            background:rgba(255,77,0,.1); border:1px solid rgba(255,77,0,.25);
+            display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0;
         }
 
-        .cert-row {
-            display: flex;
-            flex-direction: row;
-            gap: 2rem;
-            overflow-x: auto;
-            padding: 1rem 0.5rem 1.5rem;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-1) transparent;
+        .card-tag {
+            font-size:.6rem; font-weight:900; letter-spacing:2px;
+            color:var(--accent-1); text-transform:uppercase; font-family:'Cinzel',serif;
+            background:rgba(255,77,0,.08); padding:.25rem .6rem; border-radius:3px;
+            border:1px solid rgba(255,77,0,.2);
         }
 
-        .cert-row::-webkit-scrollbar { height: 4px; }
-        .cert-row::-webkit-scrollbar-track { background: transparent; }
-        .cert-row::-webkit-scrollbar-thumb {
-            background: var(--accent-1);
-            border-radius: 4px;
+        .card-title {
+            font-family:'Cinzel',serif; font-size:.95rem; font-weight:700;
+            color:var(--text-main); text-transform:uppercase; letter-spacing:.5px; line-height:1.35;
         }
 
-        .cert-row.rtl {
-            flex-direction: row-reverse;
-            justify-content: flex-start;
+        .card-desc {
+            font-size:.82rem; color:var(--text-muted); line-height:1.55;
+            flex:1;
         }
 
-        .cert-row .cert-card {
-            flex: 0 0 320px;
-            max-width: 320px;
+        .card-footer {
+            display:flex; align-items:center; justify-content:space-between;
+            margin-top:.4rem; padding-top:.8rem;
+            border-top:1px solid rgba(255,255,255,.05);
         }
 
-        .cert-row-divider {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 0 1rem;
+        .card-issuer {
+            font-size:.7rem; font-weight:700; color:var(--accent-1);
+            text-transform:uppercase; letter-spacing:1px;
         }
 
-        .cert-row-divider span {
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            white-space: nowrap;
+        .card-cta {
+            font-size:.65rem; font-weight:800; color:rgba(255,77,0,.6);
+            text-transform:uppercase; letter-spacing:1.5px;
+            transition:color .2s;
+        }
+        .cert-info-card:hover .card-cta { color:var(--accent-1); }
+
+        /* ── MODAL ── */
+        #cert-modal {
+            position:fixed; inset:0; z-index:99999;
+            display:flex; align-items:center; justify-content:center;
+            opacity:0; pointer-events:none; transition:opacity .4s ease;
+        }
+        #cert-modal.open { opacity:1; pointer-events:all; }
+
+        .modal-backdrop {
+            position:absolute; inset:0;
+            background:rgba(3,3,3,.93);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
         }
 
-        .cert-row-divider::before,
-        .cert-row-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255,255,255,0.05);
+        .modal-frame {
+            position:relative; z-index:2;
+            width:min(93vw,1060px); max-height:92vh;
+            background:rgba(10,10,10,.98);
+            border:1px solid var(--accent-1);
+            border-radius:8px; overflow:hidden;
+            display:flex; flex-direction:column;
+            box-shadow:0 0 0 1px rgba(255,77,0,.15),0 32px 90px rgba(0,0,0,.85),0 0 70px rgba(255,77,0,.13);
+            transform:translateY(28px) scale(.96);
+            transition:transform .4s cubic-bezier(.23,1,.32,1);
+        }
+        #cert-modal.open .modal-frame { transform:translateY(0) scale(1); }
+
+        /* top glow */
+        .modal-frame::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:2px;
+            background:linear-gradient(90deg,transparent,var(--accent-1),#ff8c00,var(--accent-1),transparent);
+            z-index:5;
         }
 
-        /* Cert cards for alterego */
-        .cert-card {
-            background: var(--card-bg);
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 77, 0, 0.2);
-            transition: all 0.4s ease;
-            text-align: left;
-            position: relative;
+        /* scanlines */
+        .modal-frame::after {
+            content:''; position:absolute; inset:0; pointer-events:none; z-index:4;
+            background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);
+            opacity:.5;
         }
 
-        .cert-card:hover {
-            transform: translateY(-10px) rotate(-1deg);
-            border-color: var(--accent-1);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(255,77,0,0.3);
+        /* corner brackets */
+        .mc { position:absolute; width:16px; height:16px; border-color:var(--accent-1); border-style:solid; opacity:.55; z-index:6; }
+        .mc.tl { top:6px; left:6px; border-width:2px 0 0 2px; }
+        .mc.tr { top:6px; right:6px; border-width:2px 2px 0 0; }
+        .mc.bl { bottom:6px; left:6px; border-width:0 0 2px 2px; }
+        .mc.br { bottom:6px; right:6px; border-width:0 2px 2px 0; }
+
+        .modal-header {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:1rem 1.5rem;
+            border-bottom:1px solid rgba(255,77,0,.18);
+            background:rgba(255,77,0,.04); flex-shrink:0;
         }
 
-        .cert-card.highlight {
-            border-color: rgba(255, 77, 0, 0.4);
-            box-shadow: 0 5px 20px rgba(255, 77, 0, 0.1);
+        .modal-meta { display:flex; flex-direction:column; gap:.15rem; }
+
+        .modal-badge {
+            font-family:'Cinzel',serif; font-size:.58rem; font-weight:900;
+            letter-spacing:3px; color:var(--accent-1); text-transform:uppercase; opacity:.75;
         }
 
-        .cert-img-container {
-            height: 180px;
-            width: 100%;
-            background: rgba(255,255,255,0.02);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        .modal-cert-title {
+            font-family:'Cinzel',serif; font-size:1.05rem; font-weight:700;
+            color:var(--text-main); text-transform:uppercase; letter-spacing:.8px;
         }
 
-        .cert-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(0.2) contrast(1.1);
-            transition: transform 0.5s ease;
+        .modal-actions { display:flex; gap:.7rem; align-items:center; }
+
+        .modal-open-btn {
+            text-decoration:none; font-size:.72rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:1.5px;
+            color:var(--accent-1); padding:.35rem .9rem;
+            border:1px solid rgba(255,77,0,.4); border-radius:3px;
+            transition:all .25s; font-family:'Outfit',sans-serif; cursor:pointer;
+            background:transparent;
         }
+        .modal-open-btn:hover { background:var(--accent-1); color:#000; box-shadow:0 0 14px rgba(255,77,0,.5); }
 
-        .cert-card:hover .cert-img { transform: scale(1.05); }
-
-        .cert-embed-container {
-            width: 100%;
-            height: 280px;
-            background: rgba(255,255,255,0.03);
-            overflow: hidden;
+        .modal-close-btn {
+            width:32px; height:32px; border-radius:50%;
+            background:rgba(255,77,0,.1); border:1px solid rgba(255,77,0,.3);
+            color:var(--accent-1); font-size:1rem; cursor:pointer;
+            display:flex; align-items:center; justify-content:center; transition:all .25s;
         }
+        .modal-close-btn:hover { background:var(--accent-1); color:#000; transform:rotate(90deg); }
 
-        .cert-iframe { width: 100%; height: 100%; border: none; }
-
-        .cert-info { padding: 1.2rem; }
-
-        .cert-info h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .modal-body {
+            flex:1; overflow:auto; min-height:300px;
+            display:flex; align-items:center; justify-content:center;
+            background:#040404;
         }
+        .modal-body img { max-width:100%; max-height:calc(92vh - 96px); object-fit:contain; display:block; }
+        .modal-body iframe { width:100%; height:calc(92vh - 96px); border:none; }
 
-        .cert-info p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
+        .section-header { text-align:center; margin-bottom:2rem; }
+        .back-home { text-align:center; margin-top:3rem; }
 
-        .cert-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cert-issuer {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-1);
-            background: rgba(255, 77, 0, 0.1);
-            padding: 0.25rem 0.7rem;
-            border-radius: 2px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .view-link {
-            color: var(--accent-1);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .view-link:hover { color: #fff; text-decoration: underline; }
-
-        .back-home { text-align: center; margin-top: 3rem; }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .certificates-page {
-            max-width: 1600px;
-            margin: 0 auto;
+        @media(max-width:600px) {
+            .cert-card-grid { grid-template-columns:1fr; }
+            .modal-frame { width:98vw; }
         }
     </style>
 </head>
@@ -254,226 +236,245 @@
     </nav>
 
     <main>
-        <section id="certificates" class="certificates-page">
-            <div class="section-header">
-                <h1>Credentials of the <span>Walls</span></h1>
-                <p class="subtitle">Official battle honours and certifications of Captain Jerin J.</p>
-                <p class="cert-student-note">⚔️ B.Tech (AI &amp; Data Science) — 2nd Year | SVHEC, Erode</p>
-            </div>
+        <section id="certificates">
+            <div class="cert-page-wrap">
+                <div class="section-header fade-in">
+                    <h1>Credentials of the <span>Walls</span></h1>
+                    <p class="subtitle">Official battle honours and certifications of Captain Jerin J.</p>
+                    <p class="cert-student-note">⚔️ B.Tech (AI &amp; Data Science) — 2nd Year | SVHEC, Erode</p>
+                </div>
 
-            <div class="cert-timeline-wrapper">
+                <!-- ROW 1 -->
+                <div class="cert-section-label fade-in">Latest Intel</div>
+                <div class="cert-card-grid">
 
-                <div class="cert-timeline-line"></div>
-                <div class="cert-timeline-label">Latest Intel</div>
-
-                <!-- ═══ ROW 1 Newest → Oldest (RTL) ═══ -->
-                <div class="cert-row rtl">
-
-                    <!-- Navitech -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-img-container"><img src="certificate/navitech.jpeg" alt="Navitech" class="cert-img"></div>
-                        <div class="cert-info">
-                            <h3>Navitech Workshop</h3>
-                            <p>Advanced technical workshop in emerging technologies — frontline skills training.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Navitech</span>
-                                <a href="certificate/navitech.jpeg" target="_blank" class="view-link">Inspect</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="img" data-src="certificate/navitech.jpeg"
+                         data-title="Navitech Workshop" data-issuer="Navitech" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🏭</div>
+                            <span class="card-tag">Workshop</span>
+                        </div>
+                        <div class="card-title">Navitech Workshop</div>
+                        <div class="card-desc">Advanced technical workshop covering emerging technologies and industry-grade tools. Frontline skills training in real-world engineering practices and applied AI solutions.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Navitech</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- SNS College -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-img-container"><img src="certificate/sns.jpeg" alt="SNS College Certificate" class="cert-img"></div>
-                        <div class="cert-info">
-                            <h3>SNS College Certificate</h3>
-                            <p>Academic recognition from SNS College for technical excellence.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">SNS</span>
-                                <a href="certificate/sns.jpeg" target="_blank" class="view-link">Inspect</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificate/sns.jpeg"
+                         data-title="SNS College Certificate" data-issuer="SNS College" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🏛️</div>
+                            <span class="card-tag">Academic</span>
+                        </div>
+                        <div class="card-title">SNS College Certificate</div>
+                        <div class="card-desc">Academic recognition from SNS College for demonstrated technical excellence and outstanding performance in inter-collegiate technical activities and symposiums.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">SNS College</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- Sasurie -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-img-container"><img src="certificate/sasurie.jpeg" alt="Sasurie Certificate" class="cert-img"></div>
-                        <div class="cert-info">
-                            <h3>Sasurie Certificate</h3>
-                            <p>Sasurie College recognition for academic and technical achievement.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Sasurie</span>
-                                <a href="certificate/sasurie.jpeg" target="_blank" class="view-link">Inspect</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificate/sasurie.jpeg"
+                         data-title="Sasurie Certificate" data-issuer="Sasurie College" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🎖️</div>
+                            <span class="card-tag">Recognition</span>
+                        </div>
+                        <div class="card-title">Sasurie Certificate</div>
+                        <div class="card-desc">Sasurie College certificate awarded for academic and technical achievement. Recognises participation and distinction in technical events and innovation-based challenges.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Sasurie College</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- Dec 29 -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/Jerin. J - 2025-12-29.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>Technical Certification</h3>
-                            <p>End-of-year AI &amp; DS technical certification — Dec 2025 dispatch.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Dec 2025</span>
-                                <a href="certificate/Jerin. J - 2025-12-29.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="pdf" data-src="certificate/Jerin. J - 2025-12-29.pdf"
+                         data-title="Technical Certification — Dec 29" data-issuer="Dec 2025" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">📄</div>
+                            <span class="card-tag">Certification</span>
+                        </div>
+                        <div class="card-title">Technical Certification</div>
+                        <div class="card-desc">End-of-year AI &amp; Data Science technical certification — December 2025. Validates mastery of advanced AI modules and data engineering concepts completed in the final quarter.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Dec 2025</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- Dec 26 -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/Jerin . - 2025-12-26.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>Technical Assessment</h3>
-                            <p>Certification of completion for technical module assessments.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Dec 2025</span>
-                                <a href="certificate/Jerin . - 2025-12-26.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="pdf" data-src="certificate/Jerin . - 2025-12-26.pdf"
+                         data-title="Technical Assessment — Dec 26" data-issuer="Dec 2025" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">📋</div>
+                            <span class="card-tag">Assessment</span>
+                        </div>
+                        <div class="card-title">Technical Assessment</div>
+                        <div class="card-desc">Certification of successful completion for technical module assessments conducted in December 2025. Demonstrates proficiency across core AI &amp; DS coursework domains.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Dec 2025</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- Dec 25 -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/Jerin . - 2025-12-25 (1).pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>Achievement — Dec 25</h3>
-                            <p>Special recognition for technical contribution and field excellence.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Dec 2025</span>
-                                <a href="certificate/Jerin . - 2025-12-25 (1).pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="pdf" data-src="certificate/Jerin . - 2025-12-25 (1).pdf"
+                         data-title="Achievement — Dec 25" data-issuer="Dec 2025" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">⭐</div>
+                            <span class="card-tag">Achievement</span>
+                        </div>
+                        <div class="card-title">Achievement — Dec 25</div>
+                        <div class="card-desc">Special recognition certificate for technical contribution and field excellence awarded on December 25, 2025. Marks exceptional dedication to applied problem-solving.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Dec 2025</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                </div><!-- /ROW 1 -->
+                </div>
 
-                <div class="cert-row-divider"><span>Earlier Campaigns</span></div>
+                <!-- ROW 2 -->
+                <div class="cert-section-label fade-in">Earlier Campaigns</div>
+                <div class="cert-card-grid">
 
-                <!-- ═══ ROW 2 ═══ -->
-                <div class="cert-row rtl">
-
-                    <!-- UI/UX Workshop -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-img-container"><img src="certificate/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" alt="UI/UX Workshop" class="cert-img"></div>
-                        <div class="cert-info">
-                            <h3>UI/UX Design Workshop</h3>
-                            <p>EPIX Workshop certification for excellence in UI/UX battlefield design.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">EPIX</span>
-                                <a href="certificate/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg" target="_blank" class="view-link">Inspect</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificate/EPIX WORKSHOP Certificate-UIUX-JERIN-01.jpg.jpeg"
+                         data-title="UI/UX Design Workshop" data-issuer="EPIX" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🎨</div>
+                            <span class="card-tag">Design</span>
+                        </div>
+                        <div class="card-title">UI/UX Design Workshop</div>
+                        <div class="card-desc">EPIX Workshop certification for excellence in UI/UX design principles. Covered user research, wireframing, prototyping, and modern interface design methodologies for web and mobile platforms.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">EPIX</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- Internship -->
-                    <div class="cert-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-img-container"><img src="certificate/intern.jpeg.jpeg" alt="Internship" class="cert-img"></div>
-                        <div class="cert-info">
-                            <h3>Internship Completion</h3>
-                            <p>Successful completion of field operation training (professional internship).</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Field Op</span>
-                                <a href="certificate/intern.jpeg.jpeg" target="_blank" class="view-link">Inspect</a>
-                            </div>
+                    <div class="cert-info-card fade-in"
+                         data-type="img" data-src="certificate/intern.jpeg.jpeg"
+                         data-title="Internship Completion" data-issuer="Field Operations" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🔧</div>
+                            <span class="card-tag">Internship</span>
+                        </div>
+                        <div class="card-title">Internship Completion</div>
+                        <div class="card-desc">Successful completion of a professional field operation internship. Gained hands-on experience in real-world technical environments, developing industry-ready engineering and analytical skills.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Field Ops</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- Soft Skills -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/Enhancing Soft Skills and Personality.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>Soft Skills &amp; Personality</h3>
-                            <p>Combat communication mastery — professional development certification.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Verified</span>
-                                <a href="certificate/Enhancing Soft Skills and Personality.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="pdf" data-src="certificate/Enhancing Soft Skills and Personality.pdf"
+                         data-title="Soft Skills & Personality" data-issuer="Verified" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🗣️</div>
+                            <span class="card-tag">Development</span>
+                        </div>
+                        <div class="card-title">Soft Skills &amp; Personality</div>
+                        <div class="card-desc">Professional development certification for enhancing communication, leadership, and personality traits. Covers conflict resolution, team dynamics, and professional conduct in technical environments.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Verified</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- JERIN J Certificate -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/JERIN_J_Certificate.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>JERIN J Core Certificate</h3>
-                            <p>Core command certification — professional standard for academic excellence.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">Command</span>
-                                <a href="certificate/JERIN_J_Certificate.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="pdf" data-src="certificate/JERIN_J_Certificate.pdf"
+                         data-title="JERIN J Core Certificate" data-issuer="Command" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🏅</div>
+                            <span class="card-tag">Core</span>
+                        </div>
+                        <div class="card-title">JERIN J Core Certificate</div>
+                        <div class="card-desc">Core command-level certification representing the professional standard of academic excellence. A foundational credential validating comprehensive technical competency and institutional recognition.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">Command</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                </div><!-- /ROW 2 -->
+                </div>
 
-                <div class="cert-row-divider"><span>Foundational Training</span></div>
+                <!-- ROW 3 -->
+                <div class="cert-section-label fade-in">Foundational Training</div>
+                <div class="cert-card-grid">
 
-                <!-- ═══ ROW 3 Oldest ═══ -->
-                <div class="cert-row rtl">
-
-                    <!-- SQL Advanced -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/sql_advanced certificate.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>SQL (Advanced)</h3>
-                            <p>HackerRank elite-tier SQL certification — advanced query mastery.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">HackerRank</span>
-                                <a href="certificate/sql_advanced certificate.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="pdf" data-src="certificate/sql_advanced certificate.pdf"
+                         data-title="SQL (Advanced)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🛢️</div>
+                            <span class="card-tag">HackerRank</span>
+                        </div>
+                        <div class="card-title">SQL (Advanced)</div>
+                        <div class="card-desc">HackerRank elite-tier SQL certification covering advanced query techniques — window functions, CTEs, complex joins, query optimisation, and performance-tuned database operations.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- SQL Intermediate -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/sql_intermediate certificate.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>SQL (Intermediate)</h3>
-                            <p>HackerRank mid-tier SQL certification — complex query proficiency.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">HackerRank</span>
-                                <a href="certificate/sql_intermediate certificate.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="pdf" data-src="certificate/sql_intermediate certificate.pdf"
+                         data-title="SQL (Intermediate)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🛢️</div>
+                            <span class="card-tag">HackerRank</span>
+                        </div>
+                        <div class="card-title">SQL (Intermediate)</div>
+                        <div class="card-desc">HackerRank mid-tier SQL certification demonstrating proficiency in complex query design — aggregations, subqueries, multi-table joins, and intermediate-level data manipulation tasks.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- C# Basic -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/c_sharp_basic certificate.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>C# (Basic)</h3>
-                            <p>HackerRank certification for C# programming fundamentals and logic.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">HackerRank</span>
-                                <a href="certificate/c_sharp_basic certificate.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="pdf" data-src="certificate/c_sharp_basic certificate.pdf"
+                         data-title="C# (Basic)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">💻</div>
+                            <span class="card-tag">HackerRank</span>
+                        </div>
+                        <div class="card-title">C# (Basic)</div>
+                        <div class="card-desc">HackerRank certification validating foundational C# programming skills — object-oriented principles, data types, control flow, and core .NET programming logic constructs.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                    <!-- SQL Basic -->
-                    <div class="cert-card highlight fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="cert-embed-container"><iframe src="certificate/sql_basic certificate.pdf" class="cert-iframe"></iframe></div>
-                        <div class="cert-info">
-                            <h3>SQL (Basic)</h3>
-                            <p>HackerRank certification for SQL proficiency and database management.</p>
-                            <div class="cert-footer">
-                                <span class="cert-issuer">HackerRank</span>
-                                <a href="certificate/sql_basic certificate.pdf" target="_blank" class="view-link">View File</a>
-                            </div>
+                    <div class="cert-info-card highlight fade-in"
+                         data-type="pdf" data-src="certificate/sql_basic certificate.pdf"
+                         data-title="SQL (Basic)" data-issuer="HackerRank" tabindex="0" role="button">
+                        <div class="card-top">
+                            <div class="card-icon">🛢️</div>
+                            <span class="card-tag">HackerRank</span>
+                        </div>
+                        <div class="card-title">SQL (Basic)</div>
+                        <div class="card-desc">HackerRank entry-level SQL certification for database proficiency — SELECT statements, filtering, sorting, and basic CRUD operations for structured data management.</div>
+                        <div class="card-footer">
+                            <span class="card-issuer">HackerRank</span>
+                            <span class="card-cta">Click to View ▶</span>
                         </div>
                     </div>
 
-                </div><!-- /ROW 3 -->
+                </div>
 
-                <div class="cert-timeline-label end-label">Historical Records</div>
-                <div class="cert-timeline-line"></div>
-
-            </div><!-- /cert-timeline-wrapper -->
-
-            <div class="back-home">
-                <a href="index.html" class="cta-button">Return to Base</a>
+                <div class="back-home fade-in">
+                    <a href="index.html" class="cta-button">Return to Base</a>
+                </div>
             </div>
         </section>
     </main>
@@ -482,10 +483,66 @@
         <p>&copy; 2026 Captain JERIN J. Shinzou wo Sasageyo!</p>
     </footer>
 
+    <!-- MODAL -->
+    <div id="cert-modal" role="dialog" aria-modal="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-frame">
+            <div class="mc tl"></div><div class="mc tr"></div>
+            <div class="mc bl"></div><div class="mc br"></div>
+            <div class="modal-header">
+                <div class="modal-meta">
+                    <span class="modal-badge" id="modal-badge">⚔ Survey Corps — Credential</span>
+                    <span class="modal-cert-title" id="modal-cert-title">Certificate</span>
+                </div>
+                <div class="modal-actions">
+                    <a href="#" id="modal-open-link" target="_blank" class="modal-open-btn">Open File ↗</a>
+                    <button class="modal-close-btn" id="modal-close">✕</button>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
     <button id="revert-theme" class="theme-changer-btn" title="Return to Normalcy">🕊️</button>
     <div class="impact-flash" id="flash-overlay-2"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        const modal     = document.getElementById('cert-modal');
+        const modalBody = document.getElementById('modal-body');
+        const modalTitle= document.getElementById('modal-cert-title');
+        const modalBadge= document.getElementById('modal-badge');
+        const modalLink = document.getElementById('modal-open-link');
+
+        function openCert(src, type, title, issuer) {
+            modalTitle.textContent = title;
+            modalBadge.textContent = '⚔ ' + issuer + ' — Credential';
+            modalLink.href = src;
+            modalBody.innerHTML = '';
+            const el = document.createElement(type === 'img' ? 'img' : 'iframe');
+            el.src = src;
+            if (type !== 'img') el.title = title;
+            else el.alt = title;
+            modalBody.appendChild(el);
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCert() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => { modalBody.innerHTML = ''; }, 420);
+        }
+
+        document.querySelectorAll('.cert-info-card').forEach(c => {
+            c.addEventListener('click', () => openCert(c.dataset.src, c.dataset.type, c.dataset.title, c.dataset.issuer));
+            c.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); c.click(); } });
+        });
+
+        document.getElementById('modal-close').addEventListener('click', closeCert);
+        document.getElementById('modal-backdrop').addEventListener('click', closeCert);
+        document.addEventListener('keydown', e => { if (e.key==='Escape' && modal.classList.contains('open')) closeCert(); });
+    </script>
 </body>
 </html>
