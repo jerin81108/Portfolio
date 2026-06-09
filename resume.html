@@ -3,23 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume | JERIN J - AI Architect</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Jerin J - Executive Brief</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3b82f6;
-            --secondary: #1e40af;
-            --text-main: #1f2937;
-            --text-muted: #4b5563;
-            --border: #e5e7eb;
-            --bg-light: #f9fafb;
-        }
-
-        @media print {
-            .no-print { display: none; }
-            body { background: white; padding: 0; }
-            .content { border: none !important; box-shadow: none !important; margin: 0 !important; width: 100% !important; }
+            --primary-dark: #0f172a;
+            --primary: #1e3a8a;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --bg: #f8fafc;
         }
 
         * {
@@ -29,450 +22,313 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-light);
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0;
             color: var(--text-main);
-            padding: 40px 20px;
-            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
         }
 
-        .content {
-            background: white;
+        @media print {
+            .no-print { display: none !important; }
+            body { 
+                background-color: white; 
+                padding: 0; 
+                display: block;
+            }
+            .resume-container { 
+                box-shadow: none; 
+                max-width: 100%;
+                border: none;
+            }
+            .column {
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            .col-left {
+                border-bottom: 2px solid var(--border);
+            }
+            @page {
+                margin: 0.5cm;
+            }
+        }
+
+        .resume-container {
+            background-color: #ffffff;
             max-width: 850px;
-            margin: 0 auto;
-            padding: 50px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        header {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 25px;
-            margin-bottom: 30px;
-            text-align: center;
+        @media (max-width: 900px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+            }
         }
 
-        h1 {
+        .column {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* Top Section Specific */
+        .col-left {
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
             font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
         }
 
         .contact-info {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            color: var(--text-muted);
+            flex-direction: column;
+            gap: 0.5rem;
             font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
         }
 
         .contact-info a {
             color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
         }
 
-        section {
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            color: var(--secondary);
+        section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .summary p {
+        p {
+            line-height: 1.6;
             font-size: 1rem;
-            color: var(--text-muted);
         }
 
-        /* ── Recent Updates Section ── */
-        .recent-updates {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border-left: 4px solid var(--primary);
-            border-radius: 0 8px 8px 0;
-            padding: 20px 25px;
-            margin-bottom: 30px;
-        }
-        .recent-updates h2 {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+        .competencies {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
-        .update-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
+
+        .competency-tag {
+            background: #ffffff;
             color: var(--text-main);
-        }
-        .update-item:last-child { margin-bottom: 0; }
-        .update-badge {
-            background: var(--primary);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-            white-space: nowrap;
-            margin-top: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .update-badge.new { background: #10b981; }
-        .update-badge.award { background: #f59e0b; }
-        .update-badge.cert { background: #8b5cf6; }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .skill-group strong {
-            color: var(--text-main);
-            display: block;
-            margin-bottom: 5px;
+        /* Right Column Specific */
+        .project-item {
+            margin-bottom: 1.5rem;
         }
 
-        .skill-list {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .experience-item, .project-item {
-            margin-bottom: 20px;
-        }
-
-        .item-header {
+        .project-header {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            color: var(--primary-dark);
         }
 
-        .item-sub {
+        .project-tech {
+            font-size: 0.85rem;
             color: var(--primary);
-            font-style: italic;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        ul {
-            list-style-type: square;
-            margin-left: 20px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .education-item {
-            margin-bottom: 15px;
-        }
-
-        .footer-action {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: background 0.3s;
         }
 
-        .btn:hover {
-            background: var(--secondary);
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <header>
-            <h1>JERIN J</h1>
-            <div class="contact-info">
-                <span>Phone: <a href="tel:8870654384">8870654384</a></span>
-                <span>|</span>
-                <span>Email: <a href="mailto:jerin81108@gmail.com">jerin81108@gmail.com</a></span>
-                <span>|</span>
-                <span>Location: Tamil Nadu</span>
-                <span>|</span>
-                <span>LinkedIn: <a href="https://linkedin.com/in/jerin-j-91328a366?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">linkedin.com/in/jerin-j-91328a366</a></span>
-                <span>|</span>
-                <span>GitHub: <a href="https://github.com/jerin81108" target="_blank">github.com/jerin81108</a></span>
-            </div>
-        </header>
 
-        <section class="summary">
-            <h2>Professional Summary</h2>
-            <p>Results-driven <strong>B.Tech Artificial Intelligence &amp; Data Science</strong> student (CGPA: <strong>8.63</strong>) at Shree Venkateshwara Hi-Tech Engineering College with a strong record of engineering high-impact, real-world AI solutions. Demonstrated ability to lead full-stack projects end-to-end — from architecture to deployment — including a <strong>Hackathon 2026 sustainability platform</strong>, a V2X real-time traffic collision avoidance system, and a production-grade civil engineering survey app. Skilled across the full AI/ML stack (PyTorch, TensorFlow, Scikit-Learn) and modern web ecosystems (React, Node.js, FastAPI). Committed to building technology that is not only intelligent but deeply purposeful and human-centric.</p>
-        </section>
+    <div class="resume-container">
+        <!-- Left Column: Overview & Value -->
+        <div class="column col-left">
+            <header>
+                <h1>JERIN J</h1>
+                <h2>AI Architect & Full-Stack Engineer</h2>
+                <div class="contact-info">
+                    <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jerin81108@gmail.com" target="_blank">jerin81108@gmail.com</a></span>
+                    <span>LinkedIn: <a href="https://linkedin.com/in/jerin-j-91328a366" target="_blank">linkedin.com/in/jerin-j-91328a366</a></span>
+                    <span>GitHub: <a href="https://github.com/jerin81108" target="_blank">github.com/jerin81108</a></span>
+                </div>
+            </header>
 
-        <section class="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <strong>Programming Languages:</strong>
-                    <span class="skill-list">Python, JavaScript (ES6+), C, C++, SQL, Java</span>
-                </div>
-                <div class="skill-group">
-                    <strong>AI & Data Science:</strong>
-                    <span class="skill-list">TensorFlow, Scikit-Learn, Pandas, NumPy, Data Preprocessing</span>
-                </div>
-                <div class="skill-group">
-                    <strong>Web Technologies:</strong>
-                    <span class="skill-list">React, Next.js, Node.js, HTML5, CSS3 (Glassmorphism, Tailwind)</span>
-                </div>
-                <div class="skill-group">
-                    <strong>Tools & Platforms:</strong>
-                    <span class="skill-list">Git, VS Code, Jupyter Notebook, Firebase, Oracle OCI Foundations, Antigravity AI, Claude (Anthropic), OpenClaw</span>
-                </div>
-            </div>
-        </section>
+            <section>
+                <h3>Executive Summary</h3>
+                <p>Results-driven engineer specializing in artificial intelligence and full-stack development. Proven track record of designing and deploying highly scalable systems, transitioning complex predictive models into robust, production-grade applications.</p>
+            </section>
 
-        <section class="projects">
-            <h2>Key Projects</h2>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>Civix — Civil Survey Intelligence Platform</span>
-                    <span>2026</span>
+            <section>
+                <h3>Core Competencies</h3>
+                <div class="competencies">
+                    <span class="competency-tag">Artificial Intelligence</span>
+                    <span class="competency-tag">Machine Learning</span>
+                    <span class="competency-tag">Full-Stack Development</span>
+                    <span class="competency-tag">Real-Time Data Processing</span>
+                    <span class="competency-tag">Cloud Infrastructure</span>
                 </div>
-                <p class="item-sub">Flutter | Firebase | Geolocation | Real-Time Sync | GitHub: github.com/jerin81108/civix</p>
-                <ul>
-                    <li>Architected a cross-platform survey application for civil engineering teams, automating complex spatial data collection workflows previously done manually.</li>
-                    <li>Integrated Firebase Firestore for real-time bidirectional data synchronization across field devices, reducing data-entry lag by ~90%.</li>
-                    <li>Built secure role-based authentication and admin dashboards for structured project-level data governance.</li>
-                    <li>Implemented native device GPS integration for high-precision geolocation tagging of survey points.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>GreenPulse — Sustainability Analytics Platform</span>
-                    <span>2026</span>
-                </div>
-                <p class="item-sub">React | Tailwind CSS | Data Visualization | Hackathon 2026 Submission</p>
-                <ul>
-                    <li>Designed and delivered a full sustainability intelligence dashboard as a Hackathon 2026 project, focused on making carbon footprint data actionable for end users.</li>
-                    <li>Built interactive carbon footprint mapping with real-time data-driven eco-insights using modern data visualization techniques.</li>
-                    <li>Engineered a responsive React frontend with dynamic chart components, delivering fast render times on both desktop and mobile devices.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>AuraDrive — V2X Real-Time Traffic Collision Avoidance System</span>
-                    <span>2026</span>
-                </div>
-                <p class="item-sub">Python | FastAPI | WebSocket | GPS | Real-Time AI</p>
-                <ul>
-                    <li>Built a backend-driven V2X (Vehicle-to-Everything) traffic safety system using FastAPI with WebSocket for real-time multi-vehicle state synchronization.</li>
-                    <li>Implemented predictive collision detection logic using live GPS coordinates and velocity vectors, broadcasting hazard alerts to all connected devices in &lt;100ms.</li>
-                    <li>Designed a mobile-first web frontend with live vehicle tracking, proximity radius detection, and speed visualization on a dynamic map.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>Gait Recognition Model — AI Biometric Identification</span>
-                    <span>2025</span>
-                </div>
-                <p class="item-sub">Python | PyTorch | OpenCV | Computer Vision</p>
-                <ul>
-                    <li>Developed a deep learning computer vision model capable of identifying individuals through dynamic walking pattern (gait) analysis.</li>
-                    <li>Applied OpenCV for frame-level skeleton extraction and PyTorch for classification model training, achieving reliable identification accuracy.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>Disease Prediction System — Predictive Healthcare AI</span>
-                    <span>2025</span>
-                </div>
-                <p class="item-sub">Python | Scikit-Learn | Pandas | NumPy</p>
-                <ul>
-                    <li>Engineered a multi-label disease prediction model using ensemble ML algorithms trained on patient symptom datasets.</li>
-                    <li>Applied feature engineering and cross-validation techniques to improve model reliability and reduce false-negative rates in clinical predictions.</li>
-                </ul>
-            </div>
-        </section>
+            </section>
 
-        <section class="experience">
-            <h2>Work &amp; Leadership</h2>
-            <div class="experience-item">
-                <div class="item-header">
-                    <span>Independent AI &amp; Full-Stack Developer</span>
-                    <span>2024 – Present</span>
+            <section>
+                <h3>Technical Arsenal</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <div>
+                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.3rem;">LANGUAGES</div>
+                        <div class="competencies">
+                            <span class="competency-tag" style="font-size: 0.85rem;">Python</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">JavaScript (ES6+)</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">C / C++</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">SQL</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">Java</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.3rem;">PLATFORMS & DATABASES</div>
+                        <div class="competencies">
+                            <span class="competency-tag" style="font-size: 0.85rem;">Firebase</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">Oracle OCI</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">MongoDB</span>
+                            <span class="competency-tag" style="font-size: 0.85rem;">SQLite</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.3rem;">TOOLS & ACHIEVEMENTS</div>
+                        <div class="competencies">
+                            <span class="competency-tag" style="font-size: 0.85rem;">Git / GitHub</span>
+                            <span class="competency-tag" style="font-size: 0.85rem; border-color:#eab308; background:#fffbf1; font-weight:600;">HackerRank SQL (Gold)</span>
+                            <span class="competency-tag" style="font-size: 0.85rem; border-color:#eab308; background:#fffbf1; font-weight:600;">HackerRank C# Cert</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="item-sub">Self-Directed Projects | Freelance Initiatives | Open Source</p>
-                <ul>
-                    <li>Independently architected, built, and deployed 10+ projects spanning AI/ML, full-stack web development, and mobile app engineering — all without institutional support.</li>
-                    <li>Designed premium, production-quality UI/UX systems (glassmorphism, micro-animations, responsive layouts) adopted across multiple project deployments.</li>
-                    <li>Maintained an active GitHub portfolio (github.com/jerin81108) with documented repositories, demonstrating disciplined engineering and version control practices.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <span>Hackathon Participant</span>
-                    <span>2026</span>
+            </section>
+
+            <section>
+                <h3>Value Proposition</h3>
+                <p>I provide comprehensive end-to-end engineering. Rather than isolating AI model development from product delivery, I bridge the gap by architecting scalable backend infrastructure and intuitive frontend interfaces, ensuring intelligent solutions translate into immediate business value.</p>
+            </section>
+        </div>
+
+        <!-- Right Column: Projects & Metrics -->
+        <div class="column">
+            <section style="flex-grow: 1;">
+                <h3>Selected Engineering Projects</h3>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <span class="project-title">Civix Spatial Intelligence Platform</span>
+                    </div>
+                    <div class="project-tech">Flutter | Firebase | Geolocation</div>
+                    <p class="project-desc">Architected a professional-grade civil engineering survey application featuring bidirectional real-time data synchronization and high-precision GPS spatial tagging, streamlining manual workflows.</p>
                 </div>
-                <p class="item-sub">Hackathon 2026 — GreenPulse Sustainability Platform</p>
-                <ul>
-                    <li>Competed under time-constrained conditions, designing and delivering a fully functional sustainability analytics platform within the hackathon window.</li>
-                    <li>Demonstrated rapid prototyping and technical execution skills by building a React-based data visualization dashboard from scratch in a competitive environment.</li>
-                </ul>
-            </div>
-        </section>
 
-        <section class="education">
-            <h2>Education</h2>
-            <div class="education-item">
-                <div class="item-header">
-                    <span>Shree Venkateshwara Hi-Tech Engineering College</span>
-                    <span>2024 - 2028</span>
+                <div class="project-item">
+                    <div class="project-header">
+                        <span class="project-title">AuraDrive V2X Safety System</span>
+                    </div>
+                    <div class="project-tech">Python | FastAPI | WebSockets</div>
+                    <p class="project-desc">Developed a low-latency collision avoidance infrastructure utilizing predictive algorithms. Processes live vehicle telemetry data to broadcast hazard alerts to connected nodes in under 100ms.</p>
                 </div>
-                <p class="item-sub">B.Tech - Artificial Intelligence & Data Science (Second Year)</p>
-                <p><strong>CGPA: 8.63</strong> (Till Current Semester)</p>
-            </div>
-        </section>
 
-        <section class="certifications">
-            <h2>Certifications &amp; Recognitions</h2>
-            <ul>
-                <li><strong>Oracle Cloud Infrastructure (OCI) Foundations Associate</strong> — Oracle, 2025</li>
-                <li><strong>HackerRank SQL (Gold Badge)</strong> — HackerRank</li>
-                <li><strong>HackerRank C# Certification</strong> — HackerRank</li>
-                <li><strong>UI/UX Design Workshop</strong> — EPIX Workshop Certification</li>
-                <li><strong>Navitech Workshop Certificate</strong> — Advanced Technical Training</li>
-                <li><strong>Internship Completion Certificate</strong> — Professional Industry Training</li>
-                <li><strong>Soft Skills &amp; Personality Development</strong> — Professional Certification</li>
-                <li><strong>14+ Total Professional Certifications</strong> — View full gallery at portfolio site</li>
-            </ul>
-        </section>
+                <div class="project-item">
+                    <div class="project-header">
+                        <span class="project-title">GreenPulse Analytics Dashboard</span>
+                    </div>
+                    <div class="project-tech">React | Modern CSS | Data Visualization</div>
+                    <p class="project-desc">Delivered an interactive sustainability dashboard under strict hackathon constraints, transforming raw carbon footprint data into actionable visual insights for end-users.</p>
+                </div>
+            </section>
 
-        <!-- ── RECENT UPDATES & ACHIEVEMENTS ── -->
-        <section class="recent-updates">
-            <h2>🚀 Recent Updates &amp; Achievements</h2>
-            <div class="update-item">
-                <span class="update-badge new">NEW</span>
-                <span><strong>AuraDrive V2X System</strong> — Developed a production-grade real-time vehicle collision avoidance backend using FastAPI + WebSocket, processing live GPS streams from multiple connected devices simultaneously. <em>(May 2026)</em></span>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">8.63</div>
+                    <div class="metric-label">B.Tech AI & DS CGPA</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">10+</div>
+                    <div class="metric-label">Deployed Projects</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">14+</div>
+                    <div class="metric-label">Certifications</div>
+                </div>
             </div>
-            <div class="update-item">
-                <span class="update-badge new">NEW</span>
-                <span><strong>Civix App Launch</strong> — Shipped a cross-platform Flutter civil survey app to GitHub with Firebase integration, geolocation tagging, and role-based admin controls. <em>(2026)</em></span>
-            </div>
-            <div class="update-item">
-                <span class="update-badge new">NEW</span>
-                <span><strong>Hackathon 2026 Participant</strong> — Competed in Hackathon 2026, building and submitting GreenPulse, a full sustainability analytics platform, under strict time constraints. <em>(2026)</em></span>
-            </div>
-            <div class="update-item">
-                <span class="update-badge cert">CERT</span>
-                <span><strong>14+ Professional Certifications</strong> earned — spanning Oracle OCI, HackerRank (SQL &amp; C#), UI/UX, Navitech, and internship credentials. <em>(2024–2026)</em></span>
-            </div>
-            <div class="update-item">
-                <span class="update-badge">CGPA</span>
-                <span><strong>Academic Excellence</strong> — Maintained a CGPA of <strong>8.63</strong> in B.Tech AI &amp; Data Science (2nd Year) at SVHEC, Erode while simultaneously building 10+ real-world projects. <em>(Ongoing)</em></span>
-            </div>
-        </section>
-
-        <section class="languages">
-            <h2>Languages</h2>
-            <p><strong>English</strong> (Professional Proficiency), <strong>Tamil</strong> (Native Speaker), <strong>Malayalam</strong> (Colloquial Proficiency)</p>
-        </section>
-
-        <section class="declaration">
-            <h2>Declaration</h2>
-            <p>I hereby declare that all the information provided above is true to the best of my knowledge and belief.</p>
-            <div style="margin-top: 20px; display: flex; justify-content: space-between;">
-                <span>Place: Erode, Tamil Nadu</span>
-                <span>Signature: (JERIN J)</span>
-            </div>
-        </section>
-
-        <div class="footer-action no-print">
-            <button class="btn" onclick="window.print()">Download as PDF</button>
-            <a href="index.html" class="btn" style="background: var(--text-muted); margin-left: 10px;">Back to Portfolio</a>
         </div>
     </div>
+
+    <div class="action-buttons no-print" style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <button onclick="window.print()" style="background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; font-family: 'Inter', sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">Download as PDF</button>
+        <a href="index.html" style="background: white; color: var(--text-main); border: 1px solid var(--border); padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; font-family: 'Inter', sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center;">Back to Portfolio</a>
     </div>
 
-    <!-- Floating Dashboard for Resume -->
-    <div class="floating-dashboard no-print" id="floating-dashboard" style="position: fixed; bottom: 30px; left: 30px; z-index: 10000; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column-reverse; gap: 10px;">
-        <style>
-            .floating-dashboard .dashboard-content {
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(15px);
-                border: 1px solid #e5e7eb;
-                border-radius: 20px;
-                padding: 1.2rem;
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-                opacity: 0;
-                transform: translateY(10px);
-                transition: all 0.4s ease;
-                pointer-events: none;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                width: 180px;
-            }
-            .floating-dashboard.active .dashboard-content {
-                opacity: 1;
-                transform: translateY(0);
-                pointer-events: all;
-            }
-            .dashboard-toggle {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background: #3b82f6;
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 1.2rem;
-                cursor: pointer;
-                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-                transition: all 0.3s ease;
-            }
-            .dashboard-toggle:hover { transform: scale(1.1); }
-            .floating-dashboard.active .dashboard-toggle { transform: rotate(45deg); background: #1e40af; }
-            .dash-item { display: flex; flex-direction: column; gap: 2px; }
-            .dash-label { font-size: 0.65rem; color: #6b7280; font-weight: 700; text-transform: uppercase; }
-            .dash-value { font-size: 1.2rem; font-weight: 800; color: #3b82f6; }
-        </style>
-        <div class="dashboard-content">
-            <div class="dash-item">
-                <span class="dash-label">Current CGPA</span>
-                <span class="dash-value">8.63</span>
-            </div>
-            <div class="dash-item">
-                <span class="dash-label">Projects</span>
-                <span class="dash-value">10+</span>
-            </div>
-            <div class="dash-item">
-                <span class="dash-label">Certs</span>
-                <span class="dash-value">10+</span>
-            </div>
-        </div>
-        <div class="dashboard-toggle" id="dashboard-toggle">📊</div>
-    </div>
-
-    <script>
-        document.getElementById('dashboard-toggle').addEventListener('click', () => {
-            document.getElementById('floating-dashboard').classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

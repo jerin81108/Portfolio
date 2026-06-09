@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = 'Sending...';
                 btn.disabled = true;
 
-                fetch("https://formsubmit.co/ajax/jerin81108loco@gmail.com", {
+                fetch("https://formsubmit.co/ajax/jerin81108@gmail.com", {
                     method: "POST",
                     headers: { 
                         'Content-Type': 'application/json',
@@ -118,14 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         message: message
                     })
                 })
-                .then(response => response.json())
+                .then(async response => {
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`HTTP Error ${response.status}: ${errorText}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     alert('Thank you for your message! Jerin will get back to you soon.');
                     contactForm.reset();
                 })
                 .catch(error => {
-                    alert('There was an error sending your message. Please try again.');
-                    console.error(error);
+                    console.error("FormSubmit Error:", error);
+                    alert('Error sending message via server. Redirecting to your email client...');
+                    // Fallback to mailto
+                    window.location.href = `mailto:jerin81108@gmail.com?subject=Portfolio Inquiry from ${name}&body=${encodeURIComponent(message)}%0A%0AFrom: ${id}`;
                 })
                 .finally(() => {
                     btn.textContent = originalText;
