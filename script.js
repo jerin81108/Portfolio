@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typing Effect for CGPA (Identical effect)
     const dynamicCgpa = document.getElementById('dynamic-cgpa');
     if (dynamicCgpa) {
-        const cgpaPhrases = ['8.63 CGPA', 'High Distinction', 'Top Academic Standing'];
+        const cgpaPhrases = ['8.55 CGPA', 'High Distinction', 'Top Academic Standing'];
         let cgpaRoleIndex = 0;
         let cgpaCharIndex = 0;
         let cgpaIsDeleting = false;
@@ -349,6 +349,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => preloader.remove(), 1000);
             }, 500);
         });
+    }
+
+    // ── Scroll Progress Line Logic ──
+    const scrollProgressLine = document.getElementById('scrollProgressLine');
+    if (scrollProgressLine) {
+        window.addEventListener('scroll', () => {
+            const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = scrollTotal > 0 ? (window.scrollY / scrollTotal) * 100 : 0;
+            scrollProgressLine.style.width = `${scrollPercentage}%`;
+        }, { passive: true });
     }
 
     // Dynamic Copyright Year

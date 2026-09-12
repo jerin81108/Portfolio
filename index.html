@@ -249,11 +249,16 @@
             .terminal-mock-window {
                 height: 700px;
             }
-        }
+
+
     </style>
 </head>
 
 <body>
+    <!-- Scroll Progress Line -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-line" id="scrollProgressLine"></div>
+    </div>
     <div id="preloader" class="preloader">
         <div class="preloader-content">
             <div class="preloader-logo">JERIN<span>.J</span></div>
@@ -310,7 +315,7 @@
                                 <div class="timeline-content">
                                     <h4>B.Tech (AI &amp; Data Science) — 2nd Year</h4>
                                     <span class="institution">SVHEC, Erode</span>
-                                    <p>Pursuing 2nd year, specialising in Machine Learning and Full-Stack Engineering. Current CGPA: <strong>8.63</strong>.</p>
+                                    <p>Pursuing 2nd year, specialising in Machine Learning and Full-Stack Engineering. Current CGPA: <strong>8.55</strong>.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
@@ -438,7 +443,7 @@
                     <div class="metrics-grid fade-in">
                         <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
                             data-tilt-scale="1.05">
-                            <h3>8.63</h3>
+                            <h3>8.55</h3>
                             <p>Current CGPA</p>
                         </div>
                         <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
@@ -605,63 +610,7 @@
             </div>
         </section>
 
-        <!-- ── OPEN SOURCE CORE (LIVE CODE EXPLORER) ── -->
-        <section id="code-explorer" class="projects fade-in" style="padding-top: 2rem;">
-            <div class="section-segment" data-theme="projects">
-                <h2>Source <span>Dossiers</span></h2>
-                <p class="subtitle" style="text-align: center;">Live interactive inspector for my official GitHub repositories.</p>
-                
-                <div id="gh-rate-limit" style="display: none; text-align: center; margin-bottom: 1.5rem; color: #f59e0b; font-size: 0.9rem; font-weight: 600; padding: 0.5rem 1rem; border: 1px solid rgba(245,158,11,0.3); border-radius: 8px; background: rgba(245,158,11,0.05);">
-                    ⚠️ GitHub API rate limit reached. Displaying premium fallback datasets.
-                </div>
 
-                <div class="explorer-selector-bar">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Selected Intelligence:</span>
-                    <select id="gh-repo-select">
-                        <option value="Portfolio">jerin81108 / Portfolio (This Site)</option>
-                        <option value="civix">jerin81108 / civix (Civil Survey App)</option>
-                        <option value="hackathon_2026">jerin81108 / hackathon_2026 (GreenPulse)</option>
-                    </select>
-                </div>
-
-                <div class="terminal-mock-window">
-                    <div class="terminal-header">
-                        <div class="terminal-circles">
-                            <span class="circle-btn close"></span>
-                            <span class="circle-btn minimize"></span>
-                            <span class="circle-btn maximize"></span>
-                        </div>
-                        <span class="terminal-tab-title"><span id="gh-current-repo">Portfolio</span> — GitHub Repository Explorer</span>
-                        <div style="width: 50px;"></div>
-                    </div>
-
-                    <div class="terminal-workspace">
-                        <!-- Sidebar (File Tree) -->
-                        <div class="terminal-sidebar">
-                            <div class="sidebar-header">FILE EXPLORER</div>
-                            <div id="gh-file-tree" class="sidebar-tree">
-                                <!-- Loaded dynamically -->
-                            </div>
-                        </div>
-
-                        <!-- Editor (Code View) -->
-                        <div class="terminal-editor">
-                            <div class="editor-header">
-                                <span class="editor-active-tab">📄 <span id="gh-code-filename">Select a file</span></span>
-                            </div>
-                            <div class="editor-viewport">
-                                <pre><code id="gh-code-content"><!-- Code loaded dynamically --></code></pre>
-                            </div>
-                        </div>
-                        
-                        <!-- Dynamic Loading Overlay -->
-                        <div id="gh-loading" class="terminal-loading">
-                            <div class="loading-spinner"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <div class="section-divider"></div>
         <section id="library" class="coding-library fade-in">
@@ -764,18 +713,7 @@
                         </div>
                     </div>
 
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="sender-name" placeholder="Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="sender-id" placeholder="Email Address / Corporate ID" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="message-input" placeholder="How can I assist you?" required>
-                        </div>
-                        <button type="submit" class="cta-button">Initialize Conversation</button>
-                    </form>
+
 
                     <div class="social-links">
                         <a href="https://github.com/jerin81108" target="_blank" class="social-icon" title="GitHub Source">
@@ -814,7 +752,7 @@
         <div class="dashboard-content">
             <div class="dash-item">
                 <span class="dash-label">Current CGPA</span>
-                <span class="dash-value">8.63</span>
+                <span class="dash-value">8.55</span>
             </div>
             <div class="dash-item">
                 <span class="dash-label">Projects Done</span>

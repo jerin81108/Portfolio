@@ -3,18 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerin J - Executive Brief</title>
+    <title>Jerin J - Resume</title>
+    <meta name="description" content="Resume of Jerin J - AI Architect & Full-Stack Engineer">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-dark: #0f172a;
-            --primary: #1e3a8a;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --bg: #f8fafc;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -23,312 +15,200 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e2e8f0;
-            color: var(--text-main);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
         }
 
-        @media print {
-            .no-print { display: none !important; }
-            body { 
-                background-color: white; 
-                padding: 0; 
-                display: block;
-            }
-            .resume-container { 
-                box-shadow: none; 
-                max-width: 100%;
-                border: none;
-            }
-            .column {
-                padding: 1.5rem;
-                gap: 1.5rem;
-            }
-            .col-left {
-                border-bottom: 2px solid var(--border);
-            }
-            @page {
-                margin: 0.5cm;
-            }
-        }
-
-        .resume-container {
-            background-color: #ffffff;
-            max-width: 850px;
+        .top-bar {
             width: 100%;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
+            max-width: 900px;
             display: flex;
-            flex-direction: column;
-        }
-
-        @media (max-width: 900px) {
-            .resume-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .column {
-            padding: 3.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        /* Top Section Specific */
-        .col-left {
-            background-color: var(--bg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        header h2 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .contact-info a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        section h3 {
-            font-size: 1.1rem;
+        .top-bar h1 {
+            color: #ffffff;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--primary-dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
         }
 
-        p {
-            line-height: 1.6;
+        .top-bar span {
+            color: #93c5fd;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-1px);
+        }
+
+        .pdf-wrapper {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #1e293b;
+        }
+
+        iframe {
+            width: 100%;
+            height: 85vh;
+            border: none;
+            display: block;
+        }
+
+        /* Fallback if iframe doesn't load */
+        .fallback {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #94a3b8;
+        }
+
+        .fallback p {
+            margin-bottom: 1.5rem;
             font-size: 1rem;
         }
 
-        .competencies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        @media (max-width: 600px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            iframe {
+                height: 75vh;
+            }
         }
 
-        .competency-tag {
-            background: #ffffff;
-            color: var(--text-main);
-            padding: 0.4rem 0.8rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .top-bar {
+                display: none;
+            }
+            .pdf-wrapper {
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            iframe {
+                height: 100vh;
+            }
         }
-
-        /* Right Column Specific */
-        .project-item {
-            margin-bottom: 1.5rem;
+        
+        /* ── Scroll Progress Line ── */
+        .scroll-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(59, 130, 246, 0.15);
+            z-index: 9999;
         }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.25rem;
-        }
-
-        .project-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .project-tech {
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .project-desc {
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: auto;
-            border-top: 1px solid var(--border);
-            padding-top: 1.5rem;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .metric-label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .scroll-progress-line {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+            width: 0%;
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: width 0.1s ease-out;
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Line -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-line" id="scrollProgressLine"></div>
+    </div>
 
-    <div class="resume-container">
-        <!-- Left Column: Overview & Value -->
-        <div class="column col-left">
-            <header>
-                <h1>JERIN J</h1>
-                <h2>AI Architect & Full-Stack Engineer</h2>
-                <div class="contact-info">
-                    <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jerin81108@gmail.com" target="_blank">jerin81108@gmail.com</a></span>
-                    <span>LinkedIn: <a href="https://linkedin.com/in/jerin-j-91328a366" target="_blank">linkedin.com/in/jerin-j-91328a366</a></span>
-                    <span>GitHub: <a href="https://github.com/jerin81108" target="_blank">github.com/jerin81108</a></span>
-                </div>
-            </header>
-
-            <section>
-                <h3>Executive Summary</h3>
-                <p>Results-driven engineer specializing in artificial intelligence and full-stack development. Proven track record of designing and deploying highly scalable systems, transitioning complex predictive models into robust, production-grade applications.</p>
-            </section>
-
-            <section>
-                <h3>Core Competencies</h3>
-                <div class="competencies">
-                    <span class="competency-tag">Artificial Intelligence</span>
-                    <span class="competency-tag">Machine Learning</span>
-                    <span class="competency-tag">Full-Stack Development</span>
-                    <span class="competency-tag">Real-Time Data Processing</span>
-                    <span class="competency-tag">Cloud Infrastructure</span>
-                </div>
-            </section>
-
-            <section>
-                <h3>Technical Arsenal</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                    <div>
-                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.3rem;">LANGUAGES</div>
-                        <div class="competencies">
-                            <span class="competency-tag" style="font-size: 0.85rem;">Python</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">JavaScript (ES6+)</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">C / C++</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">SQL</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">Java</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.3rem;">PLATFORMS & DATABASES</div>
-                        <div class="competencies">
-                            <span class="competency-tag" style="font-size: 0.85rem;">Firebase</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">Oracle OCI</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">MongoDB</span>
-                            <span class="competency-tag" style="font-size: 0.85rem;">SQLite</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:0.3rem;">TOOLS & ACHIEVEMENTS</div>
-                        <div class="competencies">
-                            <span class="competency-tag" style="font-size: 0.85rem;">Git / GitHub</span>
-                            <span class="competency-tag" style="font-size: 0.85rem; border-color:#eab308; background:#fffbf1; font-weight:600;">HackerRank SQL (Gold)</span>
-                            <span class="competency-tag" style="font-size: 0.85rem; border-color:#eab308; background:#fffbf1; font-weight:600;">HackerRank C# Cert</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h3>Value Proposition</h3>
-                <p>I provide comprehensive end-to-end engineering. Rather than isolating AI model development from product delivery, I bridge the gap by architecting scalable backend infrastructure and intuitive frontend interfaces, ensuring intelligent solutions translate into immediate business value.</p>
-            </section>
+    <div class="top-bar">
+        <div>
+            <h1>Jerin J <span>— Resume</span></h1>
         </div>
-
-        <!-- Right Column: Projects & Metrics -->
-        <div class="column">
-            <section style="flex-grow: 1;">
-                <h3>Selected Engineering Projects</h3>
-                
-                <div class="project-item">
-                    <div class="project-header">
-                        <span class="project-title">Civix Spatial Intelligence Platform</span>
-                    </div>
-                    <div class="project-tech">Flutter | Firebase | Geolocation</div>
-                    <p class="project-desc">Architected a professional-grade civil engineering survey application featuring bidirectional real-time data synchronization and high-precision GPS spatial tagging, streamlining manual workflows.</p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <span class="project-title">AuraDrive V2X Safety System</span>
-                    </div>
-                    <div class="project-tech">Python | FastAPI | WebSockets</div>
-                    <p class="project-desc">Developed a low-latency collision avoidance infrastructure utilizing predictive algorithms. Processes live vehicle telemetry data to broadcast hazard alerts to connected nodes in under 100ms.</p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <span class="project-title">GreenPulse Analytics Dashboard</span>
-                    </div>
-                    <div class="project-tech">React | Modern CSS | Data Visualization</div>
-                    <p class="project-desc">Delivered an interactive sustainability dashboard under strict hackathon constraints, transforming raw carbon footprint data into actionable visual insights for end-users.</p>
-                </div>
-            </section>
-
-            <div class="metrics-grid">
-                <div class="metric">
-                    <div class="metric-value">8.63</div>
-                    <div class="metric-label">B.Tech AI & DS CGPA</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">10+</div>
-                    <div class="metric-label">Deployed Projects</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">14+</div>
-                    <div class="metric-label">Certifications</div>
-                </div>
-            </div>
+        <div class="btn-group">
+            <a class="btn btn-primary" href="Jerin_J_Resume (1) (1).pdf" download="Jerin_J_Resume.pdf">
+                ⬇ Download PDF
+            </a>
+            <a class="btn btn-secondary" href="index.html">
+                ← Back to Portfolio
+            </a>
         </div>
     </div>
 
-    <div class="action-buttons no-print" style="margin-top: 2rem; display: flex; gap: 1rem;">
-        <button onclick="window.print()" style="background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; font-family: 'Inter', sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">Download as PDF</button>
-        <a href="index.html" style="background: white; color: var(--text-main); border: 1px solid var(--border); padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; font-family: 'Inter', sans-serif; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center;">Back to Portfolio</a>
+    <div class="pdf-wrapper">
+        <iframe
+            src="Jerin_J_Resume (1) (1).pdf"
+            title="Jerin J Resume"
+            id="resume-frame">
+        </iframe>
     </div>
 
+    <script>
+        // ── Scroll Progress Line Logic ──
+        const scrollProgressLine = document.getElementById('scrollProgressLine');
+        if (scrollProgressLine) {
+            window.addEventListener('scroll', () => {
+                const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercentage = scrollTotal > 0 ? (window.scrollY / scrollTotal) * 100 : 0;
+                scrollProgressLine.style.width = `${scrollPercentage}%`;
+            }, { passive: true });
+        }
+    </script>
 </body>
 </html>
