@@ -28,22 +28,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Scroll Progress
-    const scrollProgress = document.querySelector('.scroll-progress');
-    window.addEventListener('scroll', () => {
-        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        scrollProgress.style.width = scrolled + '%';
+    // Dynamic Top Scroll Line (Glides Left-to-Right, Visible All The Time) & Navigation Styling
+    const scrollProgressLine = document.getElementById('scrollProgressLine');
+    const nav = document.querySelector('nav');
+
+    let isScrollTick = false;
+    const updateScrollProgress = () => {
+        const docElem = document.documentElement;
+        const scrollTotal = docElem.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollTotal > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollTotal)) : 0;
         
-        // Navigation background opacity adjustment
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.padding = '1rem 8%';
-            nav.style.background = 'rgba(3, 7, 18, 0.9)';
-        } else {
-            nav.style.padding = '1.5rem 8%';
-            nav.style.background = 'rgba(3, 7, 18, 0.7)';
+        if (scrollProgressLine) {
+            const container = scrollProgressLine.parentElement;
+            const containerWidth = container ? container.clientWidth : window.innerWidth;
+            const lineWidth = scrollProgressLine.offsetWidth || 130;
+            const maxTravel = Math.max(0, containerWidth - lineWidth);
+            // At top (scrollFraction = 0): positioned at far left (0)
+            // At bottom (scrollFraction = 1): positioned at far right (maxTravel)
+            const currentX = scrollFraction * maxTravel;
+            scrollProgressLine.style.transform = `translate3d(${currentX}px, 0, 0)`;
         }
-    });
+
+        // Navigation background opacity adjustment
+        if (nav) {
+            if (window.scrollY > 50) {
+                nav.style.padding = '1rem 8%';
+                nav.style.background = 'rgba(3, 7, 18, 0.9)';
+            } else {
+                nav.style.padding = '1.5rem 8%';
+                nav.style.background = 'rgba(3, 7, 18, 0.7)';
+            }
+        }
+
+        isScrollTick = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!isScrollTick) {
+            window.requestAnimationFrame(updateScrollProgress);
+            isScrollTick = true;
+        }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+        if (!isScrollTick) {
+            window.requestAnimationFrame(updateScrollProgress);
+            isScrollTick = true;
+        }
+    }, { passive: true });
+
+    // Initial sync
+    updateScrollProgress();
 
     // Reveal elements on scroll
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -223,71 +258,44 @@ document.addEventListener('DOMContentLoaded', () => {
         typeCgpa();
     }
 
-    // Theme Changer / Asteroid Impact Logic
+    // Theme Changer - Seamless Cyber Quantum Mode Switch (Unified Theme)
     const themeBtn = document.getElementById('theme-changer');
     const flashOverlay = document.getElementById('flash-overlay');
 
-    if (themeBtn && flashOverlay) {
-        function triggerLightning() {
-            for (let i = 0; i < 8; i++) {
-                const lightning = document.createElement('div');
-                lightning.className = 'lightning';
-                const isVertical = Math.random() > 0.5;
-                
-                if (isVertical) {
-                    lightning.style.width = '2px';
-                    lightning.style.height = '100vh';
-                    lightning.style.left = `${Math.random() * 100}vw`;
-                    lightning.style.top = '0';
-                } else {
-                    lightning.style.width = '100vw';
-                    lightning.style.height = '2px';
-                    lightning.style.top = `${Math.random() * 100}vh`;
-                    lightning.style.left = '0';
-                }
-                
-                document.body.appendChild(lightning);
-                lightning.classList.add('animate-lightning');
-                setTimeout(() => lightning.remove(), 500);
-            }
+    if (themeBtn) {
+        const themes = ['cyber', 'emerald', 'violet'];
+        const savedTheme = localStorage.getItem('jerin_portfolio_theme') || 'cyber';
+        if (savedTheme !== 'cyber') {
+            document.documentElement.setAttribute('data-theme', savedTheme);
         }
 
         themeBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Start the asteroid animation
-            const asteroid = document.createElement('div');
-            asteroid.className = 'massive-asteroid';
-            document.body.appendChild(asteroid);
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'cyber';
+            const nextIndex = (themes.indexOf(currentTheme) + 1) % themes.length;
+            const nextTheme = themes[nextIndex];
 
-            const startX = window.innerWidth + 100;
-            const startY = -100;
-            asteroid.style.left = `${startX}px`;
-            asteroid.style.top = `${startY}px`;
+            // Trigger theme-aligned Quantum Warp Pulse
+            const warp = document.createElement('div');
+            warp.className = 'quantum-warp';
+            document.body.appendChild(warp);
 
-            // Target the center of the screen
-            const targetX = window.innerWidth / 2 - 40;
-            const targetY = window.innerHeight / 2 - 40;
-
-            const animation = asteroid.animate([
-                { left: `${startX}px`, top: `${startY}px`, transform: 'rotate(0deg) scale(1.5)' },
-                { left: `${targetX}px`, top: `${targetY}px`, transform: 'rotate(20deg) scale(1)' }
-            ], {
-                duration: 1500,
-                easing: 'cubic-bezier(.47,.01,.42,.99)'
-            });
-
-            animation.onfinish = () => {
-                asteroid.remove();
-                triggerLightning(); // EPIC!
+            if (flashOverlay) {
+                flashOverlay.classList.remove('animate-flash');
+                void flashOverlay.offsetWidth; // re-trigger
                 flashOverlay.classList.add('animate-flash');
-                
-                setTimeout(() => {
-                    // Smart Redirect: Get the current page name (e.g., certificates.html)
-                    const pathParts = window.location.pathname.split('/');
-                    const currentPage = pathParts.pop() || 'index.html';
-                    window.location.href = 'portfolio/' + currentPage;
-                }, 800);
-            };
+            }
+
+            setTimeout(() => {
+                if (nextTheme === 'cyber') {
+                    document.documentElement.removeAttribute('data-theme');
+                } else {
+                    document.documentElement.setAttribute('data-theme', nextTheme);
+                }
+                localStorage.setItem('jerin_portfolio_theme', nextTheme);
+            }, 200);
+
+            setTimeout(() => warp.remove(), 650);
         });
     }
 
@@ -340,26 +348,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Preloader Removal
+    // High-Speed Preloader Dismissal (Instant Render, Zero Lag)
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        window.addEventListener('load', () => {
+        let isPreloaderDismissed = false;
+        const dismissPreloader = () => {
+            if (isPreloaderDismissed) return;
+            isPreloaderDismissed = true;
+            preloader.classList.add('fade-out');
             setTimeout(() => {
-                preloader.classList.add('fade-out');
-                setTimeout(() => preloader.remove(), 1000);
-            }, 500);
-        });
+                if (preloader && preloader.parentNode) preloader.remove();
+            }, 300);
+        };
+
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            setTimeout(dismissPreloader, 60);
+        } else {
+            document.addEventListener('DOMContentLoaded', () => setTimeout(dismissPreloader, 60));
+        }
+        window.addEventListener('load', dismissPreloader);
+        setTimeout(dismissPreloader, 300); // Strict safety ceiling: never trap the user
     }
 
-    // ── Scroll Progress Line Logic ──
-    const scrollProgressLine = document.getElementById('scrollProgressLine');
-    if (scrollProgressLine) {
-        window.addEventListener('scroll', () => {
-            const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercentage = scrollTotal > 0 ? (window.scrollY / scrollTotal) * 100 : 0;
-            scrollProgressLine.style.width = `${scrollPercentage}%`;
-        }, { passive: true });
-    }
 
     // Dynamic Copyright Year
     const footerP = document.querySelector('footer p');

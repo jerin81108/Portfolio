@@ -228,6 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     repoSelect.addEventListener('change', initRepoChange);
 
-    // Initial launch
-    initRepoChange();
+    // Initial launch (deferred so initial paint and interactions are instantaneous)
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(initRepoChange, { timeout: 800 });
+    } else {
+        setTimeout(initRepoChange, 150);
+    }
 });
