@@ -2569,3 +2569,8 @@ footer p {
     line-height: 1.6;
     margin: 0;
 }
+
+/* Flying Dashboard Disabled per user request */
+.floating-dashboard {
+    display: none !important;
+}
