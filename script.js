@@ -371,6 +371,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    
+    // Global Project Card Category Filtering
+    const projectFilterBtns = document.querySelectorAll('.filter-btn');
+    const allProjectCards = document.querySelectorAll('.project-card');
+    if (projectFilterBtns.length > 0 && allProjectCards.length > 0) {
+        projectFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                projectFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter || 'all';
+                allProjectCards.forEach(card => {
+                    const cat = card.dataset.category || '';
+                    if (filter === 'all' || cat.split(' ').includes(filter)) {
+                        card.classList.remove('is-hidden');
+                    } else {
+                        card.classList.add('is-hidden');
+                    }
+                });
+            });
+        });
+    }
+
     // Dynamic Copyright Year
     const footerP = document.querySelector('footer p');
     if (footerP) {

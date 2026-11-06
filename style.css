@@ -1980,3 +1980,28 @@ footer p {
     border-radius: 20px;
     z-index: 2;
 }
+
+
+.bg-qsignal {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/qsignal.png');
+}
+
+.bg-interpretable-voice {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/interpretable-voice.png');
+}
+
+.bg-deep-learning {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/deep-learning.png');
+}
+
+.bg-code-alpha {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/code-alpha.png');
+}
+
+.bg-place-recommender {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/place-recommender.png');
+}
+
+.bg-ai-manual {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/ai-manual.png');
+}
