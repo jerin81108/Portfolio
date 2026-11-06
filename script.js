@@ -39,14 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollFraction = scrollTotal > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollTotal)) : 0;
         
         if (scrollProgressLine) {
-            const container = scrollProgressLine.parentElement;
-            const containerWidth = container ? container.clientWidth : window.innerWidth;
-            const lineWidth = scrollProgressLine.offsetWidth || 130;
-            const maxTravel = Math.max(0, containerWidth - lineWidth);
-            // At top (scrollFraction = 0): positioned at far left (0)
-            // At bottom (scrollFraction = 1): positioned at far right (maxTravel)
-            const currentX = scrollFraction * maxTravel;
-            scrollProgressLine.style.transform = `translate3d(${currentX}px, 0, 0)`;
+            const percentage = scrollFraction * 100;
+            scrollProgressLine.style.width = `${percentage}%`;
         }
 
         // Navigation background opacity adjustment
@@ -96,7 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('appear');
                 if (segment) segment.classList.add('active-segment');
             } else {
-                if (segment) segment.classList.remove('active-segment');
+                // Smooth retention: only remove active-segment if scrolled above viewport
+                const rect = entry.target.getBoundingClientRect();
+                if (rect.top > window.innerHeight) {
+                    if (segment) segment.classList.remove('active-segment');
+                }
             }
         });
     }, observerOptions);

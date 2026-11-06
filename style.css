@@ -35,44 +35,102 @@
 }
 
 /* ── Dynamic Top Scroll Line (Glides Left-to-Right on Scroll, Visible All The Time) ── */
+/* ── Quantum Laser Stream Progress Bar (Attractive Holographic Engine) ── */
 .scroll-progress-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px;
-    background: rgba(11, 15, 26, 0.75);
-    border-bottom: 1px solid rgba(74, 144, 226, 0.25);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-    z-index: 999999;
+    height: 4px;
+    background: rgba(3, 7, 18, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 9999999;
     pointer-events: none;
-    overflow: hidden;
+    overflow: visible;
 }
+
 .scroll-progress-line {
     position: absolute;
     top: 0;
     left: 0;
-    width: clamp(90px, 14vw, 170px);
     height: 100%;
-    transform: translate3d(0, 0, 0);
-    background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-    border-radius: 999px;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.9), 0 0 20px rgba(129, 140, 248, 0.6), 0 0 30px rgba(192, 132, 252, 0.4);
-    will-change: transform;
-    pointer-events: none;
-    transition: transform 0.05s linear;
+    width: 0%;
+    background: linear-gradient(90deg, 
+        #38bdf8 0%, 
+        #6366f1 30%, 
+        #a855f7 60%, 
+        #ec4899 85%, 
+        #22d3ee 100%
+    );
+    background-size: 200% 100%;
+    animation: progressBeamShimmer 2.8s linear infinite;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.9), 
+                0 0 24px rgba(129, 140, 248, 0.6), 
+                0 0 36px rgba(168, 85, 247, 0.4);
+    border-radius: 0 999px 999px 0;
+    will-change: width;
+    transition: width 0.08s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Pulsing Plasma Comet Head */
 .scroll-progress-line::after {
     content: '';
     position: absolute;
+    right: -5px;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 35%;
-    height: 140%;
-    background: rgba(255, 255, 255, 0.85);
-    filter: blur(1px);
-    border-radius: 999px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 8px #ffffff,
+        0 0 18px #38bdf8,
+        0 0 30px #a855f7,
+        0 0 45px #ec4899;
+    animation: cometPulse 1.2s ease-in-out infinite alternate;
+}
+
+/* Ambient Downward Light Cone */
+.scroll-progress-line::before {
+    content: '';
+    position: absolute;
+    right: -25px;
+    top: 0;
+    width: 50px;
+    height: 22px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.35), transparent 75%);
+    pointer-events: none;
+    filter: blur(3px);
+}
+
+@keyframes progressBeamShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes cometPulse {
+    0% { transform: translateY(-50%) scale(0.9); opacity: 0.85; }
+    100% { transform: translateY(-50%) scale(1.35); opacity: 1; }
+}
+
+/* Theme Adaptive Variations */
+[data-theme="emerald"] .scroll-progress-line {
+    background: linear-gradient(90deg, #10b981 0%, #06b6d4 35%, #14b8a6 65%, #34d399 100%);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.9), 0 0 24px rgba(6, 182, 212, 0.6);
+}
+[data-theme="emerald"] .scroll-progress-line::after {
+    box-shadow: 0 0 8px #fff, 0 0 18px #10b981, 0 0 30px #06b6d4;
+}
+
+[data-theme="violet"] .scroll-progress-line {
+    background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 35%, #a855f7 65%, #f43f5e 100%);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.9), 0 0 24px rgba(236, 72, 153, 0.6);
+}
+[data-theme="violet"] .scroll-progress-line::after {
+    box-shadow: 0 0 8px #fff, 0 0 18px #8b5cf6, 0 0 30px #ec4899;
 }
 
 /* Custom Scrollbar */
@@ -220,25 +278,28 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 5rem 4rem;
-    background: rgba(15, 23, 42, 0.3);
+    background: rgba(15, 23, 42, 0.38);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 36px;
     transform-style: preserve-3d;
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    opacity: 0.5;
-    transform: translateY(100px) rotateX(15deg) scale(0.9);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.92;
+    transform: translateY(15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 .section-segment.active-segment {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg) scale(1) translateZ(0px);
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5), 
-                0 0 40px rgba(74, 144, 226, 0.1);
-    background: rgba(15, 23, 42, 0.5);
-    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(0);
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55), 
+                0 0 40px rgba(74, 144, 226, 0.12);
+    background: rgba(15, 23, 42, 0.52);
+    border-color: rgba(74, 144, 226, 0.22);
 }
 
 /* Theme Specific Glows */
@@ -2004,4 +2065,221 @@ footer p {
 
 .bg-ai-manual {
     background-image: linear-gradient(rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.25)), url('images/ai-manual.png');
+}
+
+
+/* ══ CYBER CONDUIT BRIDGE (Seamless Transition between Projects & Library) ══ */
+.cyber-conduit-transition {
+    position: relative;
+    padding: 4.5rem 0 3.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conduit-stream {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.conduit-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+    position: relative;
+    opacity: 0.7;
+}
+
+.conduit-line::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 70px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 999px;
+    box-shadow: 0 0 10px #38bdf8, 0 0 20px #818cf8;
+    animation: conduitPulse 3.5s linear infinite;
+}
+
+@keyframes conduitPulse {
+    0% { left: 0%; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+.conduit-core {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-shrink: 0;
+}
+
+.conduit-badge {
+    padding: 0.6rem 1.6rem;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    border-radius: 30px;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px rgba(74, 144, 226, 0.18), inset 0 0 15px rgba(74, 144, 226, 0.1);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.conduit-badge span.conduit-highlight {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.conduit-badge:hover {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 35px var(--glow-color);
+    transform: translateY(-2px);
+}
+
+.conduit-pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent-1);
+    box-shadow: 0 0 14px var(--accent-1);
+    animation: conduitDotPulse 2s infinite ease-in-out;
+}
+
+@keyframes conduitDotPulse {
+    0%, 100% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1.4); opacity: 1; }
+}
+
+/* ══ ELEVATED CODING LIBRARIES (Matching Cyber Projects Vibe) ══ */
+.library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+}
+
+.lib-item {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2.2rem 1.6rem 2rem;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Glowing Top Accent Bar */
+.lib-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.lib-item:hover::before {
+    opacity: 1;
+}
+
+/* Background Shimmer Flare */
+.lib-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(74, 144, 226, 0.12), transparent 75%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.lib-item:hover::after {
+    opacity: 1;
+}
+
+.lib-item:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(74, 144, 226, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px var(--glow-color);
+}
+
+.lib-icon-wrap {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    margin-bottom: 0.5rem;
+    transition: all 0.4s ease;
+}
+
+.lib-item:hover .lib-icon-wrap {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: var(--accent-1);
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.25);
+}
+
+.lib-icon-wrap img {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.lib-item h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.lib-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    background: rgba(74, 144, 226, 0.08);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    color: var(--accent-1);
+}
+
+.lib-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: 0.2rem;
 }
