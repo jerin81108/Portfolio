@@ -1,15 +1,24 @@
 :root {
-    --bg-color: #0c0c0e;
-    --text-main: #f1f5f9;
-    --text-muted: #94a3b8;
-    --accent-1: #4a90e2; /* Slate Blue Primary */
-    --accent-2: #6366f1; /* Deep Indigo Secondary */
-    --accent-3: #38bdf8; /* Bright Cyan Accent */
-    --card-bg: rgba(15, 23, 42, 0.6);
-    --border-color: rgba(255, 255, 255, 0.05);
-    --glow-color: rgba(56, 189, 248, 0.25);
-    --glass-grad: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    --surface-glass: rgba(255, 255, 255, 0.02);
+    /* ── Premium AI/ML Developer Theme: Black + Midnight Blue + Electric Blue + Cyan ── */
+    --bg-color: #050505;          /* Main background: Deep Black (75% dark foundation) */
+    --bg-section: #0A192F;        /* Section background: Midnight Blue / Dark Navy */
+    --card-bg: #0D1117;           /* Cards: Charcoal */
+    --card-bg-alpha: rgba(13, 17, 23, 0.85);
+    --border-color: #233554;      /* Borders: Blue Grey */
+    --border-hover: #007BFF;      /* Electric Blue hover border */
+    --btn-primary: #007BFF;       /* Primary buttons: Electric Blue (20% blue role) */
+    --btn-primary-hover: #0066d6;
+    --highlight: #00D4FF;         /* Highlights & Accents: Neon Cyan (5% cyan role) */
+    --text-heading: #FFFFFF;      /* Headings: Pure White */
+    --text-main: #FFFFFF;         /* Main text */
+    --text-muted: #B8C4D1;        /* Paragraphs: Light Grey */
+    --accent-1: #007BFF;          /* Electric Blue */
+    --accent-2: #0A192F;          /* Midnight Blue */
+    --accent-3: #00D4FF;          /* Neon Cyan */
+    --glow-color: rgba(0, 212, 255, 0.32); /* Subtle Neon Cyan Glow */
+    --glow-blue: rgba(0, 123, 255, 0.4);   /* Electric Blue Glow */
+    --glass-grad: linear-gradient(135deg, rgba(10, 25, 47, 0.65), rgba(13, 17, 23, 0.85));
+    --surface-glass: rgba(13, 17, 23, 0.75);
 }
 
 [data-theme="emerald"] {
@@ -57,18 +66,10 @@
     left: 0;
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, 
-        #38bdf8 0%, 
-        #6366f1 30%, 
-        #a855f7 60%, 
-        #ec4899 85%, 
-        #22d3ee 100%
-    );
+    background: linear-gradient(90deg, #007BFF 0%, #00D4FF 45%, #38bdf8 70%, #007BFF 90%, #00D4FF 100%);
     background-size: 200% 100%;
     animation: progressBeamShimmer 2.8s linear infinite;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.9), 
-                0 0 24px rgba(129, 140, 248, 0.6), 
-                0 0 36px rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.9), 0 0 24px rgba(0, 212, 255, 0.7), 0 0 36px rgba(0, 123, 255, 0.4);
     border-radius: 0 999px 999px 0;
     will-change: width;
     transition: width 0.08s cubic-bezier(0.16, 1, 0.3, 1);
@@ -85,11 +86,7 @@
     height: 10px;
     background: #ffffff;
     border-radius: 50%;
-    box-shadow: 
-        0 0 8px #ffffff,
-        0 0 18px #38bdf8,
-        0 0 30px #a855f7,
-        0 0 45px #ec4899;
+    box-shadow: 0 0 8px #ffffff, 0 0 18px #00D4FF, 0 0 30px #007BFF, 0 0 45px rgba(0, 212, 255, 0.8);
     animation: cometPulse 1.2s ease-in-out infinite alternate;
 }
 
@@ -101,7 +98,7 @@
     top: 0;
     width: 50px;
     height: 22px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.35), transparent 75%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.35), transparent 75%);
     pointer-events: none;
     filter: blur(3px);
 }
@@ -181,7 +178,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 8%;
-    background: rgba(3, 7, 18, 0.7);
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1000;
+    border-bottom: 1px solid #233554;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     z-index: 1000;
@@ -221,7 +223,8 @@ nav {
     height: 2px;
     bottom: -4px;
     left: 0;
-    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    background: #00D4FF;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
     transition: width 0.3s ease;
 }
 
@@ -254,7 +257,8 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--accent-1);
+    color: #00D4FF;
+    text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
 }
 
 .nav-links a:hover::after {
@@ -2573,4 +2577,132 @@ footer p {
 /* Flying Dashboard Disabled per user request */
 .floating-dashboard {
     display: none !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PREMIUM THEME OVERRIDES: Black + Midnight Blue + Electric Blue + Cyan
+   75% Dark, 20% Electric Blue, 5% Neon Cyan
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Hero Section: Black background with blue gradient */
+section#home,
+section.hero {
+    background: radial-gradient(ellipse at 50% 25%, rgba(0, 123, 255, 0.14) 0%, transparent 68%), #050505 !important;
+}
+
+/* About Section: Midnight Blue (#0A192F) */
+section#about,
+section.about {
+    background: #0A192F !important;
+}
+section#about .section-segment {
+    background: rgba(13, 17, 23, 0.78) !important;
+    border: 1px solid #233554 !important;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 45px rgba(0, 123, 255, 0.12) !important;
+}
+
+/* Skills: Dark cards (#0D1117) with blue icons */
+.skills-grid .skill-item {
+    background: #0D1117 !important;
+    border: 1px solid #233554 !important;
+    color: #FFFFFF !important;
+    transition: all 0.3s ease !important;
+}
+.skills-grid .skill-item:hover {
+    border-color: #007BFF !important;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.28) !important;
+    transform: translateY(-2px);
+}
+.skills-grid .skill-item span {
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.75));
+}
+
+/* Projects: Black/Charcoal cards (#0D1117) with electric blue borders */
+.project-card,
+.featured-card {
+    background: #0D1117 !important;
+    border: 1px solid #233554 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45) !important;
+}
+.project-card:hover,
+.featured-card:hover {
+    border-color: #007BFF !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 123, 255, 0.35) !important;
+}
+
+/* Contact: Navy background (#0A192F) with cyan buttons (#00D4FF) */
+section#contact,
+section.contact {
+    background: #0A192F !important;
+}
+section#contact .section-segment {
+    background: rgba(13, 17, 23, 0.8) !important;
+    border: 1px solid #233554 !important;
+}
+section#contact .contact-item {
+    background: #0D1117 !important;
+    border: 1px solid #233554 !important;
+}
+section#contact .contact-item:hover {
+    border-color: #007BFF !important;
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.25) !important;
+}
+section#contact .cta-button,
+section.contact .cta-button,
+.contact-btn {
+    background: #00D4FF !important;
+    color: #050505 !important;
+    font-weight: 700 !important;
+    border: none !important;
+    box-shadow: 0 4px 18px rgba(0, 212, 255, 0.45) !important;
+}
+section#contact .cta-button:hover,
+section.contact .cta-button:hover,
+.contact-btn:hover {
+    background: #38bdf8 !important;
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.7) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Primary buttons: Electric Blue (#007BFF) */
+.cta-button {
+    background: #007BFF !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4) !important;
+}
+.cta-button:hover {
+    background: #0066d6 !important;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6), 0 0 20px rgba(0, 212, 255, 0.35) !important;
+}
+
+/* Outline buttons */
+.cta-button-outline {
+    background: #0D1117 !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid #233554 !important;
+}
+.cta-button-outline:hover {
+    background: rgba(0, 123, 255, 0.12) !important;
+    border-color: #00D4FF !important;
+    color: #00D4FF !important;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.35) !important;
+}
+
+/* Typography Harmony */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+}
+p, .subtitle, .about-text p, .project-info p, .service-card p, .card-desc {
+    color: #B8C4D1;
+}
+
+/* Headings Cyan/Blue Gradient Accents */
+h2 span,
+.gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 20%, #00D4FF 60%, #007BFF 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
