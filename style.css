@@ -895,7 +895,8 @@ h2 span,
     background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/greenpulse.png');
 }
 
-.bg-5 {
+.bg-5,
+.bg-civix {
     background-image: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('images/civix.png');
 }
 
