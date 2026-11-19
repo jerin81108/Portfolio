@@ -297,8 +297,9 @@
                             <span class="pulse-dot"></span> AI &amp; DS ARCHITECT · 3RD YEAR
                         </div>
 
-                        <div class="profile-photo-frame">
-                            <img src="images/pic.jpeg" alt="JERIN J - AI & Data Science Architect" class="profile-photo-full" loading="eager">
+                        <div class="profile-photo-frame" id="profilePhotoFrame">
+                            <img src="images/pic.jpeg" alt="JERIN J - AI & Data Science Architect" class="profile-photo-full" id="profilePhotoFull" loading="eager">
+                            <canvas id="starPortraitCanvas" class="star-portrait-canvas"></canvas>
                             <div class="profile-scanline-fx"></div>
                         </div>
 
@@ -590,7 +591,7 @@
                             <p>High-precision survey ecosystem for civil engineering, automating complex field data collection and providing real-time spatial analysis. Fully operational with a live web deployment on Vercel.</p>
                             <div class="featured-action-bar">
                                 <span class="featured-badge-tag">Production Deployed</span>
-                                <a href="https://bkbuilders.netlify.app" target="_blank" class="featured-repo-btn" style="margin-right: 0.5rem; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); color: #00d4ff;">
+                                <a href="https://bkbuilder.netlify.app" target="_blank" class="featured-repo-btn" style="margin-right: 0.5rem; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); color: #00d4ff;">
                                     Live Demo ↗
                                 </a>
                                 <a href="https://github.com/jerin81108/CIVIX" target="_blank" class="featured-repo-btn">
@@ -822,6 +823,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
     <script src="portfolio-sync.js" defer></script>
+    <script src="js/star-portrait-data.js" defer></script>
     <script src="script.js" defer></script>
     <script src="github-explorer.js" defer></script>
 </body>

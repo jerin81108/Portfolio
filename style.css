@@ -2788,31 +2788,51 @@ footer p {
    75% Dark, 20% Electric Blue, 5% Neon Cyan
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Hero Section: Black background with blue gradient */
+/* ── Translucent Glassmorphic Content Overlays (Shows Cosmic Space/Ocean Background) ── */
 section#home,
 section.hero {
-    background: radial-gradient(ellipse at 50% 25%, rgba(0, 123, 255, 0.14) 0%, transparent 68%), #050505 !important;
+    background: transparent !important;
 }
 
-/* About Section: Midnight Blue (#0A192F) */
 section#about,
 section.about {
-    background: #0A192F !important;
+    background: rgba(10, 25, 47, 0.42) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
 }
 section#about .section-segment {
-    background: rgba(13, 17, 23, 0.78) !important;
-    border: 1px solid #233554 !important;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 45px rgba(0, 123, 255, 0.12) !important;
+    background: rgba(13, 17, 23, 0.58) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 45px rgba(0, 123, 255, 0.14) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
 }
 
-/* Skills: Dark cards (#0D1117) with blue icons */
+/* Excellence / Services Section */
+section#excellence,
+section.excellence {
+    background: rgba(5, 5, 5, 0.38) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+.service-card {
+    background: rgba(13, 17, 23, 0.55) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* Skills: Translucent Charcoal cards with blue icons */
 .skills-grid .skill-item {
-    background: #0D1117 !important;
-    border: 1px solid #233554 !important;
+    background: rgba(13, 17, 23, 0.62) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
     color: #FFFFFF !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     transition: all 0.3s ease !important;
 }
 .skills-grid .skill-item:hover {
+    background: rgba(13, 17, 23, 0.8) !important;
     border-color: #007BFF !important;
     box-shadow: 0 8px 25px rgba(0, 123, 255, 0.28) !important;
     transform: translateY(-2px);
@@ -2821,34 +2841,72 @@ section#about .section-segment {
     filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.75));
 }
 
-/* Projects: Black/Charcoal cards (#0D1117) with electric blue borders */
+/* Projects Section & Cards: Semi-Transparent Charcoal with Electric Blue Borders */
+section#projects,
+section.projects {
+    background: rgba(10, 25, 47, 0.42) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
 .project-card,
 .featured-card {
-    background: #0D1117 !important;
-    border: 1px solid #233554 !important;
+    background: rgba(13, 17, 23, 0.62) !important;
+    border: 1px solid rgba(35, 53, 84, 0.7) !important;
     border-radius: 20px !important;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
 }
 .project-card:hover,
 .featured-card:hover {
+    background: rgba(13, 17, 23, 0.82) !important;
     border-color: #007BFF !important;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 123, 255, 0.35) !important;
 }
 
-/* Contact: Navy background (#0A192F) with cyan buttons (#00D4FF) */
+/* Coding Libraries */
+section#library,
+section.coding-library {
+    background: rgba(5, 5, 5, 0.38) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+.lib-item {
+    background: rgba(13, 17, 23, 0.58) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: rgba(13, 17, 23, 0.58) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* Contact: Navy background with translucent cards */
 section#contact,
 section.contact {
-    background: #0A192F !important;
+    background: rgba(10, 25, 47, 0.45) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
 }
 section#contact .section-segment {
-    background: rgba(13, 17, 23, 0.8) !important;
-    border: 1px solid #233554 !important;
+    background: rgba(13, 17, 23, 0.6) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
 }
 section#contact .contact-item {
-    background: #0D1117 !important;
-    border: 1px solid #233554 !important;
+    background: rgba(13, 17, 23, 0.62) !important;
+    border: 1px solid rgba(35, 53, 84, 0.65) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 }
 section#contact .contact-item:hover {
+    background: rgba(13, 17, 23, 0.8) !important;
     border-color: #007BFF !important;
     box-shadow: 0 8px 30px rgba(0, 123, 255, 0.25) !important;
 }
@@ -2867,6 +2925,20 @@ section.contact .cta-button:hover,
     background: #38bdf8 !important;
     box-shadow: 0 8px 30px rgba(0, 212, 255, 0.7) !important;
     transform: scale(1.05) !important;
+}
+
+/* Navigation bar translucency */
+nav {
+    background: rgba(5, 5, 5, 0.68) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+}
+
+/* Footer translucency */
+footer {
+    background: rgba(5, 5, 5, 0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
 }
 
 /* Primary buttons: Electric Blue (#007BFF) */
@@ -2908,4 +2980,44 @@ h2 span,
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
+}
+
+
+/* ── Star Cluster Portrait Canvas ── */
+.star-portrait-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 6;
+    border-radius: 18px;
+}
+
+/* Photorealistic Cosmic Disintegration Portrait */
+#profilePhotoFull {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 18px;
+    z-index: 2;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.12s ease-out, filter 0.12s ease-out, transform 0.12s ease-out;
+    will-change: opacity, filter, transform;
+}
+
+.star-portrait-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    z-index: 6;
+    border-radius: 18px;
+    background: transparent;
 }
