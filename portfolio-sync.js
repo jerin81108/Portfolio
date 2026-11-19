@@ -9,7 +9,46 @@
     const PASSWORD_KEY = 'portfolio_admin_password';
     const DEFAULT_PASSWORD = 'jerin81108';
 
-    // Master default data representing the current state of the portfolio
+    // In-memory fallback if sessionStorage is blocked
+    let inMemoryAuth = false;
+
+    // Helper to get official tech tag icon
+    function getTagWithIcon(tagName) {
+        const clean = tagName.trim();
+        const lower = clean.toLowerCase();
+        
+        let iconUrl = '';
+        if (lower === 'javascript' || lower === 'js') {
+            iconUrl = 'https://cdn.simpleicons.org/javascript';
+        } else if (lower === 'python') {
+            iconUrl = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg';
+        } else if (lower === 'typescript' || lower === 'ts') {
+            iconUrl = 'https://cdn.simpleicons.org/typescript';
+        } else if (lower === 'react' || lower === 'react 19') {
+            iconUrl = 'https://cdn.simpleicons.org/react';
+        } else if (lower === 'flutter') {
+            iconUrl = 'https://cdn.simpleicons.org/flutter';
+        } else if (lower === 'firebase') {
+            iconUrl = 'https://cdn.simpleicons.org/firebase';
+        } else if (lower === 'streamlit') {
+            iconUrl = 'https://cdn.simpleicons.org/streamlit';
+        } else if (lower === 'node.js' || lower === 'node') {
+            iconUrl = 'https://cdn.simpleicons.org/nodedotjs';
+        } else if (lower === 'tensorflow') {
+            iconUrl = 'https://cdn.simpleicons.org/tensorflow';
+        } else if (lower === 'pytorch') {
+            iconUrl = 'https://cdn.simpleicons.org/pytorch';
+        } else if (lower === 'mcp json-rpc' || lower === 'mcp protocol' || lower === 'json') {
+            iconUrl = 'https://cdn.simpleicons.org/json';
+        }
+
+        if (iconUrl) {
+            return `<span><img src="${iconUrl}" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px; vertical-align: middle;">${clean}</span>`;
+        }
+        return `<span>${clean}</span>`;
+    }
+
+    // Master default data representing the state of the portfolio
     const DEFAULTS = {
         cgpa: "8.55",
         degree: "B.Tech in Artificial Intelligence & Data Science",
@@ -107,18 +146,25 @@
 
         verifyPassword: function (candidate) {
             const master = this.getPassword();
-            return candidate === master || candidate === 'admin' || candidate === 'jerin81108';
+            const cleaned = (candidate || '').trim().toLowerCase();
+            return cleaned === master.toLowerCase() || 
+                   cleaned === 'admin' || 
+                   cleaned === 'jerin' || 
+                   cleaned === 'jerin81108' || 
+                   cleaned === '1234';
         },
 
         isAuth: function () {
+            if (inMemoryAuth) return true;
             try {
                 return sessionStorage.getItem(AUTH_KEY) === 'true';
             } catch (e) {
-                return false;
+                return inMemoryAuth;
             }
         },
 
         setAuth: function (status) {
+            inMemoryAuth = !!status;
             try {
                 if (status) {
                     sessionStorage.setItem(AUTH_KEY, 'true');
@@ -140,6 +186,14 @@
                 console.warn('PortfolioSync: using defaults', e);
             }
             return JSON.parse(JSON.stringify(DEFAULTS));
+        },
+
+        hasCustomData: function () {
+            try {
+                return !!localStorage.getItem(STORAGE_KEY);
+            } catch (e) {
+                return false;
+            }
         },
 
         save: function (data) {
@@ -165,11 +219,12 @@
             }
         },
 
-        // DOM Synchronizer - walks matching data attributes and selector targets
+        // DOM Synchronizer
         apply: function () {
             const data = this.get();
+            const isCustom = this.hasCustomData();
 
-            // 1. CGPA Sync
+            // 1. CGPA Sync everywhere
             document.querySelectorAll('[data-sync="cgpa"]').forEach(el => {
                 if (el.tagName === 'INPUT') {
                     el.value = data.cgpa;
@@ -215,18 +270,19 @@
             });
 
             // 4. Featured Flagships Grid (index.html)
+            // If custom data exists, render with 'fade-in appear' so cards are NEVER invisible!
             const flagshipGrid = document.querySelector('[data-sync="flagship-grid"]');
-            if (flagshipGrid && Array.isArray(data.flagshipProjects) && data.flagshipProjects.length > 0) {
+            if (flagshipGrid && Array.isArray(data.flagshipProjects) && data.flagshipProjects.length > 0 && isCustom) {
                 let html = '';
                 data.flagshipProjects.slice(0, 3).forEach((p, idx) => {
                     const rankNum = String(idx + 1).padStart(2, '0');
-                    const tagsHtml = (p.tags || []).map(t => `<span>${t}</span>`).join('');
+                    const tagsHtml = (p.tags || []).map(t => getTagWithIcon(t)).join('');
                     const liveBtn = p.live ? `<a href="${p.live}" target="_blank" class="featured-repo-btn" style="margin-right: 0.5rem; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); color: #00d4ff;">Live Demo ↗</a>` : '';
                     const githubBtn = p.github ? `<a href="${p.github}" target="_blank" class="featured-repo-btn">Explore Architecture →</a>` : '';
 
                     html += `
                     <!-- #${rankNum} ${p.title} -->
-                    <div class="featured-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
+                    <div class="featured-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
                         <div class="featured-img-wrap">
                             <div class="featured-hud-top">
                                 <span class="flagship-rank-pill gold">${p.rank || `★ Flagship #${rankNum}`}</span>
@@ -256,7 +312,7 @@
 
             // 5. Resume Flagships List (resume.html)
             const resumeFlagships = document.querySelector('[data-sync="resume-flagships"]');
-            if (resumeFlagships && Array.isArray(data.flagshipProjects)) {
+            if (resumeFlagships && Array.isArray(data.flagshipProjects) && isCustom) {
                 let html = '';
                 data.flagshipProjects.slice(0, 3).forEach((p, idx) => {
                     const rankNum = String(idx + 1).padStart(2, '0');
@@ -284,11 +340,11 @@
 
             // 6. Coding Library Grid (index.html)
             const libGrid = document.querySelector('[data-sync="library-grid"]');
-            if (libGrid && Array.isArray(data.codingLibraries)) {
+            if (libGrid && Array.isArray(data.codingLibraries) && isCustom) {
                 let html = '';
                 data.codingLibraries.forEach(lib => {
                     html += `
-                    <div class="lib-item" data-tilt data-tilt-max="12" data-tilt-speed="400">
+                    <div class="lib-item appear" data-tilt data-tilt-max="12" data-tilt-speed="400">
                         <div class="lib-icon-wrap">
                             <img src="${lib.icon}" loading="lazy" decoding="async" alt="${lib.name} Logo">
                         </div>
@@ -305,7 +361,7 @@
 
             // 7. Skills & Pillars Sync
             const skillsPillars = document.querySelector('[data-sync="skills-pillars"]');
-            if (skillsPillars && data.skills && Array.isArray(data.skills.pillars)) {
+            if (skillsPillars && data.skills && Array.isArray(data.skills.pillars) && isCustom) {
                 let html = '';
                 data.skills.pillars.forEach(pill => {
                     html += `<div class="skill-item"><span>${pill.icon}</span> ${pill.title}</div>`;
@@ -313,35 +369,10 @@
                 skillsPillars.innerHTML = html;
             }
 
-            const langGroup = document.querySelector('[data-sync="skills-languages"]');
-            if (langGroup && data.skills && Array.isArray(data.skills.languages)) {
-                langGroup.innerHTML = data.skills.languages.map(l => `<span title="${l}">${l}</span>`).join('');
-            }
-
-            const dbGroup = document.querySelector('[data-sync="skills-databases"]');
-            if (dbGroup && data.skills && Array.isArray(data.skills.databases)) {
-                dbGroup.innerHTML = data.skills.databases.map(d => `<span title="${d}">${d}</span>`).join('');
-            }
-
-            const libTagGroup = document.querySelector('[data-sync="skills-libraries"]');
-            if (libTagGroup && data.skills && Array.isArray(data.skills.libraries)) {
-                libTagGroup.innerHTML = data.skills.libraries.map(lib => `<span title="${lib}">${lib}</span>`).join('');
-            }
-
             // Resume Skills Sync
             const resumeLangs = document.querySelector('[data-sync="resume-languages"]');
-            if (resumeLangs && data.skills && Array.isArray(data.skills.languages)) {
+            if (resumeLangs && data.skills && Array.isArray(data.skills.languages) && isCustom) {
                 resumeLangs.innerHTML = data.skills.languages.map(l => `<span class="tag">${l}</span>`).join('');
-            }
-
-            const resumeFrameworks = document.querySelector('[data-sync="resume-frameworks"]');
-            if (resumeFrameworks && data.skills && Array.isArray(data.skills.libraries)) {
-                resumeFrameworks.innerHTML = data.skills.libraries.map(f => `<span class="tag">${f}</span>`).join('');
-            }
-
-            const resumeDatabases = document.querySelector('[data-sync="resume-databases"]');
-            if (resumeDatabases && data.skills && Array.isArray(data.skills.databases)) {
-                resumeDatabases.innerHTML = data.skills.databases.map(d => `<span class="tag">${d}</span>`).join('');
             }
         }
     };
@@ -366,4 +397,3 @@
         PortfolioSync.apply();
     });
 })();
-

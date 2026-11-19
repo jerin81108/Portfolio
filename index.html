@@ -261,6 +261,8 @@
 </head>
 
 <body>
+    <!-- Deep Space & Cosmic Ocean Ambient Canvas -->
+    <canvas id="cosmicOceanCanvas" class="cosmic-ocean-canvas"></canvas>
     <!-- Scroll Progress Line -->
     <div class="scroll-progress-container">
         <div class="scroll-progress-line" id="scrollProgressLine"></div>
@@ -284,9 +286,27 @@
     <main>
         <section id="home" class="hero fade-in">
             <div class="section-segment active-segment" data-theme="about">
-                <div class="profile-container fade-in" data-tilt data-tilt-max="15" data-tilt-speed="400"
-                    data-tilt-glare data-tilt-max-glare="0.5">
-                    <img src="images/pic.jpeg" alt="JERIN J - AI & Data Science Architect" class="profile-pic" loading="eager">
+                <div class="profile-showcase-wrapper fade-in">
+                    <div class="profile-card-holosphere" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+                        <div class="profile-hud-corner tl"></div>
+                        <div class="profile-hud-corner tr"></div>
+                        <div class="profile-hud-corner bl"></div>
+                        <div class="profile-hud-corner br"></div>
+                        
+                        <div class="profile-status-badge">
+                            <span class="pulse-dot"></span> AI &amp; DS ARCHITECT · 3RD YEAR
+                        </div>
+
+                        <div class="profile-photo-frame">
+                            <img src="images/pic.jpeg" alt="JERIN J - AI & Data Science Architect" class="profile-photo-full" loading="eager">
+                            <div class="profile-scanline-fx"></div>
+                        </div>
+
+                        <div class="profile-hud-footer">
+                            <span class="hud-callsign">SYSTEM // JERIN.J</span>
+                            <span class="hud-status">SVHEC · ERODE</span>
+                        </div>
+                    </div>
                 </div>
                 <h1>Hi, I'm <span id="dynamic-name" class="gradient-text">JERIN J</span></h1>
                 <p class="subtitle">AI Architect & Data Strategy Expert</p>
@@ -570,7 +590,7 @@
                             <p>High-precision survey ecosystem for civil engineering, automating complex field data collection and providing real-time spatial analysis. Fully operational with a live web deployment on Vercel.</p>
                             <div class="featured-action-bar">
                                 <span class="featured-badge-tag">Production Deployed</span>
-                                <a href="https://bkbuilders.vercel.app" target="_blank" class="featured-repo-btn" style="margin-right: 0.5rem; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); color: #00d4ff;">
+                                <a href="https://bkbuilders.netlify.app" target="_blank" class="featured-repo-btn" style="margin-right: 0.5rem; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); color: #00d4ff;">
                                     Live Demo ↗
                                 </a>
                                 <a href="https://github.com/jerin81108/CIVIX" target="_blank" class="featured-repo-btn">

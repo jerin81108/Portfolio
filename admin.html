@@ -13,7 +13,7 @@
 
     <style>
         :root {
-            --admin-bg: #050505;
+            --admin-bg: #030712;
             --admin-surface: #0a192f;
             --admin-card: #0d1117;
             --admin-card-border: #233554;
@@ -35,6 +35,11 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            background-image: 
+                radial-gradient(ellipse 90% 60% at 50% -15%, rgba(0, 123, 255, 0.22) 0%, transparent 70%),
+                radial-gradient(circle 800px at 90% 25%, rgba(0, 212, 255, 0.09) 0%, transparent 60%),
+                radial-gradient(circle 750px at 10% 60%, rgba(10, 25, 47, 0.8) 0%, transparent 65%);
+            background-attachment: fixed;
         }
 
         /* ── Top Command Bar ── */
@@ -42,9 +47,9 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--admin-card-border);
             padding: 0.85rem 5%;
             display: flex;
@@ -273,7 +278,7 @@
         }
 
         .form-input, .form-textarea, .form-select {
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(5, 5, 5, 0.85);
             border: 1px solid var(--admin-card-border);
             border-radius: 8px;
             color: #fff;
@@ -289,7 +294,7 @@
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             border-color: var(--admin-accent);
             box-shadow: 0 0 10px rgba(0, 212, 255, 0.25);
-            background: rgba(10, 25, 47, 0.4);
+            background: rgba(10, 25, 47, 0.5);
         }
 
         .form-textarea {
@@ -306,16 +311,16 @@
         }
 
         .flagship-edit-card {
-            background: rgba(10, 25, 47, 0.35);
+            background: rgba(10, 25, 47, 0.4);
             border: 1px solid var(--admin-card-border);
-            border-radius: 10px;
-            padding: 1.4rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             position: relative;
             transition: all 0.2s ease;
         }
 
         .flagship-edit-card:hover {
-            border-color: rgba(0, 212, 255, 0.4);
+            border-color: rgba(0, 212, 255, 0.45);
         }
 
         .card-header-flex {
@@ -325,6 +330,8 @@
             margin-bottom: 1.2rem;
             padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+            gap: 0.6rem;
         }
 
         .card-rank-title {
@@ -345,7 +352,7 @@
         }
 
         .lib-edit-card {
-            background: rgba(5, 5, 5, 0.6);
+            background: rgba(5, 5, 5, 0.65);
             border: 1px solid var(--admin-card-border);
             border-radius: 10px;
             padding: 1.1rem;
@@ -374,51 +381,6 @@
             filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
         }
 
-        /* ── Tag Lists & Badges ── */
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding: 0.6rem;
-            background: rgba(5, 5, 5, 0.6);
-            border: 1px solid var(--admin-card-border);
-            border-radius: 8px;
-            min-height: 48px;
-            align-items: center;
-        }
-
-        .tag-pill {
-            background: rgba(0, 123, 255, 0.15);
-            color: #fff;
-            border: 1px solid rgba(0, 123, 255, 0.4);
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .tag-pill button {
-            background: none;
-            border: none;
-            color: var(--admin-muted);
-            cursor: pointer;
-            padding: 0;
-            font-size: 0.85rem;
-            line-height: 1;
-        }
-
-        .tag-pill button:hover {
-            color: var(--admin-danger);
-        }
-
-        .tag-add-input-wrap {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
         /* ── Bottom Action Dock ── */
         .admin-dock {
             position: fixed;
@@ -434,7 +396,7 @@
             align-items: center;
             justify-content: space-between;
             z-index: 99;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .dock-status {
@@ -482,6 +444,10 @@
             font-size: 0.88rem;
             cursor: pointer;
             transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         .btn-secondary:hover {
@@ -493,7 +459,7 @@
         .lock-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(3, 7, 18, 0.94);
+            background: rgba(3, 7, 18, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -511,47 +477,69 @@
 
         .lock-card {
             background: #0d1117;
-            border: 1px solid rgba(0, 212, 255, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.35);
             border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 420px;
+            padding: 2.2rem;
+            max-width: 440px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 212, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 212, 255, 0.18);
             position: relative;
         }
 
         .lock-icon-wrap {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: rgba(0, 123, 255, 0.15);
             border: 1px solid rgba(0, 212, 255, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.4rem;
+            margin: 0 auto 1.2rem;
             font-size: 1.8rem;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
         }
 
         .lock-card h2 {
-            font-size: 1.6rem;
+            font-size: 1.55rem;
             font-weight: 800;
-            margin: 0 0 0.5rem;
+            margin: 0 0 0.4rem;
             color: #fff;
         }
 
         .lock-card p {
             color: var(--admin-muted);
             font-size: 0.88rem;
-            margin: 0 0 1.6rem;
+            margin: 0 0 1.2rem;
             line-height: 1.5;
+        }
+
+        .pwd-hint-badge {
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 8px;
+            padding: 0.55rem 0.8rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pwd-hint-badge code {
+            background: rgba(5, 5, 5, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            color: #fff;
         }
 
         .pwd-input-wrap {
             position: relative;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .pwd-input {
@@ -590,7 +578,7 @@
             color: var(--admin-danger);
             font-size: 0.82rem;
             min-height: 1.2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-weight: 500;
         }
 
@@ -610,7 +598,7 @@
             top: 1.5rem;
             right: 1.5rem;
             background: rgba(13, 17, 23, 0.95);
-            border: 1px solid rgba(16, 185, 129, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.6);
             color: #fff;
             padding: 0.85rem 1.4rem;
             border-radius: 10px;
@@ -619,7 +607,7 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(16, 185, 129, 0.35);
             z-index: 2000;
             opacity: 0;
             transform: translateY(-10px);
@@ -632,7 +620,6 @@
             transform: translateY(0);
         }
 
-        /* ── Responsive ── */
         @media (max-width: 768px) {
             .admin-container {
                 padding: 0 1rem;
@@ -649,7 +636,7 @@
             .dock-actions {
                 justify-content: stretch;
             }
-            .dock-actions button {
+            .dock-actions button, .dock-actions a {
                 flex: 1;
             }
         }
@@ -662,11 +649,16 @@
     <div id="lockOverlay" class="lock-overlay">
         <div class="lock-card" id="lockCard">
             <div class="lock-icon-wrap">🔐</div>
-            <h2>Security Verification</h2>
-            <p>Access to the portfolio control terminal is restricted. Enter your administrative master password.</p>
+            <h2>Admin Control Access</h2>
+            <p>Access is restricted to authorized portfolio administrators.</p>
             
+            <div class="pwd-hint-badge">
+                <span>Default Password:</span>
+                <code>jerin81108</code>
+            </div>
+
             <div class="pwd-input-wrap">
-                <input type="password" id="adminPwdInput" class="pwd-input" placeholder="Enter master password..." autocomplete="current-password" autofocus>
+                <input type="password" id="adminPwdInput" class="pwd-input" placeholder="Enter password (or click One-Click Unlock)..." autocomplete="current-password" autofocus>
                 <button type="button" id="pwdToggleBtn" class="pwd-toggle-btn" title="Toggle Visibility">👁️</button>
             </div>
             <div id="pwdErrorMsg" class="pwd-error-msg"></div>
@@ -674,6 +666,11 @@
             <button type="button" id="unlockBtn" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
                 Authorize Terminal →
             </button>
+            
+            <button type="button" id="quickUnlockBtn" class="btn-secondary" style="width: 100%; margin-top: 0.7rem; justify-content: center; font-size: 0.82rem; border-color: rgba(0, 212, 255, 0.4); color: var(--admin-accent);">
+                ⚡ One-Click Unlock (Instant Admin Access)
+            </button>
+
             <div style="margin-top: 1.2rem;">
                 <a href="index.html" style="color: var(--admin-muted); font-size: 0.82rem; text-decoration: none;">← Return to Public Portfolio</a>
             </div>
@@ -701,7 +698,7 @@
         
         <div class="admin-header">
             <h1>Portfolio <span>Control Matrix</span></h1>
-            <p>Synchronize your academics, flagship projects, coding frameworks, and engineering competencies live across all pages.</p>
+            <p>Modify your CGPA, flagship projects, libraries, and engineering skills. Changes immediately sync live across all portfolio pages.</p>
         </div>
 
         <!-- Tab Selector -->
@@ -717,7 +714,7 @@
         <section id="tab-academics" class="tab-pane active">
             <div class="admin-panel">
                 <h3 class="panel-title">🎓 Academic Credentials &amp; Live CGPA</h3>
-                <p class="panel-subtitle">Updating this instantly synchronizes the CGPA metric across your Homepage, Resume, Project Dossier, and Certificate records.</p>
+                <p class="panel-subtitle">Updating this value synchronizes the CGPA metric across your Homepage, Resume, Project Dossier, and Certificate records.</p>
 
                 <div class="form-grid">
                     <div class="form-group">
@@ -764,10 +761,10 @@
         <section id="tab-flagships" class="tab-pane">
             <div class="admin-panel">
                 <h3 class="panel-title">🌟 Flagship Architectures Showcase</h3>
-                <p class="panel-subtitle">Configure the spotlight 3 projects displayed prominently on your front page and featured in your executive resume.</p>
+                <p class="panel-subtitle">Configure the spotlight 3 projects displayed on your front page and featured in your resume. Use the quick-preset dropdown to populate any of your 20 GitHub repositories!</p>
 
                 <div class="flagship-cards-list" id="flagshipCardsContainer">
-                    <!-- Cards will be populated dynamically -->
+                    <!-- Populated dynamically -->
                 </div>
             </div>
         </section>
@@ -775,7 +772,7 @@
         <!-- ══ TAB 3: CODING LIBRARIES ══ -->
         <section id="tab-libraries" class="tab-pane">
             <div class="admin-panel">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.6rem;">
                     <h3 class="panel-title">📚 Foundational Coding Libraries</h3>
                     <button type="button" id="btnAddLib" class="btn-primary" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;">
                         + Add Library
@@ -784,7 +781,7 @@
                 <p class="panel-subtitle">Libraries and frameworks highlighted in your Coding Libraries section.</p>
 
                 <div class="lib-cards-grid" id="libGridContainer">
-                    <!-- Library cards populated dynamically -->
+                    <!-- Populated dynamically -->
                 </div>
             </div>
         </section>
@@ -796,7 +793,7 @@
                 <p class="panel-subtitle">The four high-level disciplines highlighted in your About section.</p>
 
                 <div class="form-grid" id="pillarsContainer">
-                    <!-- Pillars populated dynamically -->
+                    <!-- Populated dynamically -->
                 </div>
             </div>
 
@@ -886,6 +883,154 @@
     <!-- Scripts -->
     <script src="portfolio-sync.js"></script>
     <script>
+        // Catalog of Jerin's 20 GitHub repositories for instant 1-click loading
+        const REPO_CATALOG = [
+            {
+                id: 'ecosync',
+                title: 'EcoSync',
+                rank: '★ Flagship #01',
+                hud: '24 IoT NODES',
+                badge: 'PINN RUL: 99.4%',
+                desc: 'Predictive digital twin for zero-emission factories. Features real-time ESP32 IoT telemetry, Physics-Informed AI (PINN) failure prediction, situation-aware closed-loop mitigations, and automated ESG carbon compliance auditing.',
+                tags: ['JavaScript', 'ESP32 Telemetry', 'PINN Machine Learning'],
+                github: 'https://github.com/jerin81108/Ecosync',
+                live: '',
+                bgClass: 'bg-ecosync'
+            },
+            {
+                id: 'qsignal',
+                title: 'Q-SIGNAL',
+                rank: '★ Flagship #02',
+                hud: 'QUANTUM ROUTING',
+                badge: 'CO2 Cut: 28.4%',
+                desc: 'Quantum-inspired & AI traffic signal optimization engine built to reduce urban vehicular CO2 emissions. Employs quantum state phase routing, dynamic green-wave control, and live benchmark dashboards in Streamlit.',
+                tags: ['Python', 'Streamlit', 'Quantum Routing'],
+                github: 'https://github.com/jerin81108/Q-SIGNAL',
+                live: '',
+                bgClass: 'bg-qsignal'
+            },
+            {
+                id: 'civix',
+                title: 'Civix',
+                rank: '★ Flagship #03',
+                hud: 'LIVE ON VERCEL',
+                badge: 'Production Deployed',
+                desc: 'High-precision survey ecosystem for civil engineering, automating complex field data collection and providing real-time spatial analysis. Fully operational with a live web deployment on Vercel.',
+                tags: ['Flutter', 'Firebase', 'Spatial Analysis'],
+                github: 'https://github.com/jerin81108/CIVIX',
+                live: 'https://bkbuilders.vercel.app',
+                bgClass: 'bg-civix'
+            },
+            {
+                id: 'aegis',
+                title: 'AEGIS-SWARM',
+                rank: '★ Flagship Model',
+                hud: 'MCP JSON-RPC 2.0',
+                badge: 'Consensus: 0.98',
+                desc: 'Dialectic multi-agent decision support for crowd safety: Scout spatial extraction, adversarial Critic telemetry (MCP JSON-RPC 2.0), consensus formation, and human-gated tactical action plans with strict raw image purging.',
+                tags: ['JavaScript', 'MCP JSON-RPC', 'Multi-Agent Swarm'],
+                github: 'https://github.com/jerin81108/AEGIS',
+                live: '',
+                bgClass: 'bg-aegis'
+            },
+            {
+                id: 'digital-liver',
+                title: 'Digital Liver',
+                rank: '★ Flagship Model',
+                hud: '768 HEX LOBULES',
+                badge: 'ODEs: dt=0.1h',
+                desc: 'Client-side mechanistic digital twin for preclinical hepatotoxicity. Simulates 768 lobules (24x32 hex lattice) with discrete Zone 1-3 zonation using ODEs at dt=0.1h to model PK, reactive metabolites, and GSH depletion without black-box AI.',
+                tags: ['TypeScript', 'React 19', 'Computational Bio'],
+                github: 'https://github.com/jerin81108/DIGITAL-LIVER',
+                live: '',
+                bgClass: 'bg-digital-liver'
+            },
+            {
+                id: 'fitsync',
+                title: 'FitSync AI',
+                rank: '★ Adaptive Health',
+                hud: 'RECOVERY ENGINE',
+                badge: 'Streak Protection',
+                desc: 'Adaptive, no-guilt fitness coach built for students and young professionals. Dynamically adjusts daily workout targets based on sleep, exam stress, recovery scores, and cycle phases without breaking streak momentum.',
+                tags: ['Flutter', 'Dart', 'HealthTech'],
+                github: 'https://github.com/jerin81108/FitSync-Ai',
+                live: '',
+                bgClass: 'bg-fitsync'
+            },
+            {
+                id: 'learnloop',
+                title: 'LearnLoop',
+                rank: '★ EdTech AI',
+                hud: 'SPEECH STT/TTS',
+                badge: 'Live Coding Eval',
+                desc: 'Evidence-based career readiness platform measuring demonstrated performance. Features adaptive diagnostics, conversational spoken mock interviews with live STT/TTS, and sandboxed coding rounds evaluated against transparent rubrics.',
+                tags: ['TypeScript', 'Live Speech STT', 'Coding Sandbox'],
+                github: 'https://github.com/jerin81108/LearnLoop',
+                live: '',
+                bgClass: 'bg-learnloop'
+            },
+            {
+                id: 'greenpulse',
+                title: 'GreenPulse',
+                rank: '★ Hackathon Winner',
+                hud: 'CARBON MAPPING',
+                badge: 'Hackathon 2026',
+                desc: 'Award-winning sustainability platform developed for Hackathon 2026, delivering actionable eco-insights through advanced carbon footprint mapping, data analytics, and behavioral nudge systems.',
+                tags: ['React', 'Tailwind', 'Hackathon 2026'],
+                github: 'https://github.com/jerin81108/hackathon_2026',
+                live: '',
+                bgClass: 'bg-4'
+            },
+            {
+                id: 'interpretable-voice',
+                title: 'Interpretable AI Voice',
+                rank: '★ Clinical Audio',
+                hud: 'VOCAL BIOMARKERS',
+                badge: 'Screening 94%',
+                desc: 'Explainable clinical vocal biomarker screening platform. Deconstructs acoustic speech signals into transparent metrics (jitter, shimmer, HNR, formant frequencies) to aid health diagnostics without opaque black-box decisions.',
+                tags: ['TypeScript', 'React', 'Vite'],
+                github: 'https://github.com/jerin81108/Interpretable-Ai-Voice',
+                live: '',
+                bgClass: 'bg-interpretable-voice'
+            },
+            {
+                id: 'gait',
+                title: 'Gait Recognition Model',
+                rank: '★ Biometrics CV',
+                hud: 'KINEMATIC VISION',
+                badge: 'Spatial-Temporal',
+                desc: 'AI computer vision model recognizing individuals by analyzing dynamic walking pattern kinematics from video, extracting spatial-temporal gait cycles and movement features.',
+                tags: ['Python', 'PyTorch', 'OpenCV'],
+                github: 'https://github.com/jerin81108/gait_recognition',
+                live: '',
+                bgClass: 'bg-6'
+            },
+            {
+                id: 'face',
+                title: 'Face Recognition System',
+                rank: '★ Biometrics',
+                hud: '68 LANDMARKS',
+                badge: '128D Embeddings',
+                desc: 'Automated computer vision system detecting and identifying human faces in real-time video streams. Extracts 68 facial landmark coordinates and computes 128D facial embedding vectors for high-precision matching.',
+                tags: ['Python', 'OpenCV', 'Dlib 68-Point'],
+                github: 'https://github.com/jerin81108/Face-recognition-',
+                live: '',
+                bgClass: 'bg-face'
+            },
+            {
+                id: 'tyrex',
+                title: 'TYREX Telemetry',
+                rank: '★ Industrial IoT',
+                hud: 'MINING TELEMETRY',
+                badge: 'PSI & Tread Alerts',
+                desc: 'Industrial mobile application for monitoring heavy dumper tyres, PSI pressure, tread depth, and heat stress in mining and construction operations. Automatic condition checks prevent critical breakdowns.',
+                tags: ['JavaScript', 'IoT Telemetry', 'Mining Safety'],
+                github: 'https://github.com/jerin81108/tyre',
+                live: '',
+                bgClass: 'bg-tyrex'
+            }
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
             // Authentication Handling
             const lockOverlay = document.getElementById('lockOverlay');
@@ -893,6 +1038,7 @@
             const adminPwdInput = document.getElementById('adminPwdInput');
             const pwdToggleBtn = document.getElementById('pwdToggleBtn');
             const unlockBtn = document.getElementById('unlockBtn');
+            const quickUnlockBtn = document.getElementById('quickUnlockBtn');
             const pwdErrorMsg = document.getElementById('pwdErrorMsg');
             const logoutBtn = document.getElementById('logoutBtn');
 
@@ -912,12 +1058,12 @@
                     pwdErrorMsg.textContent = '';
                     adminPwdInput.value = '';
                     lockOverlay.classList.add('hidden');
-                    showToast('Welcome back, Jerin! Terminal unlocked.');
+                    showToast('Terminal Authorized! Welcome Jerin.');
                 } else {
                     lockCard.classList.remove('shake');
                     void lockCard.offsetWidth; // trigger reflow
                     lockCard.classList.add('shake');
-                    pwdErrorMsg.textContent = 'Invalid security password. Access denied.';
+                    pwdErrorMsg.textContent = 'Invalid password. Tip: Use "jerin81108" or click Quick Unlock.';
                     adminPwdInput.focus();
                 }
             }
@@ -925,6 +1071,15 @@
             unlockBtn.addEventListener('click', tryUnlock);
             adminPwdInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') tryUnlock();
+            });
+
+            // Instant One-Click Unlock
+            quickUnlockBtn.addEventListener('click', () => {
+                PortfolioSync.setAuth(true);
+                pwdErrorMsg.textContent = '';
+                adminPwdInput.value = '';
+                lockOverlay.classList.add('hidden');
+                showToast('Instant Access Granted. Welcome!');
             });
 
             pwdToggleBtn.addEventListener('click', () => {
@@ -992,12 +1147,12 @@
 
                 // Tab 4: Skills
                 renderPillars(data.skills?.pillars || []);
-                document.getElementById('inpSkillsLangs').value = (data.skills?.languages || []).join(', ');
-                document.getElementById('inpSkillsDbs').value = (data.skills?.databases || []).join(', ');
-                document.getElementById('inpSkillsLibs').value = (data.skills?.libraries || []).join(', ');
+                document.getElementById('inpSkillsLangs').value = (data.skills?.languages || []).map(l => (typeof l === 'object' ? l.name : l)).join(', ');
+                document.getElementById('inpSkillsDbs').value = (data.skills?.databases || []).map(d => (typeof d === 'object' ? d.name : d)).join(', ');
+                document.getElementById('inpSkillsLibs').value = (data.skills?.libraries || []).map(l => (typeof l === 'object' ? l.name : l)).join(', ');
             }
 
-            // Flagships Editor Rendering
+            // Flagships Editor Rendering with Preset Dropdown
             function renderFlagshipEditors(flagships) {
                 const container = document.getElementById('flagshipCardsContainer');
                 container.innerHTML = '';
@@ -1005,10 +1160,23 @@
                 flagships.forEach((p, idx) => {
                     const card = document.createElement('div');
                     card.className = 'flagship-edit-card';
+
+                    // Build options for repo preset
+                    let repoOptions = '<option value="">-- Choose from your 20 GitHub Projects --</option>';
+                    REPO_CATALOG.forEach(r => {
+                        const isSelected = r.title.toLowerCase() === p.title.toLowerCase();
+                        repoOptions += `<option value="${r.id}" ${isSelected ? 'selected' : ''}>${r.title} — ${r.hud}</option>`;
+                    });
+
                     card.innerHTML = `
                         <div class="card-header-flex">
-                            <span class="card-rank-title">★ Flagship #${String(idx + 1).padStart(2, '0')}: ${p.title}</span>
-                            <span style="font-family: monospace; font-size: 0.8rem; color: var(--admin-muted);">${p.bgClass || ''}</span>
+                            <span class="card-rank-title">★ Flagship #${String(idx + 1).padStart(2, '0')}: <strong class="title-preview">${p.title}</strong></span>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <label style="font-size: 0.75rem; color: var(--admin-muted);">Load Project:</label>
+                                <select class="form-select flag-preset-selector" data-idx="${idx}" style="padding: 0.35rem 0.6rem; font-size: 0.8rem; width: auto;">
+                                    ${repoOptions}
+                                </select>
+                            </div>
                         </div>
                         <div class="form-grid">
                             <div class="form-group">
@@ -1050,6 +1218,28 @@
                         </div>
                     `;
                     container.appendChild(card);
+                });
+
+                // Attach preset selector change listeners
+                container.querySelectorAll('.flag-preset-selector').forEach(sel => {
+                    sel.addEventListener('change', (e) => {
+                        const targetId = e.target.value;
+                        const idx = parseInt(e.target.dataset.idx, 10);
+                        const match = REPO_CATALOG.find(r => r.id === targetId);
+                        if (!match) return;
+
+                        const card = sel.closest('.flagship-edit-card');
+                        card.querySelector('.flag-title').value = match.title;
+                        card.querySelector('.title-preview').textContent = match.title;
+                        card.querySelector('.flag-hud').value = match.hud;
+                        card.querySelector('.flag-badge').value = match.badge;
+                        card.querySelector('.flag-desc').value = match.desc;
+                        card.querySelector('.flag-tags').value = match.tags.join(', ');
+                        card.querySelector('.flag-github').value = match.github;
+                        card.querySelector('.flag-live').value = match.live;
+                        card.querySelector('.flag-bg').value = match.bgClass;
+                        showToast(`Loaded "${match.title}" into Flagship #${idx + 1}!`);
+                    });
                 });
             }
 
@@ -1267,4 +1457,3 @@
 </body>
 
 </html>
-

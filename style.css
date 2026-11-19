@@ -151,13 +151,29 @@ html {
 
 body {
     font-family: 'Outfit', sans-serif;
-    background-color: var(--bg-color);
+    background-color: #030712;
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
     background-image: 
-        radial-gradient(circle at 0% 0%, rgba(74, 144, 226, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+        radial-gradient(ellipse 90% 60% at 50% -15%, rgba(0, 123, 255, 0.22) 0%, transparent 70%),
+        radial-gradient(circle 800px at 90% 25%, rgba(0, 212, 255, 0.09) 0%, transparent 60%),
+        radial-gradient(circle 750px at 10% 60%, rgba(10, 25, 47, 0.8) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 50% at 50% 105%, rgba(0, 123, 255, 0.16) 0%, transparent 70%);
+    background-attachment: fixed;
+}
+
+/* ── Deep Ocean & Cosmic Space Dynamic Particle Canvas ── */
+.cosmic-ocean-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.92;
+}
 }
 
 
@@ -640,11 +656,214 @@ h2 span,
     justify-content: center;
 }
 
+/* ══ FULL PORTRAIT HOLOGRAPHIC SHOWCASE (Shows Full Photo in Cyber Holosphere) ══ */
+.profile-showcase-wrapper {
+    margin: 0 auto 2.2rem;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card-holosphere {
+    position: relative;
+    width: 270px;
+    height: 360px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(13, 17, 23, 0.9), rgba(10, 25, 47, 0.95));
+    border: 2px solid rgba(0, 212, 255, 0.45);
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.85),
+        0 0 45px rgba(0, 123, 255, 0.35),
+        0 0 75px rgba(0, 212, 255, 0.22),
+        inset 0 0 25px rgba(0, 212, 255, 0.08);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+    animation: holosphereFloat 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes holosphereFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-12px) rotate(0.6deg); }
+}
+
+.profile-card-holosphere:hover {
+    border-color: #00d4ff;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.9),
+        0 0 60px rgba(0, 123, 255, 0.55),
+        0 0 100px rgba(0, 212, 255, 0.4),
+        inset 0 0 30px rgba(0, 212, 255, 0.15);
+}
+
+/* Ambient Deep Space / Ocean Aura Glow Behind Portrait */
+.profile-showcase-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -35px;
+    border-radius: 35px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.28) 0%, rgba(0, 123, 255, 0.2) 40%, transparent 75%);
+    filter: blur(25px);
+    z-index: -1;
+    pointer-events: none;
+    animation: ambientAura 4s ease-in-out infinite alternate;
+}
+
+@keyframes ambientAura {
+    0% { opacity: 0.6; transform: scale(0.95); }
+    100% { opacity: 0.95; transform: scale(1.06); }
+}
+
+/* Cyber HUD Corner Brackets */
+.profile-hud-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: #00d4ff;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
+}
+
+.profile-hud-corner.tl {
+    top: 8px;
+    left: 8px;
+    border-top: 2.5px solid #00d4ff;
+    border-left: 2.5px solid #00d4ff;
+    border-top-left-radius: 4px;
+}
+
+.profile-hud-corner.tr {
+    top: 8px;
+    right: 8px;
+    border-top: 2.5px solid #00d4ff;
+    border-right: 2.5px solid #00d4ff;
+    border-top-right-radius: 4px;
+}
+
+.profile-hud-corner.bl {
+    bottom: 8px;
+    left: 8px;
+    border-bottom: 2.5px solid #00d4ff;
+    border-left: 2.5px solid #00d4ff;
+    border-bottom-left-radius: 4px;
+}
+
+.profile-hud-corner.br {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2.5px solid #00d4ff;
+    border-right: 2.5px solid #00d4ff;
+    border-bottom-right-radius: 4px;
+}
+
+/* Floating Status Pill */
+.profile-status-badge {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    padding: 0.28rem 0.75rem;
+    border-radius: 999px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #00d4ff;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Photo Frame - SHOWS FULL PORTRAIT IMAGE */
+.profile-photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.profile-photo-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    filter: brightness(1.02) contrast(1.05);
+}
+
+.profile-card-holosphere:hover .profile-photo-full {
+    transform: scale(1.04);
+}
+
+/* Subtle Holographic Scanline Sweep */
+.profile-scanline-fx {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.08) 50%,
+        transparent 100%
+    );
+    height: 35%;
+    width: 100%;
+    pointer-events: none;
+    animation: scanlineSweep 4.5s linear infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes scanlineSweep {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(400%); }
+}
+
+/* Bottom Telemetry Bar */
+.profile-hud-footer {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    right: 14px;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    border-radius: 8px;
+    padding: 0.3rem 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    z-index: 10;
+}
+
+.profile-hud-footer .hud-callsign {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.profile-hud-footer .hud-status {
+    color: #00d4ff;
+    font-weight: 600;
+}
+
+/* Backwards compatibility for profile-container/profile-pic */
 .profile-container {
     margin-bottom: 2rem;
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 270px;
+    height: 360px;
+    border-radius: 20px;
+    overflow: hidden;
     transform-style: preserve-3d;
 }
 
@@ -652,36 +871,19 @@ h2 span,
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
-                linear-gradient(135deg, var(--accent-1), var(--accent-2)) border-box;
-    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+    object-position: center top;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 212, 255, 0.45);
+    box-shadow: 0 15px 45px rgba(0, 123, 255, 0.35), 0 0 70px rgba(0, 212, 255, 0.2);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: floating 6s ease-in-out infinite;
-    transform: translateZ(50px); /* Lift off base */
+    animation: holosphereFloat 5.5s ease-in-out infinite alternate;
 }
 
-.profile-container::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, var(--glow-color), transparent 70%);
-    transform: translate(-50%, -50%) translateZ(-20px);
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-@keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-.profile-pic:hover {
-    transform: scale(1.08) rotate(2deg);
+@media (max-width: 600px) {
+    .profile-card-holosphere, .profile-container {
+        width: 220px;
+        height: 295px;
+    }
 }
 
 #dynamic-name {

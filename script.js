@@ -397,4 +397,135 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentYear = new Date().getFullYear();
         footerP.innerHTML = footerP.innerHTML.replace('2026', currentYear);
     }
+
+
+    // ════════════════════════════════════════════════════════════
+    // ── COSMIC OCEAN & DEEP SPACE AMBIENT PARTICLE ENGINE ──
+    // ════════════════════════════════════════════════════════════
+    const cosmicCanvas = document.getElementById('cosmicOceanCanvas');
+    if (cosmicCanvas) {
+        const ctx = cosmicCanvas.getContext('2d');
+        let width = cosmicCanvas.width = window.innerWidth;
+        let height = cosmicCanvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = cosmicCanvas.width = window.innerWidth;
+            height = cosmicCanvas.height = window.innerHeight;
+        }, { passive: true });
+
+        // Cosmic Plankton / Stellar Star Particles (Midnight Blue + Electric Blue + Neon Cyan)
+        const count = Math.min(85, Math.max(45, Math.floor((width * height) / 14000)));
+        const particles = [];
+        let mouseX = width / 2;
+        let mouseY = height / 2;
+        let isHovering = false;
+        let hoverTimeout = null;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isHovering = true;
+            clearTimeout(hoverTimeout);
+            hoverTimeout = setTimeout(() => { isHovering = false; }, 2500);
+        }, { passive: true });
+
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 2.2 + 0.8,
+                baseAlpha: Math.random() * 0.45 + 0.2,
+                alpha: Math.random() * 0.45 + 0.2,
+                vx: (Math.random() - 0.5) * 0.35,
+                vy: -(Math.random() * 0.45 + 0.15), // Gentle upward ocean / space float
+                phase: Math.random() * Math.PI * 2,
+                type: Math.random() > 0.4 ? 'cyan' : 'blue'
+            });
+        }
+
+        let waveTime = 0;
+
+        function animateCosmicOcean() {
+            if (document.hidden) {
+                requestAnimationFrame(animateCosmicOcean);
+                return;
+            }
+
+            ctx.clearRect(0, 0, width, height);
+
+            // 1. Draw subtle deep-sea / cosmic current light band
+            waveTime += 0.007;
+            ctx.save();
+            const grad = ctx.createLinearGradient(0, 0, width, height);
+            grad.addColorStop(0, 'rgba(0, 123, 255, 0.025)');
+            grad.addColorStop(0.5, 'rgba(0, 212, 255, 0.035)');
+            grad.addColorStop(1, 'rgba(10, 25, 47, 0.015)');
+            ctx.fillStyle = grad;
+
+            ctx.beginPath();
+            ctx.moveTo(0, height * 0.4 + Math.sin(waveTime) * 35);
+            ctx.bezierCurveTo(
+                width * 0.3, height * 0.35 + Math.cos(waveTime) * 45,
+                width * 0.7, height * 0.45 + Math.sin(waveTime * 1.2) * 55,
+                width, height * 0.38 + Math.cos(waveTime) * 35
+            );
+            ctx.lineTo(width, height);
+            ctx.lineTo(0, height);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+
+            // 2. Render and update floating particles
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
+                p.x += p.vx;
+                p.y += p.vy;
+                p.x += Math.sin(waveTime + p.phase) * 0.18; // gentle sinusoidal drift
+
+                // Wrap boundaries seamlessly
+                if (p.y < -10) {
+                    p.y = height + 10;
+                    p.x = Math.random() * width;
+                }
+                if (p.x < -10) p.x = width + 10;
+                if (p.x > width + 10) p.x = -10;
+
+                // Interactive reaction to cursor
+                let extraAlpha = 0;
+                if (isHovering) {
+                    const dx = p.x - mouseX;
+                    const dy = p.y - mouseY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        const force = (150 - dist) / 150;
+                        p.x += (dx / dist) * force * 1.6;
+                        p.y += (dy / dist) * force * 1.6;
+                        extraAlpha = force * 0.45;
+                    }
+                }
+
+                p.alpha = p.baseAlpha + Math.sin(waveTime * 2 + p.phase) * 0.2 + extraAlpha;
+                p.alpha = Math.max(0.08, Math.min(0.95, p.alpha));
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+
+                if (p.type === 'cyan') {
+                    ctx.fillStyle = `rgba(0, 212, 255, ${p.alpha})`;
+                    ctx.shadowColor = 'rgba(0, 212, 255, 0.75)';
+                } else {
+                    ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+                    ctx.shadowColor = 'rgba(0, 123, 255, 0.75)';
+                }
+                ctx.shadowBlur = p.radius * 3.5;
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animateCosmicOcean);
+        }
+
+        animateCosmicOcean();
+    }
+
 });
