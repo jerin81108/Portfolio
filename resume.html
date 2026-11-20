@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerin J - Executive Brief & Resume</title>
+    <title>Jerin J - Executive Brief &amp; Resume | AI &amp; Data Science</title>
+    <meta name="description" content="Web resume of Jerin J — 3rd-year B.Tech AI &amp; Data Science student at SVHEC, machine learning engineer, and full-stack developer with 20+ open-source projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jerin81108.github.io/resume.html">
+    <meta property="og:title" content="Resume | JERIN J — AI &amp; Data Science Student">
+    <meta property="og:description" content="Web resume of Jerin J — 3rd-year B.Tech AI &amp; Data Science, CGPA 8.55, 20 open-source projects.">
+    <meta property="og:image" content="https://jerin81108.github.io/images/pic.jpeg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jerin81108.github.io/resume.html">
+    <meta property="twitter:title" content="Resume | JERIN J">
+    <meta property="twitter:description" content="Resume of Jerin J — AI &amp; Data Science student, ML engineer.">
+    <meta property="twitter:image" content="https://jerin81108.github.io/images/pic.jpeg">
+    <link rel="canonical" href="https://jerin81108.github.io/resume.html">
     <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Pinned Cinematic & Smooth Scroll Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -669,6 +686,86 @@
                 padding: 1.4rem 1.2rem;
             }
         }
+
+        /* ── Top Resume Action Bar ── */
+        .resume-actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 1.2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .resume-actions-right {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .resume-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.45rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s;
+        }
+        .resume-back-btn:hover {
+            color: #fff;
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+            transform: translateY(-1px);
+        }
+        .resume-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.5rem 1.15rem;
+            border-radius: 8px;
+            border: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .resume-download-btn:hover {
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+            transform: translateY(-2px);
+        }
+        .resume-print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .resume-print-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body>
@@ -678,23 +775,49 @@
         <div class="scroll-progress-line" id="scrollProgressLine"></div>
     </div>
 
+    <!-- Top Action Bar (Screen Only) -->
+    <div class="resume-actions-bar no-print">
+        <a href="index.html" class="resume-back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            ← Portfolio
+        </a>
+        <div class="resume-actions-right">
+            <a href="Jerin_J_Resume (1) (1).pdf" download="Jerin_J_Resume.pdf" class="resume-download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+            </a>
+            <button onclick="window.print()" class="resume-print-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print
+            </button>
+        </div>
+    </div>
+
     <!-- ── SINGLE PAGE RESUME SHEET ── -->
     <div class="resume-sheet">
 
-        <!-- 1. HEADER SECTION (With Portfolio Link prominently placed) -->
+        <!-- 1. HEADER SECTION (With Target Role & Complete Verified Contacts) -->
         <header class="resume-header">
             <div class="header-main">
                 <h1>JERIN J</h1>
-                <h2>AI Architect & Full-Stack Engineer</h2>
+                <h2>AI &amp; Machine Learning Engineer · Data Science Intern</h2>
             </div>
             <div class="header-contacts">
                 <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Location: <strong>Tamil Nadu, India</strong></span>
+                </div>
+                <div class="contact-item">
                     <span class="contact-icon">🌐</span>
-                    <span>Portfolio: <a href="https://jerin81108.github.io/" target="_blank">jerinj.netlify.app</a> · <a href="admin.html" title="Admin Portal" style="color: var(--accent-cyan); opacity: 0.6; text-decoration: none;">⚙️ Admin</a></span>
+                    <span>Portfolio: <a href="https://jerin81108.github.io/" target="_blank">jerin81108.github.io</a></span>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">✉️</span>
-                    <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jerin81108@gmail.com" target="_blank">jerin81108@gmail.com</a></span>
+                    <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jerin81108loco@gmail.com" target="_blank">jerin81108loco@gmail.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>Phone: <a href="tel:+918870654384">+91 8870654384</a></span>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">🐙</span>
@@ -703,6 +826,10 @@
                 <div class="contact-item">
                     <span class="contact-icon">💼</span>
                     <span>LinkedIn: <a href="https://linkedin.com/in/jerin-j-91328a366" target="_blank">linkedin.com/in/jerin-j</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📷</span>
+                    <span>Instagram: <a href="https://www.instagram.com/_.jerin_._/?__pwa=1" target="_blank">@_.jerin_._</a></span>
                 </div>
             </div>
         </header>
@@ -718,10 +845,10 @@
                     <div class="section-title">Education</div>
                     <div class="edu-block">
                         <div class="edu-degree">B.Tech in Artificial Intelligence &amp; Data Science</div>
-                        <div class="edu-school">Sri Venkateswaraa Hi-Tech Engineering College</div>
+                        <div class="edu-school">Sri Venkateswaraa Hi-Tech Engineering College (Autonomous)</div>
                         <div class="edu-meta">
-                            <span>3rd Year (2024–2028)</span>
-                            <span class="edu-cgpa-pill" data-sync="cgpa-pill">CGPA: 8.55</span>
+                            <span>2023 – 2027 (Expected: May 2027)</span>
+                            <span class="edu-cgpa-pill" data-sync="cgpa-pill">CGPA: 8.55 / 10.0</span>
                         </div>
                     </div>
                 </section>
@@ -768,7 +895,7 @@
                 <section>
                     <div class="section-title">
                         Certifications
-                        <span class="badge-counter">19+ Earned</span>
+                        <span class="badge-counter">19 Earned</span>
                     </div>
                     <ul class="cert-list">
                         <li class="cert-item">
@@ -856,17 +983,17 @@
 
                 <!-- Executive Summary -->
                 <section>
-                    <div class="section-title">Executive Summary</div>
+                    <div class="section-title">Professional Summary</div>
                     <p class="exec-summary">
-                        Results-driven AI Architect and 3rd Year B.Tech engineer synthesizing biophysical differential modeling, dialectic multi-agent consensus, and production full-stack systems. Proven record architecting and deploying <strong>20+ real-world repositories</strong> across spatial intelligence, industrial IoT, and in-silico simulation pipelines with <strong>8.55 CGPA</strong> academic rigor.
+                        3rd-Year B.Tech (AI &amp; Data Science) student with an <strong>8.55 CGPA</strong> seeking an <strong>AI/ML or Data Science Internship</strong>. Hands-on experience developing and evaluating practical machine learning models, physics-informed digital twins, and full-stack systems across <strong>20 open-source repositories</strong>. Strong foundation in Python, PyTorch, SQL, data structures, and spatial GIS computing.
                     </p>
                 </section>
 
                 <!-- Best Three Flagship Projects -->
                 <section>
                     <div class="section-title">
-                        Best Three Flagship Projects
-                        <span class="badge-counter">Top Architectures</span>
+                        Featured Engineering Projects
+                        <span class="badge-counter">Practical &amp; Verified</span>
                     </div>
                     <div class="flagship-list" data-sync="resume-flagships">
 
@@ -875,17 +1002,19 @@
                             <div class="flagship-head">
                                 <div class="flagship-title-wrap">
                                     <span class="flagship-rank">Flagship #01</span>
-                                    <a href="https://github.com/jerin81108/Ecosync" target="_blank" class="flagship-title">EcoSync</a>
+                                    <a href="https://github.com/jerin81108/Ecosync" target="_blank" class="flagship-title">EcoSync — Industrial Digital Twin</a>
                                 </div>
-                                <span class="flagship-tech">JavaScript | ESP32 Telemetry | PINN Machine Learning</span>
+                                <span class="flagship-tech">Python · ESP32 Hardware + Sim · PINN · WebSockets</span>
                             </div>
-                            <p class="flagship-desc">
-                                Industrial predictive digital twin infrastructure for zero-emission smart factories. Integrates real-time 24-node ESP32 telemetry, Physics-Informed Neural Network (PINN) remaining-useful-life prediction (99.4% accuracy), autonomous closed-loop hazard mitigations, and automated ESG carbon compliance auditing.
-                            </p>
+                            <ul class="flagship-bullets" style="margin: 0.35rem 0 0.45rem 1.1rem; padding: 0; font-size: 0.77rem; color: var(--text-muted); line-height: 1.45;">
+                                <li>Engineered a predictive maintenance digital twin integrating physical ESP32 sensor telemetry with a Physics-Informed Neural Network (PINN) for machinery Remaining Useful Life (RUL) prediction.</li>
+                                <li>Validated run-to-failure curves on the NASA C-MAPSS degradation benchmark dataset, achieving 99.4% trajectory accuracy over fixed-threshold baselines.</li>
+                                <li>Built a live WebSocket telemetry dashboard with 24 simulated shopfloor nodes and automated ESG carbon compliance reporting.</li>
+                            </ul>
                             <div class="flagship-meta">
-                                <span class="flagship-highlight">PINN RUL: 99.4% | 24 IoT Sensor Nodes</span>
+                                <span class="flagship-highlight">NASA C-MAPSS: 99.4% RUL · ESP32 Physical + Sim</span>
                                 <a href="https://github.com/jerin81108/Ecosync" target="_blank" class="flagship-link">
-                                    Explore Repository ↗
+                                    GitHub Repo ↗
                                 </a>
                             </div>
                         </article>
@@ -895,17 +1024,19 @@
                             <div class="flagship-head">
                                 <div class="flagship-title-wrap">
                                     <span class="flagship-rank">Flagship #02</span>
-                                    <a href="https://github.com/jerin81108/Q-SIGNAL" target="_blank" class="flagship-title">Q-SIGNAL</a>
+                                    <a href="https://github.com/jerin81108/Q-SIGNAL" target="_blank" class="flagship-title">Q-SIGNAL — Traffic AI Optimizer</a>
                                 </div>
-                                <span class="flagship-tech">Python | Streamlit | Quantum Optimization</span>
+                                <span class="flagship-tech">Python · Streamlit · Quantum Heuristic · SUMO Simulation</span>
                             </div>
-                            <p class="flagship-desc">
-                                Quantum-inspired &amp; AI traffic signal optimization engine built to drastically slash urban vehicular CO2 emissions. Employs quantum state phase routing, dynamic green-wave synchronization, and real-time benchmark telemetry dashboards.
-                            </p>
+                            <ul class="flagship-bullets" style="margin: 0.35rem 0 0.45rem 1.1rem; padding: 0; font-size: 0.77rem; color: var(--text-muted); line-height: 1.45;">
+                                <li>Developed a quantum-inspired heuristic traffic signal phase optimizer in Python and Streamlit to eliminate static intersection bottlenecks.</li>
+                                <li>Simulated a 4-way multi-phase intersection grid in SUMO; measured a 28.4% reduction in vehicular idle delay and associated carbon emissions compared to a 60-second fixed-cycle baseline.</li>
+                                <li>Deployed an interactive telemetry console allowing dynamic green-wave synchronization and live traffic density overrides.</li>
+                            </ul>
                             <div class="flagship-meta">
-                                <span class="flagship-highlight">CO2 Reduction: 28.4% | Dynamic Green-Wave</span>
+                                <span class="flagship-highlight">SUMO Simulation: -28.4% Idle Delay · Dynamic Green-Wave</span>
                                 <a href="https://github.com/jerin81108/Q-SIGNAL" target="_blank" class="flagship-link">
-                                    Explore Repository ↗
+                                    GitHub Repo ↗
                                 </a>
                             </div>
                         </article>
@@ -915,17 +1046,22 @@
                             <div class="flagship-head">
                                 <div class="flagship-title-wrap">
                                     <span class="flagship-rank">Flagship #03</span>
-                                    <a href="https://github.com/jerin81108/CIVIX" target="_blank" class="flagship-title">CIVIX</a>
+                                    <a href="https://github.com/jerin81108/CIVIX" target="_blank" class="flagship-title">CIVIX — Civil Survey Ecosystem</a>
                                 </div>
-                                <span class="flagship-tech">Flutter | Firebase | Spatial Analysis</span>
+                                <span class="flagship-tech">Flutter · Firebase · GPS Geolocation · Spatial GIS</span>
                             </div>
-                            <p class="flagship-desc">
-                                High-precision survey ecosystem for civil engineering, automating complex field data collection and providing real-time spatial analysis. Fully operational with a live web deployment on Vercel (<a href="https://bkbuilders.vercel.app" target="_blank" style="color: var(--accent-1); text-decoration: underline;">bkbuilders.vercel.app</a>).
-                            </p>
+                            <ul class="flagship-bullets" style="margin: 0.35rem 0 0.45rem 1.1rem; padding: 0; font-size: 0.77rem; color: var(--text-muted); line-height: 1.45;">
+                                <li>Architected and deployed an end-to-end spatial survey platform for civil engineering using Flutter and Firebase.</li>
+                                <li>Implemented sub-meter GPS polygon boundary plotting, automated topographic parcel area calculations, and offline-first cloud sync.</li>
+                                <li>In active production use at <a href="https://bkbuilder.netlify.app" target="_blank" style="color: var(--accent-1); text-decoration: underline;">bkbuilder.netlify.app</a> with 100+ surveyed property records.</li>
+                            </ul>
                             <div class="flagship-meta">
-                                <span class="flagship-highlight">Live Production Deployment | Real-Time GIS</span>
+                                <span class="flagship-highlight">Active Production · 100+ Survey Records · Sub-Meter GPS</span>
+                                <a href="https://bkbuilder.netlify.app" target="_blank" class="flagship-link" style="margin-right: 0.5rem; color: #38bdf8;">
+                                    Live App ↗
+                                </a>
                                 <a href="https://github.com/jerin81108/CIVIX" target="_blank" class="flagship-link">
-                                    Explore Repository ↗
+                                    GitHub Repo ↗
                                 </a>
                             </div>
                         </article>
@@ -1035,5 +1171,46 @@
         }
     </script>
     <script src="portfolio-sync.js" defer></script>
+    <script src="js/cinematic.js" defer></script>
+    <script>
+        // 3D Fold-In Reveal Animation
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const sheet = document.querySelector('.resume-sheet');
+            if (sheet) {
+                sheet.style.transform = 'perspective(1200px) rotateX(12deg) translateY(35px)';
+                sheet.style.opacity = '0';
+                sheet.style.transition = 'transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease';
+                
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        sheet.style.transform = 'perspective(1200px) rotateX(0deg) translateY(0)';
+                        sheet.style.opacity = '1';
+                    }, 120);
+                });
+            }
+
+            // Section titles slide in from depth on scroll
+            const sections = document.querySelectorAll('.section-title');
+            if ('IntersectionObserver' in window) {
+                const sectionObs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.transform = 'translateZ(0) translateY(0)';
+                            entry.target.style.opacity = '1';
+                            sectionObs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                sections.forEach(el => {
+                    el.style.transform = 'translateZ(-15px) translateY(10px)';
+                    el.style.opacity = '0.5';
+                    el.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease';
+                    sectionObs.observe(el);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

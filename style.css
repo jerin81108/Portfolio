@@ -146,14 +146,16 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* Native smooth scroll disabled so Lenis inertial scroll runs without stutter/rubberbanding */
+    scroll-behavior: auto;
+    overflow-x: clip;
 }
 
 body {
     font-family: 'Outfit', sans-serif;
     background-color: #030712;
     color: var(--text-main);
-    overflow-x: hidden;
+    overflow-x: clip;
     line-height: 1.6;
     background-image: 
         radial-gradient(ellipse 90% 60% at 50% -15%, rgba(0, 123, 255, 0.22) 0%, transparent 70%),
@@ -671,7 +673,7 @@ h2 span,
     height: 360px;
     border-radius: 20px;
     background: linear-gradient(145deg, rgba(13, 17, 23, 0.9), rgba(10, 25, 47, 0.95));
-    border: 2px solid rgba(0, 212, 255, 0.45);
+    border: none !important;
     box-shadow: 
         0 15px 45px rgba(0, 0, 0, 0.85),
         0 0 45px rgba(0, 123, 255, 0.35),
@@ -689,12 +691,11 @@ h2 span,
 }
 
 .profile-card-holosphere:hover {
-    border-color: #00d4ff;
+    border: none !important;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.9),
         0 0 60px rgba(0, 123, 255, 0.55),
-        0 0 100px rgba(0, 212, 255, 0.4),
-        inset 0 0 30px rgba(0, 212, 255, 0.15);
+        0 0 100px rgba(0, 212, 255, 0.4);
 }
 
 /* Ambient Deep Space / Ocean Aura Glow Behind Portrait */
@@ -873,7 +874,7 @@ h2 span,
     object-fit: cover;
     object-position: center top;
     border-radius: 20px;
-    border: 2px solid rgba(0, 212, 255, 0.45);
+    border: none !important;
     box-shadow: 0 15px 45px rgba(0, 123, 255, 0.35), 0 0 70px rgba(0, 212, 255, 0.2);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     animation: holosphereFloat 5.5s ease-in-out infinite alternate;
@@ -1746,13 +1747,29 @@ footer p {
 /* Fade in animations config */
 .fade-in {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
+.fade-in.appear,
+.fade-in.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* CARDS SAFETY: All project & certificate cards MUST be fully visible and interactable */
+.project-card,
+.featured-card,
+.cert-info-card,
+.cert-card,
+.service-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.project-card.is-hidden,
+.cert-info-card.is-hidden {
+    display: none !important;
 }
 
 /* Responsive adjust */
@@ -2994,21 +3011,542 @@ h2 span,
     border-radius: 18px;
 }
 
-/* 100% Pure Star Constellation Portrait (No Raster Image) */
-#profilePhotoFull {
+/* ── Clean Profile Portrait (Star Effect Removed) ── */
+#profilePhotoFull,
+.profile-photo-full {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center top;
+    display: block !important;
+    border-radius: 18px !important;
+    opacity: 1 !important;
+    filter: brightness(1.02) contrast(1.04) !important;
+    transform: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.profile-card-holosphere {
+    border: none !important;
+    outline: none !important;
+}
+
+.profile-photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    outline: none !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+}
+
+.star-portrait-canvas {
+    display: none !important;
+}
+
+.js-tilt-glare,
+.js-tilt-glare-inner,
+.profile-scanline-fx,
+.profile-hud-corner,
+.profile-hud-corner.tr,
+.profile-hud-corner.br {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+    border: none !important;
 }
 
-.star-portrait-canvas {
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CINEMATIC DEEP-SPACE ENVIRONMENT THEME
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Deep Space Base Container */
+.deep-space-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -10;
+    overflow: hidden;
+    background-color: #02030a;
+}
+
+.space-base-gradient {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    pointer-events: auto;
-    z-index: 6;
-    border-radius: 18px;
-    background: transparent;
+    background: radial-gradient(circle at 50% 45%, var(--space-center, #1a0f3d) 0%, var(--space-mid, #0b0f2a) 48%, var(--space-edge, #02030a) 100%);
+    transition: background 0.8s ease;
+    will-change: background;
+}
+
+/* 2. Three Drifting Nebula Clouds (Purple, Cyan, Magenta) */
+.nebula-cloud {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+    -webkit-filter: blur(80px);
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+
+.nebula-purple {
+    width: 650px;
+    height: 650px;
+    top: 5%;
+    left: -8%;
+    background: radial-gradient(circle, rgba(123, 47, 247, 0.36) 0%, rgba(123, 47, 247, 0.14) 45%, transparent 70%);
+    animation: nebulaDriftPurple 52s ease-in-out infinite alternate;
+}
+
+.nebula-cyan {
+    width: 750px;
+    height: 750px;
+    top: 38%;
+    right: -12%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.32) 0%, rgba(0, 123, 255, 0.12) 50%, transparent 70%);
+    animation: nebulaDriftCyan 44s ease-in-out infinite alternate;
+}
+
+.nebula-magenta {
+    width: 580px;
+    height: 580px;
+    bottom: -8%;
+    left: 28%;
+    background: radial-gradient(circle, rgba(255, 45, 149, 0.26) 0%, rgba(123, 47, 247, 0.1) 45%, transparent 70%);
+    animation: nebulaDriftMagenta 60s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaDriftPurple {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(60px, 45px, 0) scale(1.12); }
+    100% { transform: translate3d(-35px, 80px, 0) scale(0.94); }
+}
+
+@keyframes nebulaDriftCyan {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-75px, -50px, 0) scale(1.15); }
+    100% { transform: translate3d(-30px, 60px, 0) scale(0.96); }
+}
+
+@keyframes nebulaDriftMagenta {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-50px, -60px, 0) scale(1.08); }
+    100% { transform: translate3d(70px, -30px, 0) scale(1.18); }
+}
+
+/* 3. Distant Planet & Orbiting Moon in Upper Corner */
+.space-planet-system {
+    position: absolute;
+    top: 45px;
+    right: -30px;
+    width: 240px;
+    height: 240px;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
+    transition: transform 0.2s ease-out;
+}
+
+.space-planet {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 32%, #5b3ca2 0%, #2c1a58 45%, #0f0921 78%, #030208 100%);
+    box-shadow: 
+        inset -16px -16px 36px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(123, 47, 247, 0.35),
+        0 0 75px rgba(0, 212, 255, 0.18);
+}
+
+.planet-atmosphere {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 
+        inset 3px 3px 12px rgba(0, 212, 255, 0.65),
+        0 0 25px rgba(0, 212, 255, 0.35);
+    pointer-events: none;
+}
+
+.planet-ring {
+    position: absolute;
+    width: 250px;
+    height: 65px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 212, 255, 0.35);
+    border-top-color: rgba(123, 47, 247, 0.55);
+    border-bottom-color: rgba(0, 212, 255, 0.15);
+    top: 38px;
+    left: -55px;
+    transform: rotate(-25deg) rotateX(72deg);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.25);
+    pointer-events: none;
+}
+
+.space-moon {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #e2e8f0 0%, #94a3b8 55%, #334155 100%);
+    box-shadow: 0 0 14px rgba(226, 232, 240, 0.45);
+    top: 175px;
+    right: 145px;
+    animation: moonOrbit 45s ease-in-out infinite alternate;
+}
+
+@keyframes moonOrbit {
+    0% { transform: translate3d(0, 0, 0) scale(0.9); }
+    50% { transform: translate3d(-35px, -25px, 0) scale(1.1); }
+    100% { transform: translate3d(-70px, 15px, 0) scale(0.95); }
+}
+
+/* 4. Canvas Element */
+.cosmic-ocean-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 5. Glassmorphism Cards with Soft Neon Hover */
+.card,
+.project-card,
+.featured-card,
+.service-card,
+.lib-item,
+.metric-card,
+.contact-item,
+.skills-grid .skill-item {
+    background: rgba(255, 255, 255, 0.045) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover,
+.project-card:hover,
+.featured-card:hover,
+.service-card:hover,
+.skills-grid .skill-item:hover,
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.075) !important;
+    border-color: rgba(0, 212, 255, 0.6) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 212, 255, 0.22), 0 0 50px rgba(123, 47, 247, 0.15) !important;
+    transform: translateY(-4px) !important;
+}
+
+/* 6. Section Titles: Subtle Cyan-to-Violet gradient text with soft neon glow */
+h1, h2,
+h1 .gradient-text,
+h2 span,
+.section-title {
+    background: linear-gradient(135deg, #00d4ff 0%, #38bdf8 30%, #7b2ff7 75%, #ff2d95 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.28));
+}
+
+/* 7. Custom Thin Cosmic Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #02030a;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00d4ff 0%, #7b2ff7 50%, #ff2d95 100%);
+    border-radius: 999px;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #38bdf8 0%, #9047ff 50%, #ff5aa8 100%);
+}
+
+/* 8. Nebula Aura Behind Portrait */
+.profile-showcase-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -45px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123, 47, 247, 0.32) 0%, rgba(0, 212, 255, 0.22) 40%, rgba(255, 45, 149, 0.12) 65%, transparent 80%);
+    filter: blur(35px);
+    z-index: -1;
+    pointer-events: none;
+    animation: portraitNebulaAura 6s ease-in-out infinite alternate;
+}
+
+@keyframes portraitNebulaAura {
+    0% { opacity: 0.65; transform: scale(0.95); }
+    100% { opacity: 1.0; transform: scale(1.08); }
+}
+
+/* 9. Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    .nebula-cloud,
+    .space-moon,
+    .profile-showcase-wrapper::before {
+        animation: none !important;
+    }
+    .space-planet-system {
+        transform: none !important;
+    }
+}
+
+
+/* ============================================================
+   CINEMATIC LAYER — appended by cinematic.js / three-home.js
+   ============================================================ */
+
+#threeCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+}
+
+#vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-1, #4a90e2);
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.06s linear;
+  mix-blend-mode: screen;
+}
+
+.cursor-star {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  z-index: 99996;
+  transform: translate(-50%, -50%);
+}
+
+.letterbox-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #000;
+  z-index: 99000;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.letterbox-top {
+  top: 0;
+  transform: translateY(0);
+}
+
+.letterbox-top.slide-out {
+  transform: translateY(-100%);
+}
+
+.letterbox-bottom {
+  bottom: 0;
+  transform: translateY(0);
+}
+
+.letterbox-bottom.slide-out {
+  transform: translateY(100%);
+}
+
+/* Absolute suppression: ensure mission progress / floating vertical dots are permanently hidden */
+.mission-progress,
+.mission-dot,
+#mission-progress {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure the threeCanvas is clipped to hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+body.cursor-active {
+  cursor: none;
+}
+
+/* ── 3D Skills Planetary Orbit System ── */
+.skills-orbit-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  height: 480px;
+  margin: 2.5rem auto;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.orbit-center-core {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #60a5fa, #1d4ed8 60%, #0f172a 100%);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.7), 0 0 80px rgba(147, 51, 234, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  animation: corePulse 3s ease-in-out infinite alternate;
+}
+@keyframes corePulse {
+  0% { transform: scale(0.96); box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+  100% { transform: scale(1.05); box-shadow: 0 0 55px rgba(59, 130, 246, 0.9), 0 0 90px rgba(147, 51, 234, 0.5); }
+}
+.orbit-core-title {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(74, 144, 226, 0.25);
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+.orbit-ring-1 {
+  width: 220px;
+  height: 220px;
+  animation: orbitRotate 22s linear infinite;
+}
+.orbit-ring-2 {
+  width: 350px;
+  height: 350px;
+  border-color: rgba(147, 51, 234, 0.22);
+  animation: orbitRotateReverse 34s linear infinite;
+}
+.orbit-ring-3 {
+  width: 470px;
+  height: 470px;
+  border-color: rgba(34, 197, 94, 0.2);
+  animation: orbitRotate 48s linear infinite;
+}
+.skills-orbit-wrapper:hover .orbit-ring {
+  animation-play-state: paused;
+}
+@keyframes orbitRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbitRotateReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.orbit-planet {
+  position: absolute;
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1.5px solid rgba(74, 144, 226, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(74, 144, 226, 0.3);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.3s;
+}
+.orbit-planet:hover {
+  transform: scale(1.35) !important;
+  border-color: #38bdf8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
+  z-index: 50;
+}
+.orbit-planet img {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+.orbit-planet .planet-tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 12, 21, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  z-index: 60;
+}
+.orbit-planet .planet-tooltip span {
+  display: block;
+  font-size: 0.62rem;
+  color: #38bdf8;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.orbit-planet:hover .planet-tooltip {
+  opacity: 1;
+}
+@media (max-width: 640px) {
+  .skills-orbit-wrapper {
+    height: 360px;
+    transform: scale(0.75);
+  }
 }

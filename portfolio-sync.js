@@ -38,6 +38,8 @@
             iconUrl = 'https://cdn.simpleicons.org/tensorflow';
         } else if (lower === 'pytorch') {
             iconUrl = 'https://cdn.simpleicons.org/pytorch';
+        } else if (lower === 'seaborn') {
+            iconUrl = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/seaborn/seaborn-original.svg';
         } else if (lower === 'mcp json-rpc' || lower === 'mcp protocol' || lower === 'json') {
             iconUrl = 'https://cdn.simpleicons.org/json';
         }
@@ -55,19 +57,20 @@
         year: "3rd Year",
         college: "Shree Venkateshwara Hi-Tech Engineering College",
         collegeShort: "SVHEC, Erode",
-        projectsCount: "20+",
+        projectsCount: "20",
         projectsCountNum: "20",
         certificationsCount: "19",
-        certificationsBadge: "19+ Earned",
+        certificationsBadge: "19 Earned",
         flagshipProjects: [
             {
                 id: "ecosync",
                 rank: "★ Flagship #01",
                 hud: "24 IoT NODES",
-                title: "EcoSync",
-                tags: ["JavaScript", "ESP32 Telemetry", "PINN Machine Learning"],
-                desc: "Predictive digital twin for zero-emission factories. Features real-time ESP32 IoT telemetry, Physics-Informed AI (PINN) failure prediction, situation-aware closed-loop mitigations, and automated ESG carbon compliance auditing.",
+                title: "EcoSync — Industrial Digital Twin",
+                tags: ["Python", "ESP32 Physical + Sim", "PINN Neural Network", "WebSockets"],
+                desc: "Predictive maintenance digital twin combining physical ESP32 sensor telemetry with a Physics-Informed Neural Network (PINN). Enforces thermodynamic degradation laws to forecast machinery Remaining Useful Life (RUL).",
                 badge: "PINN RUL: 99.4%",
+                benchmark: "NASA C-MAPSS turbofan dataset; 99.4% RUL accuracy against run-to-failure curves. Physical ESP32 + 24 simulated nodes.",
                 github: "https://github.com/jerin81108/Ecosync",
                 live: "",
                 bgClass: "bg-ecosync"
@@ -76,10 +79,11 @@
                 id: "qsignal",
                 rank: "★ Flagship #02",
                 hud: "QUANTUM ROUTING",
-                title: "Q-SIGNAL",
-                tags: ["Python", "Streamlit", "Quantum Routing"],
-                desc: "Quantum-inspired & AI traffic signal optimization engine built to reduce urban vehicular CO2 emissions. Employs quantum state phase routing, dynamic green-wave control, and live benchmark dashboards in Streamlit.",
+                title: "Q-SIGNAL — Traffic AI Optimizer",
+                tags: ["Python", "Streamlit", "Quantum Heuristic", "SUMO Simulation"],
+                desc: "Adaptive traffic signal timing prototype using quantum-inspired phase optimization. Replaces rigid fixed-duration timers with live state routing to minimize multi-intersection idling queues and vehicular emissions.",
                 badge: "CO2 Cut: 28.4%",
+                benchmark: "SUMO urban grid traffic simulation; measured 28.4% reduction in idle delay vs 60s fixed-cycle baseline.",
                 github: "https://github.com/jerin81108/Q-SIGNAL",
                 live: "",
                 bgClass: "bg-qsignal"
@@ -87,13 +91,14 @@
             {
                 id: "civix",
                 rank: "★ Flagship #03",
-                hud: "LIVE ON VERCEL",
-                title: "Civix",
-                tags: ["Flutter", "Firebase", "Spatial Analysis"],
-                desc: "High-precision survey ecosystem for civil engineering, automating complex field data collection and providing real-time spatial analysis. Fully operational with a live web deployment on Vercel.",
-                badge: "Production Deployed",
+                hud: "LIVE IN PRODUCTION",
+                title: "Civix — Civil Survey Platform",
+                tags: ["Flutter", "Firebase", "GPS Geolocation", "Spatial Analysis"],
+                desc: "End-to-end land survey application replacing manual tape surveys with sub-meter GPS polygon boundary plotting, automated topographic parcel area calculations, and offline-first cloud synchronization.",
+                badge: "Production Live",
+                benchmark: "Field-verified across active sites; 100+ surveyed properties recorded on bkbuilder.netlify.app.",
                 github: "https://github.com/jerin81108/CIVIX",
-                live: "https://bkbuilders.vercel.app",
+                live: "https://bkbuilder.netlify.app",
                 bgClass: "bg-civix"
             }
         ],
@@ -104,7 +109,7 @@
             { name: "Scikit-Learn", badge: "Classical ML", desc: "Statistical modeling, regression kernels, KNN & clustering.", icon: "https://cdn.simpleicons.org/scikitlearn" },
             { name: "PyTorch", badge: "Dynamic Graphs", desc: "Tensors, autograd, and cutting-edge vision architectures.", icon: "https://cdn.simpleicons.org/pytorch" },
             { name: "Flask", badge: "Micro-Service", desc: "Lightweight REST endpoints for low-latency ML inference.", icon: "https://cdn.simpleicons.org/flask" },
-            { name: "Seaborn", badge: "Statistical Viz", desc: "High-density multivariate visual data exploration.", icon: "https://cdn.simpleicons.org/seaborn" },
+            { name: "Seaborn", badge: "Statistical Viz", desc: "High-density multivariate visual data exploration.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/seaborn/seaborn-original.svg" },
             { name: "Matplotlib", badge: "Scientific Plots", desc: "Publication-ready kinematic & experimental diagrams.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" },
             { name: "NumPy", badge: "Matrix Kernel", desc: "Vectorized multi-dimensional arrays & linear algebra.", icon: "https://cdn.simpleicons.org/numpy" },
             { name: "Pandas", badge: "Data Wrangling", desc: "High-performance structured DataFrame ETL & analytics.", icon: "https://cdn.simpleicons.org/pandas" }
@@ -180,7 +185,16 @@
                 const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
                     const parsed = JSON.parse(stored);
-                    return Object.assign({}, DEFAULTS, parsed);
+                    const merged = Object.assign({}, DEFAULTS, parsed);
+                    // Auto-heal legacy broken Seaborn URLs if present in browser localStorage
+                    if (Array.isArray(merged.codingLibraries)) {
+                        merged.codingLibraries.forEach(lib => {
+                            if (lib && lib.name && lib.name.toLowerCase() === 'seaborn' && (lib.icon || '').includes('simpleicons.org/seaborn')) {
+                                lib.icon = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/seaborn/seaborn-original.svg';
+                            }
+                        });
+                    }
+                    return merged;
                 }
             } catch (e) {
                 console.warn('PortfolioSync: using defaults', e);
@@ -296,6 +310,7 @@
                             </div>
                             <h3>${p.title}</h3>
                             <p>${p.desc}</p>
+                            ${p.benchmark ? `<div class="featured-benchmark-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg> <span>${p.benchmark}</span></div>` : ''}
                             <div class="featured-action-bar">
                                 <span class="featured-badge-tag">${p.badge || 'Active Architecture'}</span>
                                 ${liveBtn}

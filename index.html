@@ -4,22 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JERIN J | AI & Data Science student & Web Develpoer</title>
-   <meta name="description" content="Jerin is an AI & Data Science student and web developer passionate about machine learning, data science, and building real-world web applications.">
-    <meta name="keywords" content=" B.Tech AI & Data Science student, Full-Stack Developer, Machine Learning, Jerin J, Portfolio">
+    <title>JERIN J | AI &amp; Data Science Student · ML Engineer · Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Jerin J — 3rd-year B.Tech AI &amp; Data Science student at SVHEC, machine learning engineer, and full-stack developer with 20+ open-source projects.">
+    <meta name="keywords" content="Jerin J, B.Tech AI &amp; Data Science, Machine Learning Engineer, Full-Stack Developer, Portfolio, PINN, IoT">
+    <link rel="canonical" href="https://jerin81108.github.io/">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jerin81108.github.io/">
-    <meta property="og:title" content="JERIN J | AI Architect & Data Strategy Expert">
-    <meta property="og:description" content="Engineering the future through human-centric AI and high-performance digital ecosystems.">
-    <meta property="og:image" content="images/pic.jpeg">
+    <meta property="og:title" content="JERIN J | AI &amp; Data Science Student · ML Engineer · Full-Stack Developer">
+    <meta property="og:description" content="Portfolio of Jerin J — 3rd-year B.Tech AI &amp; Data Science student at SVHEC, machine learning engineer, and full-stack developer with 20+ open-source projects.">
+    <meta property="og:image" content="https://jerin81108.github.io/images/pic.jpeg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="JERIN J | AI Architect & Data Strategy Expert">
-    <meta property="twitter:description" content="Engineering the future through human-centric AI and high-performance digital ecosystems.">
+    <meta property="twitter:url" content="https://jerin81108.github.io/">
+    <meta property="twitter:title" content="JERIN J | AI &amp; Data Science Student · ML Engineer · Full-Stack Developer">
+    <meta property="twitter:description" content="Portfolio of Jerin J — 3rd-year B.Tech AI &amp; Data Science student at SVHEC, machine learning engineer, and full-stack developer with 20+ open-source projects.">
+    <meta property="twitter:image" content="https://jerin81108.github.io/images/pic.jpeg">
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- JSON-LD Person Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jerin J",
+      "url": "https://jerin81108.github.io/",
+      "image": "https://jerin81108.github.io/images/pic.jpeg",
+      "jobTitle": "AI & Data Science Student · ML Engineer",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Shree Venkateshwara Hi-Tech Engineering College"
+      },
+      "sameAs": [
+        "https://github.com/jerin81108",
+        "https://www.linkedin.com/in/jerin-j-91328a366"
+      ],
+      "knowsAbout": [
+        "Machine Learning",
+        "Physics-Informed Neural Networks",
+        "Internet of Things",
+        "Full-Stack Web Development",
+        "Python",
+        "PyTorch",
+        "JavaScript"
+      ]
+    }
+    </script>
     <!-- Resource Hints for Lightning Fast Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +61,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=deepspace1">
+    
+    <!-- Pinned Cinematic & 3D Core Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.min.js"></script>
     <style>
         /* ── GitHub Explorer Terminal Mock ── */
         .explorer-selector-bar {
@@ -256,13 +294,37 @@
                 height: 700px;
             }
 
+        .metric-method { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 0.3rem; font-style: italic; }
+        .phone-reveal-btn { background: none; border: 1px solid rgba(74,144,226,0.4); color: var(--accent-1,#4a90e2); padding: 0.4rem 1rem; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.95rem; transition: all 0.3s; }
+        .phone-reveal-btn:hover { border-color: var(--accent-1,#4a90e2); background: rgba(74,144,226,0.08); }
+        .phone-revealed { background: none; border: none; color: var(--accent-1,#4a90e2); font-size: 0.95rem; }
 
     </style>
 </head>
 
 <body>
-    <!-- Deep Space & Cosmic Ocean Ambient Canvas -->
-    <canvas id="cosmicOceanCanvas" class="cosmic-ocean-canvas"></canvas>
+    <!-- Cinematic Deep Space Environment Layers -->
+    <div class="deep-space-container" id="deepSpaceContainer" aria-hidden="true">
+        <!-- Deep Space Base Gradient Layer -->
+        <div class="space-base-gradient" id="spaceBaseGradient"></div>
+        
+        <!-- 3 Drifting Nebula Clouds (Purple, Cyan, Magenta) -->
+        <div class="nebula-cloud nebula-purple" id="nebulaPurple"></div>
+        <div class="nebula-cloud nebula-cyan" id="nebulaCyan"></div>
+        <div class="nebula-cloud nebula-magenta" id="nebulaMagenta"></div>
+        
+        <!-- Distant Planet & Moon System -->
+        <div class="space-planet-system" id="spacePlanetSystem">
+            <div class="space-planet">
+                <div class="planet-atmosphere"></div>
+                <div class="planet-ring"></div>
+            </div>
+            <div class="space-moon" id="spaceMoon"></div>
+        </div>
+        
+        <!-- Multi-Layer Parallax Starfield & Space Events Canvas -->
+        <canvas id="cosmicOceanCanvas" class="cosmic-ocean-canvas"></canvas>
+    </div>
     <!-- Scroll Progress Line -->
     <div class="scroll-progress-container">
         <div class="scroll-progress-line" id="scrollProgressLine"></div>
@@ -287,34 +349,19 @@
         <section id="home" class="hero fade-in">
             <div class="section-segment active-segment" data-theme="about">
                 <div class="profile-showcase-wrapper fade-in">
-                    <div class="profile-card-holosphere" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
-                        <div class="profile-hud-corner tl"></div>
-                        <div class="profile-hud-corner tr"></div>
-                        <div class="profile-hud-corner bl"></div>
-                        <div class="profile-hud-corner br"></div>
-                        
-                        <div class="profile-status-badge">
-                            <span class="pulse-dot"></span> AI &amp; DS ARCHITECT · 3RD YEAR
-                        </div>
-
+                    <div class="profile-card-holosphere" data-tilt data-tilt-max="6" data-tilt-speed="400">
                         <div class="profile-photo-frame" id="profilePhotoFrame">
                             <img src="images/pic.jpeg" alt="JERIN J - AI & Data Science Architect" class="profile-photo-full" id="profilePhotoFull" loading="eager">
-                            <canvas id="starPortraitCanvas" class="star-portrait-canvas"></canvas>
-                            <div class="profile-scanline-fx"></div>
-                        </div>
-
-                        <div class="profile-hud-footer">
-                            <span class="hud-callsign">SYSTEM // JERIN.J</span>
-                            <span class="hud-status">SVHEC · ERODE</span>
                         </div>
                     </div>
                 </div>
                 <h1>Hi, I'm <span id="dynamic-name" class="gradient-text">JERIN J</span></h1>
-                <p class="subtitle">AI Architect & Data Strategy Expert</p>
+                <p class="subtitle"><span id="role-cycler" class="role-cycler-text">AI &amp; Data Science Student</span><span class="role-cursor">|</span></p>
+                <p class="hero-tagline" style="font-size: 1.02rem; color: var(--text-muted); max-width: 620px; margin: 0.6rem auto 1.5rem; line-height: 1.5;">AI &amp; Data Science student building practical ML models, IoT digital twins, and full-stack web applications.</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="cta-button">Explore Innovation</a>
-                    <a href="resume.html" class="cta-button-outline" target="_blank">Download Resume</a>
-                    <a href="#about" class="cta-button-outline">My Philosophy</a>
+                    <a href="#projects" class="cta-button">Explore Flagships ↓</a>
+                    <a href="resume.html" class="cta-button-outline">View &amp; Download Resume 📄</a>
+                    <a href="#contact" class="cta-button-outline">Get In Touch ✉️</a>
                 </div>
             </div>
             <div class="scroll-indicator fade-in"
@@ -328,37 +375,101 @@
                 <h2 class="fade-in">About <span>Me</span></h2>
                 <div class="about-container">
                     <div class="about-text fade-in">
-                        <p>I am a passionate <strong>AI &amp; Data Science Architect</strong> on a mission to bridge the gap
-                            between human intuition and machine intelligence. My work is driven by the belief that
-                            technology should not only be powerful but also deeply human-centric and sustainable.</p>
-                        <p>Currently a <strong>3rd Year B.Tech (Artificial Intelligence &amp; Data Science)</strong> student at <strong>Shree Venkateshwara Hi-Tech Engineering
-                                College</strong>, I immerse myself in the complexities of neural networks, data
-                            strategy, and premium digital experiences.</p>
+                        <p>I build physics-informed digital twins, multi-agent safety systems, and real-time computer vision tools — as a 3rd-year <strong>B.Tech AI &amp; Data Science</strong> student at SVHEC, Erode with a <strong>CGPA of 8.55 / 10.0</strong>.</p>
+                        <p>I focus on measurable, practical outcomes: EcoSync monitors 24 sensor nodes with Physics-Informed Neural Networks, Q-SIGNAL optimizes traffic flow to cut idle emissions, and Civix is actively deployed in production. I work in Python, TypeScript, SQL, and C, and I am actively seeking an AI/ML or Data Science Internship.</p>
 
                         <div class="education-timeline fade-in">
                             <div class="timeline-item">
-                                <span class="timeline-date">2024 - Present</span>
+                                <span class="timeline-date">2023 – 2027 (Expected)</span>
                                 <div class="timeline-content">
-                                    <h4>B.Tech (AI &amp; Data Science) — 3rd Year</h4>
-                                    <span class="institution">SVHEC, Erode</span>
-                                    <p>Pursuing 3rd year, specialising in Machine Learning and Full-Stack Engineering. Current CGPA: <strong>8.55</strong>.</p>
+                                    <h4>B.Tech in Artificial Intelligence &amp; Data Science — 3rd Year</h4>
+                                    <span class="institution">Sri Venkateswaraa Hi-Tech Engineering College (Autonomous), Erode</span>
+                                    <p>3rd-year undergraduate specializing in Machine Learning, Neural Networks, and Distributed Full-Stack Systems. Current CGPA: <strong>8.55 / 10.0</strong>.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <span class="timeline-date">Engineering Philosophy</span>
+                                <span class="timeline-date">Applied Focus</span>
                                 <div class="timeline-content">
-                                    <h4>Innovation with Purpose</h4>
-                                    <p>I don't just write code; I design systems that solve real-world problems with
-                                        elegance and efficiency.</p>
+                                    <h4>Evidence-Driven Engineering</h4>
+                                    <p>Every claim is grounded in empirical metrics: turbofan run-to-failure degradation curves, SUMO traffic timing baselines, and sub-meter GIS survey verification.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="skills-grid" data-sync="skills-pillars">
-                            <div class="skill-item"><span>🚀</span> AI System Architecture</div>
-                            <div class="skill-item"><span>⚛️</span> High-Performance Web Apps</div>
-                            <div class="skill-item"><span>🎨</span> Strategic UI/UX Design</div>
-                            <div class="skill-item"><span>📊</span> Predictive Data Analytics</div>
+                            <div class="skill-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span> AI System Architecture</div>
+                            <div class="skill-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9C11.17 3.77 5.84 1.75 3.8 3.8c-2.04 2.04-.02 7.37 4.5 11.91 4.51 4.51 9.84 6.52 11.9 4.49z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.91-2.03-2.03-7.36-.01-11.9 4.5C3.78 12.84 1.76 18.17 3.8 20.2c2.04 2.04 7.37.02 11.9-4.5z"/></svg></span> High-Performance Web Apps</div>
+                            <div class="skill-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span> Strategic UI/UX Design</div>
+                            <div class="skill-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span> Predictive Data Analytics</div>
+                        </div>
+
+                        <!-- ══ 3D SKILLS ORBITAL SOLAR SYSTEM ══ -->
+                        <div class="skills-orbit-wrapper fade-in" id="skills-orbit-system" title="Hover to inspect proficiency &amp; click to explore project implementations">
+                            <!-- Center Gravitational Core -->
+                            <div class="orbit-center-core">
+                                <span style="font-size: 1.2rem;">⚡</span>
+                                <span class="orbit-core-title">AI &amp; DATA<br>CORE</span>
+                            </div>
+
+                            <!-- Orbit Ring 1 (Core Foundations) -->
+                            <div class="orbit-ring orbit-ring-1">
+                                <div class="orbit-planet" style="top: -22px; left: calc(50% - 22px);" onclick="location.href='projects.html'" title="Python">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+                                    <div class="planet-tooltip">Python<span>Core · 98%</span>EcoSync &amp; DL Lab</div>
+                                </div>
+                                <div class="orbit-planet" style="top: calc(50% - 22px); right: -22px;" onclick="location.href='projects.html'" title="PyTorch">
+                                    <img src="https://cdn.simpleicons.org/pytorch" alt="PyTorch">
+                                    <div class="planet-tooltip">PyTorch<span>Core · 94%</span>Gait &amp; CNNs</div>
+                                </div>
+                                <div class="orbit-planet" style="bottom: -22px; left: calc(50% - 22px);" onclick="location.href='projects.html'" title="Scikit-Learn">
+                                    <img src="https://cdn.simpleicons.org/scikitlearn" alt="Scikit-Learn">
+                                    <div class="planet-tooltip">Scikit-Learn<span>Core · 95%</span>ML Algorithms</div>
+                                </div>
+                                <div class="orbit-planet" style="top: calc(50% - 22px); left: -22px;" onclick="location.href='certificates.html'" title="SQL">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" alt="SQL">
+                                    <div class="planet-tooltip">SQL &amp; SQLite<span>Core · Advanced</span>HackerRank Gold</div>
+                                </div>
+                            </div>
+
+                            <!-- Orbit Ring 2 (Full-Stack & Systems) -->
+                            <div class="orbit-ring orbit-ring-2">
+                                <div class="orbit-planet" style="top: 15%; right: 8%;" onclick="location.href='projects.html'" title="React 19">
+                                    <img src="https://cdn.simpleicons.org/react" alt="React">
+                                    <div class="planet-tooltip">React 19<span>Comfortable · 92%</span>Digital Liver &amp; UI</div>
+                                </div>
+                                <div class="orbit-planet" style="bottom: 15%; right: 8%;" onclick="location.href='projects.html'" title="JavaScript">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JS">
+                                    <div class="planet-tooltip">JavaScript / TS<span>Comfortable · 90%</span>AEGIS-SWARM</div>
+                                </div>
+                                <div class="orbit-planet" style="bottom: 15%; left: 8%;" onclick="location.href='projects.html'" title="Node.js">
+                                    <img src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js">
+                                    <div class="planet-tooltip">Node.js<span>Comfortable · 88%</span>JSON-RPC Backends</div>
+                                </div>
+                                <div class="orbit-planet" style="top: 15%; left: 8%;" onclick="location.href='projects.html'" title="Flask">
+                                    <img src="https://cdn.simpleicons.org/flask" alt="Flask">
+                                    <div class="planet-tooltip">Flask<span>Comfortable · 86%</span>Model Serving APIs</div>
+                                </div>
+                            </div>
+
+                            <!-- Orbit Ring 3 (Industrial IoT, Vision & Quantum) -->
+                            <div class="orbit-ring orbit-ring-3">
+                                <div class="orbit-planet" style="top: -22px; left: calc(50% - 22px);" onclick="location.href='projects.html'" title="ESP32 IoT">
+                                    <span style="font-size: 1.1rem;">📡</span>
+                                    <div class="planet-tooltip">ESP32 IoT<span>Applied · 90%</span>EcoSync Factory Twin</div>
+                                </div>
+                                <div class="orbit-planet" style="top: calc(50% - 22px); right: -22px;" onclick="location.href='projects.html'" title="Computer Vision">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="OpenCV">
+                                    <div class="planet-tooltip">OpenCV Vision<span>Applied · 89%</span>Face &amp; Gait Rec</div>
+                                </div>
+                                <div class="orbit-planet" style="bottom: -22px; left: calc(50% - 22px);" onclick="location.href='projects.html'" title="Quantum Routing">
+                                    <span style="font-size: 1.1rem;">⚛️</span>
+                                    <div class="planet-tooltip">Quantum Routing<span>Emerging · 80%</span>Q-SIGNAL AI Engine</div>
+                                </div>
+                                <div class="orbit-planet" style="top: calc(50% - 22px); left: -22px;" onclick="location.href='projects.html'" title="Multi-Agent MCP">
+                                    <span style="font-size: 1.1rem;">🤖</span>
+                                    <div class="planet-tooltip">Multi-Agent MCP<span>Emerging · 85%</span>AEGIS Safety Consensus</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="tech-stack fade-in">
@@ -407,9 +518,9 @@
                                     <span title="Flask"><img src="https://cdn.simpleicons.org/flask" loading="lazy" decoding="async"
                                             width="16" height="16"
                                             style="margin-right: 8px; vertical-align: middle;">Flask</span>
-                                    <span title="Seaborn"><img src="https://cdn.simpleicons.org/seaborn" loading="lazy" decoding="async"
+                                    <span title="Seaborn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/seaborn/seaborn-original.svg" onerror="this.onerror=null; this.src='images/seaborn.svg';" loading="lazy" decoding="async"
                                             width="16" height="16"
-                                            style="margin-right: 8px; vertical-align: middle;">Seaborn</span>
+                                            style="margin-right: 8px; vertical-align: middle;" alt="Seaborn">Seaborn</span>
                                     <span title="Matplotlib"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" loading="lazy" decoding="async"
                                             width="16" height="16"
                                             style="margin-right: 8px; vertical-align: middle;">Matplotlib</span>
@@ -471,12 +582,12 @@
                         </div>
                         <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
                             data-tilt-scale="1.05">
-                            <h3>10+</h3>
+                            <h3>20</h3>
                             <p>Projects Done</p>
                         </div>
                         <div class="metric-card" data-tilt data-tilt-max="20" data-tilt-speed="400"
                             data-tilt-scale="1.05">
-                            <h3>10+</h3>
+                            <h3>19</h3>
                             <p>Certifications</p>
                         </div>
                     </div>
@@ -487,12 +598,12 @@
             <h2 class="fade-in">Engineering <span>Excellence</span></h2>
             <div class="services-grid">
                 <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                    <span class="service-icon">🤖</span>
+                    <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg></span>
                     <h3>Machine Learning</h3>
                     <p>Engineering advanced predictive models and intelligent algorithms that learn from complex patterns to drive automated decision-making.</p>
                 </div>
                 <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                    <span class="service-icon">🔬</span>
+                    <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11l-7 7h22l-7-7V3"/></svg></span>
                     <h3>Data Science</h3>
                     <p>Extracting deep, actionable intelligence from raw data through statistical modeling, experimentation, and advanced analytics.</p>
                 </div>
@@ -509,7 +620,7 @@
             </div>
         </section>
 
-        <section id="projects" class="projects fade-in">
+        <section id="projects" class="projects fade-in appear">
             <div class="section-segment" data-theme="projects">
                 <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;">
                     <span class="dossier-sub-tag">⚡ Flagship Architectural Portfolio</span>
@@ -521,7 +632,7 @@
                 <div class="featured-projects-grid" data-sync="flagship-grid">
 
                     <!-- #01 ECOSYNC -->
-                    <div class="featured-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
+                    <div class="featured-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
                         <div class="featured-img-wrap">
                             <div class="featured-hud-top">
                                 <span class="flagship-rank-pill gold">★ Flagship #01</span>
@@ -531,23 +642,27 @@
                         </div>
                         <div class="featured-card-info">
                             <div class="project-tags">
-                                <span><img src="https://cdn.simpleicons.org/javascript" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px;">JavaScript</span>
-                                <span>ESP32 Telemetry</span>
-                                <span>PINN Machine Learning</span>
+                                <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px;">Python</span>
+                                <span>ESP32 Physical + Sim</span>
+                                <span>PINN Neural Network</span>
+                                <span>WebSockets</span>
                             </div>
-                            <h3>EcoSync</h3>
-                            <p>Predictive digital twin for zero-emission factories. Features real-time ESP32 IoT telemetry, Physics-Informed AI (PINN) failure prediction, situation-aware closed-loop mitigations, and automated ESG carbon compliance auditing.</p>
+                            <h3>EcoSync — Industrial Digital Twin</h3>
+                            <p>Predictive maintenance digital twin combining physical ESP32 sensor telemetry with a Physics-Informed Neural Network (PINN). Enforces thermodynamic degradation laws to forecast machinery Remaining Useful Life (RUL).</p>
+                            <div class="project-benchmarks-box" style="margin: 0.8rem 0; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(74, 144, 226, 0.2); border-radius: 8px; font-size: 0.78rem; line-height: 1.45; color: var(--text-muted);">
+                                <strong style="color: #60a5fa;">Validation Benchmark:</strong> Evaluated on NASA C-MAPSS turbofan degradation data; achieved 99.4% RUL accuracy against run-to-failure curves. Physical ESP32 streams vibration/temp over WebSockets alongside 24 simulated shopfloor nodes.
+                            </div>
                             <div class="featured-action-bar">
                                 <span class="featured-badge-tag">PINN RUL: 99.4%</span>
                                 <a href="https://github.com/jerin81108/Ecosync" target="_blank" class="featured-repo-btn">
-                                    Explore Architecture →
+                                    GitHub Repo ↗
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- #02 Q-SIGNAL -->
-                    <div class="featured-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
+                    <div class="featured-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
                         <div class="featured-img-wrap">
                             <div class="featured-hud-top">
                                 <span class="flagship-rank-pill gold">★ Flagship #02</span>
@@ -559,25 +674,29 @@
                             <div class="project-tags">
                                 <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px;">Python</span>
                                 <span><img src="https://cdn.simpleicons.org/streamlit" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px;">Streamlit</span>
-                                <span>Quantum Routing</span>
+                                <span>Quantum Heuristic</span>
+                                <span>SUMO Simulation</span>
                             </div>
-                            <h3>Q-SIGNAL</h3>
-                            <p>Quantum-inspired &amp; AI traffic signal optimization engine built to reduce urban vehicular CO2 emissions. Employs quantum state phase routing, dynamic green-wave control, and live benchmark dashboards in Streamlit.</p>
+                            <h3>Q-SIGNAL — Traffic AI Optimizer</h3>
+                            <p>Adaptive traffic signal timing prototype using quantum-inspired phase optimization. Replaces rigid fixed-duration timers with live state routing to minimize multi-intersection idling queues and vehicular emissions.</p>
+                            <div class="project-benchmarks-box" style="margin: 0.8rem 0; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(74, 144, 226, 0.2); border-radius: 8px; font-size: 0.78rem; line-height: 1.45; color: var(--text-muted);">
+                                <strong style="color: #60a5fa;">Validation Benchmark:</strong> Tested in SUMO traffic simulation across 4-phase intersection grid models. Measured a 28.4% reduction in vehicular idle delay and associated CO₂ emissions compared to a 60-second fixed-cycle baseline.
+                            </div>
                             <div class="featured-action-bar">
                                 <span class="featured-badge-tag">CO2 Cut: 28.4%</span>
                                 <a href="https://github.com/jerin81108/Q-SIGNAL" target="_blank" class="featured-repo-btn">
-                                    Explore Architecture →
+                                    GitHub Repo ↗
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- #03 CIVIX -->
-                    <div class="featured-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
+                    <div class="featured-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.18">
                         <div class="featured-img-wrap">
                             <div class="featured-hud-top">
                                 <span class="flagship-rank-pill gold">★ Flagship #03</span>
-                                <span class="telemetry-status-pill"><span class="pulse-dot"></span> LIVE ON VERCEL</span>
+                                <span class="telemetry-status-pill"><span class="pulse-dot"></span> LIVE IN PRODUCTION</span>
                             </div>
                             <div class="featured-img bg-civix"></div>
                         </div>
@@ -585,17 +704,21 @@
                             <div class="project-tags">
                                 <span><img src="https://cdn.simpleicons.org/flutter" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px;">Flutter</span>
                                 <span><img src="https://cdn.simpleicons.org/firebase" loading="lazy" decoding="async" width="10" height="10" style="margin-right: 4px;">Firebase</span>
+                                <span>GPS Geolocation</span>
                                 <span>Spatial Analysis</span>
                             </div>
-                            <h3>Civix</h3>
-                            <p>High-precision survey ecosystem for civil engineering, automating complex field data collection and providing real-time spatial analysis. Fully operational with a live web deployment on Vercel.</p>
+                            <h3>Civix — Civil Survey Platform</h3>
+                            <p>End-to-end land survey application replacing manual tape surveys with sub-meter GPS polygon boundary plotting, automated topographic parcel area calculations, and offline-first cloud synchronization.</p>
+                            <div class="project-benchmarks-box" style="margin: 0.8rem 0; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(74, 144, 226, 0.2); border-radius: 8px; font-size: 0.78rem; line-height: 1.45; color: var(--text-muted);">
+                                <strong style="color: #60a5fa;">Production Status:</strong> Actively deployed for BK Builders on Netlify at bkbuilder.netlify.app. Field-tested with over 100+ parcel records; cuts boundary computation turnaround from hours to seconds.
+                            </div>
                             <div class="featured-action-bar">
-                                <span class="featured-badge-tag">Production Deployed</span>
+                                <span class="featured-badge-tag">Production Live</span>
                                 <a href="https://bkbuilder.netlify.app" target="_blank" class="featured-repo-btn" style="margin-right: 0.5rem; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); color: #00d4ff;">
                                     Live Demo ↗
                                 </a>
                                 <a href="https://github.com/jerin81108/CIVIX" target="_blank" class="featured-repo-btn">
-                                    GitHub →
+                                    GitHub Repo ↗
                                 </a>
                             </div>
                         </div>
@@ -700,7 +823,7 @@
 
                     <div class="lib-item" data-tilt data-tilt-max="12" data-tilt-speed="400">
                         <div class="lib-icon-wrap">
-                            <img src="https://cdn.simpleicons.org/seaborn" loading="lazy" decoding="async" alt="Seaborn Logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/seaborn/seaborn-original.svg" onerror="this.onerror=null; this.src='images/seaborn.svg';" loading="lazy" decoding="async" alt="Seaborn Logo">
                         </div>
                         <h4>Seaborn</h4>
                         <span class="lib-badge">Statistical Viz</span>
@@ -739,23 +862,23 @@
         <div class="section-divider"></div>
 
         <!-- ══ CERTIFICATES CTA ══ -->
-        <section id="certificates" class="excellence fade-in">
+        <section id="certificates" class="excellence fade-in appear">
             <div class="section-segment" data-theme="library" style="text-align:center;">
                 <h2 class="fade-in">My <span>Certificates</span></h2>
-                <p class="subtitle" style="text-align:center; max-width:600px; margin:0 auto 2rem;">14 professional certifications &amp; achievements — newest to oldest, all in one place.</p>
+                <p class="subtitle" style="text-align:center; max-width:600px; margin:0 auto 2rem;">19 professional certifications &amp; achievements — newest to oldest, all in one place.</p>
                 <p class="cert-student-note" style="margin:0 auto 2.5rem; display:inline-block;">🎓 B.Tech (Artificial Intelligence &amp; Data Science) — 3rd Year | SVHEC, Erode</p>
                 <div class="services-grid" style="margin-top:2.5rem;">
-                    <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="service-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400">
                         <span class="service-icon">🏅</span>
                         <h3>19 Certificates</h3>
                         <p>From HackerRank SQL &amp; C# to workshops, internships, college recognitions and more.</p>
                     </div>
-                    <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="service-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400">
                         <span class="service-icon">📅</span>
                         <h3>Newest → Oldest</h3>
                         <p>All certificates ordered chronologically — most recent Navitech workshop down to foundational HackerRank creds.</p>
                     </div>
-                    <div class="service-card fade-in" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="service-card fade-in appear" data-tilt data-tilt-max="10" data-tilt-speed="400">
                         <span class="service-icon">📄</span>
                         <h3>PDFs &amp; Images</h3>
                         <p>Each certificate is embedded and downloadable — full previews with direct links to originals.</p>
@@ -778,11 +901,11 @@
                     <div class="contact-info">
                         <div class="contact-item" data-tilt data-tilt-max="10" data-tilt-speed="400">
                             <span class="label">Direct Email</span>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jerin81108@gmail.com" target="_blank">jerin81108@gmail.com</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jerin81108loco@gmail.com" target="_blank">jerin81108loco@gmail.com</a>
                         </div>
                         <div class="contact-item" data-tilt data-tilt-max="10" data-tilt-speed="400">
                             <span class="label">Secure Phone</span>
-                            <a href="tel:8870654384">+91 8870654384</a>
+                            <button class="phone-reveal-btn" onclick="this.innerHTML='<a href=&quot;tel:+918870654384&quot;>+91 8870654384</a>'; this.className='phone-revealed';" aria-label="Reveal phone number">📞 Reveal Phone</button>
                         </div>
                     </div>
 
@@ -807,6 +930,15 @@
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
+                        <a href="https://www.instagram.com/_.jerin_._/?__pwa=1" target="_blank" class="social-icon"
+                            title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -816,15 +948,22 @@
         <p>&copy; 2026 JERIN J | Architecting Intelligence. All rights reserved.</p>
     </footer>
 
-    <button id="theme-changer" class="theme-changer-btn" title="Change Theme" aria-label="Toggle Theme">🚀</button>
+    <button id="theme-changer" class="theme-changer-btn" title="Change Theme" aria-label="Toggle Theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11"/></svg>
+    </button>
     <div class="impact-flash" id="flash-overlay"></div>
 
-    <button id="scroll-to-top" class="scroll-to-top" title="Back to Top" aria-label="Scroll to top">↑</button>
+    <button id="scroll-to-top" class="scroll-to-top" title="Back to Top" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        <span style="font-size:0.6rem;display:block;margin-top:2px;">TOP</span>
+    </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
     <script src="portfolio-sync.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=deepspace1" defer></script>
     <script src="github-explorer.js" defer></script>
+    <script src="js/cinematic.js" defer></script>
+    <script src="js/three-home.js" defer></script>
 </body>
 
 </html>

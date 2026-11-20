@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="seabornGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#4a90e2"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="seabornGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Soft Capsule -->
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="#0f172a" stroke="rgba(56, 189, 248, 0.3)" stroke-width="2"/>
+  <!-- Seaborn statistical bivariate KDE contours / S-curve -->
+  <path d="M28 84 C 44 84, 48 44, 64 44 C 80 44, 84 84, 100 84" fill="none" stroke="url(#seabornGradient)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M28 44 C 44 44, 48 84, 64 84 C 80 84, 84 44, 100 44" fill="none" stroke="url(#seabornGradient2)" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 1"/>
+  <circle cx="64" cy="64" r="7" fill="#38bdf8"/>
+</svg>
